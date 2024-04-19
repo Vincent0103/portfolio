@@ -2,11 +2,11 @@
 
 ## Description
 
-This project is part of my journey through The Odin Project course, specifically focusing on practicing testing program concepts. The goal is to enhance my understanding of testing methodologies, including unit testing and test-driven development (TDD).
+<!-- TODO -->
 
 ## Features
 
-- **Feature 1**: capitalize, reverseString, calculator, ceasarCipher and analyzeArray functions
+<!-- TODO -->
 
 ## Technologies Used
 
@@ -23,13 +23,12 @@ Run the tests: npm test or yarn test
 
 ## Testing
 
-all the tests are located in [testingPractice.test.js](src/testingPractice.test.js)
+all the tests are located in <!-- TODO [LINK] -->
 
 ## License
 
-This project is licensed under the Layboy License.
+This project is licensed under the Vincent0103 License.
 
 ## Acknowledgements
 
 The Odin Project for providing valuable resources and guidance.
-
