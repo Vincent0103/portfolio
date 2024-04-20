@@ -32,3 +32,7 @@ This project is licensed under the Vincent0103 License.
 ## Acknowledgements
 
 The Odin Project for providing valuable resources and guidance.
+
+## TODO FOR MYSELF
+
+**BEFORE RELEASING THE PROJECT MAKE SURE TO CHANGE ALL DEVELOPMENT DEPENDENCIES AS WELL AS DEVELOPMENT MODE TO PRODUCTION**

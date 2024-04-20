@@ -1,3 +1,3 @@
-window.addEventListener("DOMContentLoaded", () => {
-  alert("Hello, World!");
-});
+import "./style.css";
+
+window.addEventListener("DOMContentLoaded", () => {});
