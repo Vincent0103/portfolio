@@ -79,12 +79,14 @@ main {
   min-height: 100vh;
 }
 
-main * {
+main > * {
   max-width: 70%;
   min-height: 70%;
+  margin: 50px 0;
 }
 
 main > img {
+  margin-top: 0;
   max-width: 100%;
   min-height: 100%;
   object-fit: cover;
