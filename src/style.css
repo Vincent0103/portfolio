@@ -77,7 +77,6 @@ main {
   align-items: center;
   max-width: 100vw;
   min-height: 100vh;
-  /* padding: 0 70px; */
 }
 
 main * {
@@ -86,8 +85,8 @@ main * {
 }
 
 main > img {
-  max-width: 90%;
-  min-height: 90%;
+  max-width: 100%;
+  min-height: 100%;
 }
 
 main > img {
