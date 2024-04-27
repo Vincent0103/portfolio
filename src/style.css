@@ -87,9 +87,6 @@ main * {
 main > img {
   max-width: 100%;
   min-height: 100%;
-}
-
-main > img {
   object-fit: cover;
   object-position: left center;
   background-color: black;
