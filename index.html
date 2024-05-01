@@ -13,22 +13,44 @@
   <script defer src="index.bundle.js"></script></head>
   <body>
     <main>
-      <img src="images/54042a0c654c608a640e.jpg" alt="Banner for Vincent0103's Web Developer Portfolio" />
+      <picture class="banner-heading">
+        <source srcset="images/22e4c1d5db66e4fb4f25.webp" type="image/webp">
+        <source srcset="images/7d7faa6c1d1c40829a4f.jpg" type="image/jpeg">
+        <img src="images/7d7faa6c1d1c40829a4f.jpg" alt="Banner for Vincent0103's Web Developer Portfolio">
+      </picture>
       <section>
         <h2>About</h2>
         <p>Bonjour, i'm Vincent, a fresh highschool student at Lycee Racine in Paris, France. I'm about to enroll higher education in computer science.</p>
         <p>You know i always loved discovering new nerdy stuffs since very little and a few months ago i committed myself to study computer science as deep as possible (btw, i'm a big fan of carti).</p>
       </section>
-      <section>
+      <section class="projects-section">
         <h2>Projects</h2>
-        <div class="image-slider-container">
-          <picture>
+        <div class="img-slider-container">
+          <picture class="sliding-img" id="1">
+            <source srcset="images/05c023b154d645d2953c.webp" type="image/webp">
+            <source srcset="images/bdc619442ae61830c7e7.jpg" type="image/jpeg">
+            <img src="images/bdc619442ae61830c7e7.jpg" alt="Screenshot of the etch-a-sketch project">
+          </picture>
+          <picture class="sliding-img" id="2">
             <source srcset="images/a06635e16ccb5221b80a.webp" type="image/webp">
             <source srcset="images/1cf474dd28ae021fd176.jpg" type="image/jpeg">
             <img src="images/1cf474dd28ae021fd176.jpg" alt="Screenshot of the Battleship project">
           </picture>
+          <div class="sliding-img" id="3">
+            <img src="images/128b5cae61e3c2bb8707.png" alt="Screenshot of the knight travails project">
+          </div>
+          <div class="sliding-img" id="4">
+            <img src="images/4db635fa8c658d49b654.png" alt="Screenshot of the tic-tac-toe travails project">
+          </div>
+          <div class="sliding-img" id="5">
+            <img src="images/43896504ddbb811df5df.png" alt="Screenshot of the todo list travails project">
+          </div>
+          <div class="sliding-img" id="6">
+            <img src="images/b45bc468af9407fe22d5.png" alt="Screenshot of the weather app project">
+          </div>
         </div>
       </section>
     </main>
   </body>
 </html>
+
