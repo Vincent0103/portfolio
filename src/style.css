@@ -107,17 +107,17 @@ main > * {
 
 .img-slider-container {
   position: relative;
-  display: flex;
-  justify-content: center;
-  width: 60vw;
-  height: calc(60vw * var(--img-ratio));
+  width: 70vw;
+  height: calc(70vw * var(--img-ratio));
   background-color: none;
   box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px;
 }
 
 .img-slider-container .sliding-img {
   position: absolute;
-  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
   overflow: hidden;
 }
 
@@ -147,8 +147,4 @@ main > * {
   transform: translateX(13%) scale(.8);
   filter: brightness(50%);
   z-index: -2;
-}
-
-
-.sliding-img#img6::after {
 }
