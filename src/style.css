@@ -127,24 +127,24 @@ main > * {
 
 .sliding-img#img1 {
   transform: translateX(-13%) scale(.8);
-  filter: brightness(50%);
+  filter: brightness(15%);
   z-index: -2;
 }
 
 .sliding-img#img2 {
   transform: translateX(-7%) scale(.9);
-  filter: brightness(70%);
+  filter: brightness(40%);
   z-index: -1;
 }
 
 .sliding-img#img3 {
   transform: translateX(7%) scale(.9);
-  filter: brightness(70%);
+  filter: brightness(40%);
   z-index: -1;
 }
 
 .sliding-img#img4 {
   transform: translateX(13%) scale(.8);
-  filter: brightness(50%);
+  filter: brightness(15%);
   z-index: -2;
 }
