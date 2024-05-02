@@ -48,7 +48,7 @@
 }
 
 :root {
-  --img-ratio: 0.522
+  --img-ratio: 0.504
 }
 
 html {
@@ -103,13 +103,13 @@ main > * {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 80px;
 }
 
 .img-slider-container {
   position: relative;
   width: 70vw;
   height: calc(70vw * var(--img-ratio));
-  background-color: none;
   box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px;
 }
 
@@ -119,58 +119,72 @@ main > * {
   align-items: center;
   border-radius: 20px;
   overflow: hidden;
+  transition: transform .2s, opacity .2s;
 }
 
 .sliding-img img {
   max-width: 100%;
 }
 
-.sliding-img:not(#img6)::before {
+.sliding-img::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: black;
+  background-color: black;
 }
 
-.sliding-img#img1 {
+.carouselLeftLeft {
   transform: translateX(-13%) scale(.8);
   z-index: -2;
 }
 
-.sliding-img#img1::before {
+.carouselLeftLeft::before {
   opacity: .85;
 }
 
-.sliding-img#img2 {
+.carouselLeft {
   transform: translateX(-7%) scale(.9);
   z-index: -1;
 }
 
-.sliding-img#img2::before {
+.carouselLeft::before {
   opacity: .6;
 }
 
-.sliding-img#img3 {
+.carouselCenter {
+  transform: translateX(0) scale(1);
+  z-index: 0;
+}
+
+.carouselCenter::before {
+  opacity: 0;
+}
+
+.carouselRight {
   transform: translateX(7%) scale(.9);
   z-index: -1;
 }
 
-.sliding-img#img3::before {
+.carouselRight::before {
   opacity: .6;
 }
 
-.sliding-img#img4 {
+.carouselRightRight {
   transform: translateX(13%) scale(.8);
   z-index: -2;
 }
 
-.sliding-img#img4::before {
+.carouselRightRight::before {
   opacity: .85;
 }
 
-@keyframes translateLeft {
-  to {
-    transform: translateX(-7%) scale(.8);
-  }
+.carouselHideLeft {
+  transform: translateX(-19%) scale(.7);
+  opacity: 0;
+}
+
+.carouselHideRight {
+  transform: translateX(19%) scale(.7);
+  opacity: 0;
 }
