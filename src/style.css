@@ -111,6 +111,7 @@ main > * {
   width: 70vw;
   height: calc(70vw * var(--img-ratio));
   box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px;
+  user-select: none;
 }
 
 .img-slider-container .sliding-img {
