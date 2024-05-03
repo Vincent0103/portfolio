@@ -1,5 +1,13 @@
 import "./style.css";
 
+const themedBoxShadows = {
+  battleship: "2O1, 135, 205",
+  "weather-app": "160, 187, 255",
+  "knight-travails": "232, 233, 243",
+  "tic-tac-toe": "232, 72, 85",
+  "todo-list": "239, 35, 60",
+};
+
 window.addEventListener("DOMContentLoaded", () => {
   const imgSliderContainer = document.querySelector(".img-slider-container");
   const slidingImg = imgSliderContainer.querySelectorAll(".sliding-img");
@@ -20,6 +28,8 @@ window.addEventListener("DOMContentLoaded", () => {
       } else if (container.classList.contains("carouselRight")) {
         container.classList.remove("carouselRight");
         container.classList.add("carouselCenter");
+        const img = container.querySelector("img");
+        imgSliderContainer.style.setProperty("--box-shadow-bgc", themedBoxShadows[img.id]);
       }
     });
   });

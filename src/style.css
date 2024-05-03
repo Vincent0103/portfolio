@@ -48,7 +48,8 @@
 }
 
 :root {
-  --img-ratio: 0.504
+  --img-ratio: 0.504;
+  --box-shadow-bgc: 201, 135, 205;
 }
 
 html {
@@ -110,8 +111,17 @@ main > * {
   position: relative;
   width: 70vw;
   height: calc(70vw * var(--img-ratio));
-  box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px;
   user-select: none;
+}
+
+.img-slider-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow: rgba(var(--box-shadow-bgc), 0.15) 0px 48px 100px 0px;
+  transition: box-shadow .2s;
+  z-index: -3;
 }
 
 .img-slider-container .sliding-img {
@@ -120,7 +130,7 @@ main > * {
   align-items: center;
   border-radius: 20px;
   overflow: hidden;
-  transition: transform .2s, opacity .2s;
+  transition: transform .2s;
 }
 
 .sliding-img img {
@@ -133,6 +143,7 @@ main > * {
   width: 100%;
   height: 100%;
   background-color: black;
+  transition: opacity .2s;
 }
 
 .carouselLeftLeft {
