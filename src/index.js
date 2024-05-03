@@ -1,11 +1,11 @@
 import "./style.css";
 
 const themedBoxShadows = {
-  battleship: "2O1, 135, 205",
+  "battleship": "53, 56, 92",
   "weather-app": "160, 187, 255",
   "knight-travails": "232, 233, 243",
-  "tic-tac-toe": "232, 72, 85",
-  "todo-list": "239, 35, 60",
+  "tic-tac-toe": "251, 252, 250",
+  "todo-list": "255, 65, 87",
 };
 
 window.addEventListener("DOMContentLoaded", () => {

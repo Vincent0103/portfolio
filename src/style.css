@@ -49,7 +49,7 @@
 
 :root {
   --img-ratio: 0.504;
-  --box-shadow-bgc: 201, 135, 205;
+  --box-shadow-bgc: 53, 56, 92;
 }
 
 html {
@@ -104,7 +104,7 @@ main > * {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 80px;
+  margin-bottom: 180px;
 }
 
 .img-slider-container {
@@ -119,7 +119,7 @@ main > * {
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: rgba(var(--box-shadow-bgc), 0.15) 0px 48px 100px 0px;
+  box-shadow: rgba(var(--box-shadow-bgc), 0.4) 0px 30px 90px;
   transition: box-shadow .2s;
   z-index: -3;
 }
