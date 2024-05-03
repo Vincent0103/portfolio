@@ -10,6 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Belanosima&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preload" href="images/22e4c1d5db66e4fb4f25.webp" as="image">
+    <link rel="preload" href="images/7d7faa6c1d1c40829a4f.jpg" as="image">
   <script defer src="index.bundle.js"></script></head>
   <body>
     <main>
@@ -26,27 +28,27 @@
       <section class="projects-section">
         <h2>Projects</h2>
         <div class="img-slider-container">
-          <picture class="sliding-img carouselLeft">
+          <picture class="sliding-img carouselHideLeft">
             <source srcset="images/05c023b154d645d2953c.webp" type="image/webp">
             <source srcset="images/bdc619442ae61830c7e7.jpg" type="image/jpeg">
-            <img src="images/bdc619442ae61830c7e7.jpg" alt="Screenshot of the etch-a-sketch project">
+            <img id="image-slider" src="images/bdc619442ae61830c7e7.jpg" alt="Screenshot of the etch-a-sketch project">
           </picture>
           <picture class="sliding-img carouselCenter">
             <source srcset="images/a06635e16ccb5221b80a.webp" type="image/webp">
             <source srcset="images/1cf474dd28ae021fd176.jpg" type="image/jpeg">
-            <img src="images/1cf474dd28ae021fd176.jpg" alt="Screenshot of the Battleship project">
+            <img id="battleship" src="images/1cf474dd28ae021fd176.jpg" alt="Screenshot of the Battleship project">
           </picture>
           <div class="sliding-img carouselRight">
-            <img src="images/128b5cae61e3c2bb8707.png" alt="Screenshot of the knight travails project">
+            <img id="knight-travails" src="images/128b5cae61e3c2bb8707.png" alt="Screenshot of the knight travails project">
           </div>
           <div class="sliding-img carouselRightRight">
-            <img src="images/4db635fa8c658d49b654.png" alt="Screenshot of the tic-tac-toe travails project">
+            <img id="tic-tac-toe" src="images/4db635fa8c658d49b654.png" alt="Screenshot of the tic-tac-toe travails project">
           </div>
           <div class="sliding-img carouselLeftLeft">
-            <img src="images/43896504ddbb811df5df.png" alt="Screenshot of the todo list travails project">
+            <img id="todo-list" src="images/43896504ddbb811df5df.png" alt="Screenshot of the todo list travails project">
           </div>
-          <div class="sliding-img carouselHideLeft">
-            <img src="images/b45bc468af9407fe22d5.png" alt="Screenshot of the weather app project">
+          <div class="sliding-img carouselLeft">
+            <img id="weather-app" src="images/b45bc468af9407fe22d5.png" alt="Screenshot of the weather app project">
           </div>
         </div>
       </section>
