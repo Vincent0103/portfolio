@@ -13,6 +13,7 @@ export default {
   mode: "development",
   entry: {
     index: "./src/index.js",
+    utils: "./src/utils.js",
   },
   output: {
     filename: "[name].bundle.js",
