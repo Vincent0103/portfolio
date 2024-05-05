@@ -55,7 +55,9 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
   return { handleCarousel, getCurrentlyDisplayedProject };
 }
 
-const ProjectDescription = () => {
+const ProjectDescription = (container) => {
+  const projectDescriptionContainer = container;
+
   const projectsDescription = {
     battleship: "Maxime, soluta minus omnis ab consectetur enim voluptates perspiciatis iusto distinctio delectus libero? Ut fugit sapiente architecto nihil enim aut itaque ullam.",
     "knight-travails": "Quae ut temporibus corrupti error natus ullam ex deserunt, exercitationem sunt quos distinctio eos in nam assumenda nisi suscipit accusantium ab nostrum.",
@@ -64,9 +66,16 @@ const ProjectDescription = () => {
     "weather-app": "Esse sint doloribus nam molestias nulla recusandae tempore quibusdam porro voluptatum possimus beatae ex qui, vitae explicabo magnam eaque nobis. Consectetur, quod.",
   };
 
-  const handleProjectDescription = (container, currentlyDisplayedProject) => {
-    const p = container.querySelector("p");
-    p.textContent = projectsDescription[currentlyDisplayedProject.id];
+  const handleProjectDescription = (currentlyDisplayedProject) => {
+    const activeP = projectDescriptionContainer.querySelector("p.show");
+    const hiddenP = projectDescriptionContainer.querySelector("p.hide");
+
+
+    activeP.classList.remove("show");
+    activeP.classList.add("hide");
+    hiddenP.textContent = projectsDescription[currentlyDisplayedProject.id];
+    hiddenP.classList.remove("hide");
+    hiddenP.classList.add("show");
   };
 
   return { handleProjectDescription };
@@ -74,19 +83,27 @@ const ProjectDescription = () => {
 
 
 window.addEventListener("DOMContentLoaded", () => {
-  const imgSliderContainer = document.querySelector(".img-slider-container");
+  const projectsSection = document.querySelector(".projects-section");
+  const imgSliderContainer = projectsSection.querySelector(".img-slider-container");
+  const projectDescriptionContainer = projectsSection.querySelector(".project-description-container");
   const slidingImg = imgSliderContainer.querySelectorAll(".sliding-img");
-  const carousel = Carousel(imgSliderContainer, slidingImg);
-  console.log(slidingImg);
 
+  const carousel = Carousel(imgSliderContainer, slidingImg);
+  const projectDescription = ProjectDescription(projectDescriptionContainer);
+
+  let currentlyDisplayedProject = null;
   imgSliderContainer.addEventListener("click", (e) => {
     const rect = imgSliderContainer.getBoundingClientRect();
     const clickedX = e.clientX - rect.left;
 
     if (clickedX < rect.width / 6) {
       carousel.handleCarousel(false);
+      currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();
+      projectDescription.handleProjectDescription(currentlyDisplayedProject);
     } else if (clickedX > rect.width * (5 / 6)) {
       carousel.handleCarousel(true);
+      currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();
+      projectDescription.handleProjectDescription(currentlyDisplayedProject);
     }
   });
 });
