@@ -109,46 +109,47 @@ main > * {
 
 .img-slider-container {
   position: relative;
-  width: 70vw;
-  height: calc(70vw * var(--img-ratio));
+  width: 60vw;
+  height: calc(60vw * var(--img-ratio));
   user-select: none;
-}
-
-.img-slider-container::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  box-shadow: rgba(var(--box-shadow-bgc), 0.4) 0px 30px 90px;
-  transition: box-shadow .2s;
-  z-index: -3;
 }
 
 .img-slider-container .sliding-img {
   position: absolute;
   display: flex;
   align-items: center;
-  border-radius: 20px;
-  overflow: hidden;
   transition: transform .2s;
 }
 
-.sliding-img img {
-  max-width: 100%;
-}
-
-.sliding-img::before {
+.img-slider-container .sliding-img::before {
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: black;
   transition: opacity .2s;
 }
 
+.sliding-img img {
+  max-width: 100%;
+}
+
+.sliding-img img:nth-of-type(2),
+.sliding-img picture:nth-of-type(2) img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: blur(45px);
+  z-index: -1;
+  transition: opacity .2s;
+}
+
 .carouselLeftLeft {
   transform: translateX(-13%) scale(.8);
-  z-index: -2;
+  z-index: -3;
 }
 
 .carouselLeftLeft::before {
@@ -157,7 +158,7 @@ main > * {
 
 .carouselLeft {
   transform: translateX(-7%) scale(.9);
-  z-index: -1;
+  z-index: -2;
 }
 
 .carouselLeft::before {
@@ -175,7 +176,7 @@ main > * {
 
 .carouselRight {
   transform: translateX(7%) scale(.9);
-  z-index: -1;
+  z-index: -2;
 }
 
 .carouselRight::before {
@@ -184,7 +185,7 @@ main > * {
 
 .carouselRightRight {
   transform: translateX(13%) scale(.8);
-  z-index: -2;
+  z-index: -3;
 }
 
 .carouselRightRight::before {
@@ -199,4 +200,13 @@ main > * {
 .carouselHideRight {
   transform: translateX(19%) scale(.7);
   opacity: 0;
+}
+
+.box-shadow-visible > img:nth-of-type(2) {
+  opacity: .6;
+}
+
+.project-description-container > p {
+  text-align: center;
+  margin: 60px 0;
 }
