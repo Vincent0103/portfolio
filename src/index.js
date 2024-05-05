@@ -17,30 +17,31 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
     else container.classList.add("box-shadow-visible");
   };
 
-  const slidingDirections = ["carouselLeftLeft", "carouselLeft", "carouselCenter", "carouselRight", "carouselRightRight"];
+  const slidingDirections = ["carouselHideLeft", "carouselHideLeft", "carouselLeftLeft", "carouselLeft", "carouselCenter", "carouselRight", "carouselRightRight", "carouselHideRight", "carouselHideRight"];
 
   const moveCarouselSlidingImg = (isMovingLeft, container) => {
     if (container.classList.contains("box-shadow-visible")) {
       handleCarouselBoxShadow(container, true);
     }
-    for (let i = 0; i < slidingDirections.length; i += 1) {
-      if (container.classList.contains(slidingDirections[i])) {
-        container.classList.remove(slidingDirections[i]);
+    const carouselRegex = /carousel\w+/g;
+    const carouselClass = container.className.match(carouselRegex)[0];
 
-        const [leftIndex, rightIndex] = [
-          positiveMod(i - 1, slidingDirections.length),
-          positiveMod(i + 1, slidingDirections.length),
-        ];
+    if (carouselClass) {
+      container.classList.remove(carouselClass);
+      const i = slidingDirections.indexOf(carouselClass);
 
-        const currentCaseClass = (isMovingLeft)
-          ? slidingDirections[leftIndex] : slidingDirections[rightIndex];
+      const [leftIndex, rightIndex] = [
+        positiveMod(i - 1, slidingDirections.length),
+        positiveMod(i + 1, slidingDirections.length),
+      ];
 
-        container.classList.add(currentCaseClass);
-        if (currentCaseClass === "carouselCenter") {
-          handleCarouselBoxShadow(container, false);
-          setCurrentlyDisplayedProject(container);
-        }
-        break;
+      const currentCaseClass = (isMovingLeft)
+        ? slidingDirections[leftIndex] : slidingDirections[rightIndex];
+
+      container.classList.add(currentCaseClass);
+      if (currentCaseClass === "carouselCenter") {
+        handleCarouselBoxShadow(container, false);
+        setCurrentlyDisplayedProject(container);
       }
     }
   };
@@ -64,6 +65,8 @@ const ProjectDescription = (container) => {
     "tic-tac-toe": "Cum nobis minus, iusto ducimus odio magnam nesciunt quas accusamus maxime nam eius, explicabo et facere voluptas doloremque blanditiis laudantium, nihil non!",
     "todo-list": "Voluptates, minima totam. Non modi distinctio sunt. Sequi obcaecati ipsam, repellendus inventore repudiandae nisi asperiores necessitatibus consequuntur minus dicta optio voluptate rerum!",
     "weather-app": "Esse sint doloribus nam molestias nulla recusandae tempore quibusdam porro voluptatum possimus beatae ex qui, vitae explicabo magnam eaque nobis. Consectetur, quod.",
+    "image-slider": "Totam consequuntur esse minus ipsum sit earum doloribus magnam quaerat distinctio voluptatum nobis at, animi commodi sint laboriosam, provident deserunt. Aliquam, placeat.",
+    "admin-dashboard": "At dolorem enim, totam inventore fugiat voluptate, officiis dignissimos, tempora ipsam ex deleniti sequi distinctio harum delectus rem nostrum tempore quidem voluptates.",
   };
 
   const handleProjectDescription = (currentlyDisplayedProject) => {
