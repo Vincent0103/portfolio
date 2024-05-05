@@ -24,9 +24,9 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
   const slidingDirections = ["carouselLeftLeft", "carouselLeft", "carouselCenter", "carouselRight", "carouselRightRight"];
 
   const moveCarouselSlidingImg = (isMovingLeft, container) => {
-    slidingDirections.forEach((direction, i) => {
-      if (container.classList.contains(direction)) {
-        container.classList.remove(direction);
+    for (let i = 0; i < slidingDirections.length; i += 1) {
+      if (container.classList.contains(slidingDirections[i])) {
+        container.classList.remove(slidingDirections[i]);
 
         const [leftIndex, rightIndex] = [
           positiveMod(i - 1, slidingDirections.length),
@@ -38,12 +38,15 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
 
         container.classList.add(currentCaseClass);
         if (currentCaseClass === "carouselCenter") handleCarouselBoxShadow(container);
+        break;
       }
-    });
+    }
   };
 
   const handleCarousel = (isMovingLeft) => {
-    slidingImg.forEach((container) => moveCarouselSlidingImg(isMovingLeft, container));
+    slidingImg.forEach((container) => {
+      moveCarouselSlidingImg(isMovingLeft, container);
+    });
   };
 
   return { handleCarousel };
@@ -53,16 +56,15 @@ window.addEventListener("DOMContentLoaded", () => {
   const imgSliderContainer = document.querySelector(".img-slider-container");
   const slidingImg = imgSliderContainer.querySelectorAll(".sliding-img");
   const carousel = Carousel(imgSliderContainer, slidingImg);
+  console.log(slidingImg);
 
   imgSliderContainer.addEventListener("click", (e) => {
     const rect = imgSliderContainer.getBoundingClientRect();
     const clickedX = e.clientX - rect.left;
 
     if (clickedX < rect.width / 6) {
-      console.log("clicked on the left side");
       carousel.handleCarousel(false);
     } else if (clickedX > rect.width * (5 / 6)) {
-      console.log("clicked on the right side");
       carousel.handleCarousel(true);
     }
   });
