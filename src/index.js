@@ -92,8 +92,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectDescription = ProjectDescription(projectDescriptionContainer);
 
   let currentlyDisplayedProject = null;
+  const rect = imgSliderContainer.getBoundingClientRect();
+
   imgSliderContainer.addEventListener("click", (e) => {
-    const rect = imgSliderContainer.getBoundingClientRect();
     const clickedX = e.clientX - rect.left;
 
     if (clickedX < rect.width / 6) {

@@ -112,6 +112,7 @@ main > * {
   width: 60vw;
   height: calc(60vw * var(--img-ratio));
   user-select: none;
+  transition: border .2s;
 }
 
 .img-slider-container .sliding-img {
@@ -155,6 +156,7 @@ main > * {
 .carouselLeftLeft::before {
   opacity: .85;
 }
+
 
 .carouselLeft {
   transform: translateX(-7%) scale(.9);
@@ -203,7 +205,7 @@ main > * {
 }
 
 .box-shadow-visible > img:nth-of-type(2) {
-  opacity: .6;
+  opacity: .5;
 }
 
 .project-description-container {
