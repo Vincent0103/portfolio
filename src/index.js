@@ -17,41 +17,37 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
     else container.classList.add("box-shadow-visible");
   };
 
-  const slidingDirections = ["carouselHideLeft", "carouselHideLeft", "carouselLeftLeft", "carouselLeft", "carouselCenter", "carouselRight", "carouselRightRight", "carouselHideRight", "carouselHideRight"];
-
-  const moveCarouselSlidingImg = (isMovingLeft, container) => {
-    if (container.classList.contains("box-shadow-visible")) {
-      handleCarouselBoxShadow(container, true);
-    }
-    const carouselRegex = /carousel\w+/g;
-    const carouselClass = container.className.match(carouselRegex)[0];
-
-    if (carouselClass) {
-      container.classList.remove(carouselClass);
-      const i = slidingDirections.indexOf(carouselClass);
-
-      const [leftIndex, rightIndex] = [
-        positiveMod(i - 1, slidingDirections.length),
-        positiveMod(i + 1, slidingDirections.length),
-      ];
-
-      const currentCaseClass = (isMovingLeft)
-        ? slidingDirections[leftIndex] : slidingDirections[rightIndex];
-
-      container.classList.add(currentCaseClass);
-      if (currentCaseClass === "carouselCenter") {
-        handleCarouselBoxShadow(container, false);
-        setCurrentlyDisplayedProject(container);
-      }
-    }
-  };
-
+  const slidingDirections = ["carouselHideLeft", "carouselLeftLeft", "carouselLeft", "carouselCenter", "carouselRight", "carouselRightRight", "carouselHideRight"];
 
   const handleCarousel = (isMovingLeft) => {
     slidingImg.forEach((container) => {
-      moveCarouselSlidingImg(isMovingLeft, container);
+      if (container.classList.contains("box-shadow-visible")) {
+        handleCarouselBoxShadow(container, true);
+      }
+      const carouselRegex = /carousel\w+/g;
+      const carouselClass = container.className.match(carouselRegex)[0];
+
+      if (carouselClass) {
+        container.classList.remove(carouselClass);
+        const i = slidingDirections.indexOf(carouselClass);
+
+        const [leftIndex, rightIndex] = [
+          positiveMod(i - 1, slidingDirections.length),
+          positiveMod(i + 1, slidingDirections.length),
+        ];
+
+        const currentCaseClass = (isMovingLeft)
+          ? slidingDirections[leftIndex] : slidingDirections[rightIndex];
+
+        container.classList.add(currentCaseClass);
+        if (currentCaseClass === "carouselCenter") {
+          handleCarouselBoxShadow(container, false);
+          setCurrentlyDisplayedProject(container);
+        }
+      }
     });
   };
+
 
   return { handleCarousel, getCurrentlyDisplayedProject };
 }
