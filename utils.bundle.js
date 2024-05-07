@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ positiveMod)\n/* harmony export */ });\nfunction positiveMod(a, b) {\n  return ((a % b) + b) % b;\n}\n\n\n//# sourceURL=webpack://portfolio_package/./src/utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ positiveMod),\n/* harmony export */   isObject: () => (/* binding */ isObject)\n/* harmony export */ });\nfunction positiveMod(a, b) {\n  return ((a % b) + b) % b;\n}\n\nconst isObject = (target) => typeof target === \"object\" && target !== null && !Array.isArray(target);\n\n\n//# sourceURL=webpack://portfolio_package/./src/utils.js?");
 
 /***/ })
 
