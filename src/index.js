@@ -26,14 +26,14 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
 
     if (length === 1) return [slidingDirections[3]];
 
-    const projectsClasses = [];
+    const tempClasses = [];
     let start = 2;
     let end = length + 2;
 
     if (length > 3 && length <= 5) {
       start = 1;
       end = length + 1;
-    } else {
+    } else if (length > 5) {
       let viewableSlidingDirectionsAmount = 5;
       const carouselHideAmount = length - viewableSlidingDirectionsAmount;
       let carouselHideLefts = Math.ceil(carouselHideAmount / 2);
@@ -42,24 +42,24 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
 
       for (let i = 0; i < length; i += 1) {
         if (carouselHideLefts > 0) {
-          projectsClasses.push("carouselHideLeft");
+          tempClasses.push("carouselHideLeft");
           carouselHideLefts -= 1;
         } else if (viewableSlidingDirectionsAmount > 0) {
           slidingDirectionsIndex = 5 - viewableSlidingDirectionsAmount + 1;
-          projectsClasses.push(slidingDirections[slidingDirectionsIndex]);
+          tempClasses.push(slidingDirections[slidingDirectionsIndex]);
           viewableSlidingDirectionsAmount -= 1;
         } else if (carouselHideRights > 0) {
-          projectsClasses.push("carouselHideRight");
+          tempClasses.push("carouselHideRight");
           carouselHideRights -= 1;
         }
       }
 
-      projectsCarouselClasses = [...projectsClasses];
+      projectsCarouselClasses = [...tempClasses];
       return;
     }
 
-    for (let i = start; i < end; i += 1) projectsClasses.push(slidingDirections[i]);
-    projectsCarouselClasses = [...projectsClasses];
+    for (let i = start; i < end; i += 1) tempClasses.push(slidingDirections[i]);
+    projectsCarouselClasses = [...tempClasses];
   };
 
   const moveCarousel = (isMovingLeft) => {
