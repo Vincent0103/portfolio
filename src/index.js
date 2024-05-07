@@ -18,6 +18,11 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
     else container.classList.add("box-shadow-visible");
   };
 
+  const moveCarouselProjectsClasses = (isMovingLeft) => {
+    if (isMovingLeft) projectsCarouselClasses.unshift(projectsCarouselClasses.pop());
+    else projectsCarouselClasses.push(projectsCarouselClasses.shift());
+  };
+
 
   const initializeCarouselProjectsClasses = () => {
     const { length } = slidingImgs;
@@ -63,43 +68,31 @@ function Carousel(imgSliderContainerParam, slidingImgParam) {
   };
 
   const moveCarousel = (isMovingLeft) => {
-    console.log(slidingImgs.length);
-    slidingImgs.forEach((container) => {
-      if (container.classList.contains("box-shadow-visible")) {
-        handleCarouselBoxShadow(container, true);
-      }
-      const carouselRegex = /carousel\w+/g;
+    moveCarouselProjectsClasses(isMovingLeft);
+    slidingImgs.forEach((container, i) => {
+      const carouselRegex = /carousel\w+/;
       const carouselClass = container.className.match(carouselRegex)[0];
+      if (carouselClass === "carouselCenter") handleCarouselBoxShadow(container, true);
+      container.classList.remove(carouselClass);
+      container.classList.add(projectsCarouselClasses[i]);
 
-      if (carouselClass) {
-        container.classList.remove(carouselClass);
-        const i = slidingDirections.indexOf(carouselClass);
-
-        const [leftIndex, rightIndex] = [
-          positiveMod(i - 1, slidingDirections.length),
-          positiveMod(i + 1, slidingDirections.length),
-        ];
-
-        const [leftElement, rightElement] = [
-          slidingDirections[leftIndex],
-          slidingDirections[rightIndex]
-        ];
-
-        const currentCaseClass = (isMovingLeft) ? leftElement : rightElement;
-
-        container.classList.add(currentCaseClass);
-        if (currentCaseClass === "carouselCenter") {
-          handleCarouselBoxShadow(container, false);
-          setCurrentlyDisplayedProject(container);
-        }
+      if (projectsCarouselClasses[i] === "carouselCenter") {
+        handleCarouselBoxShadow(container);
+        currentlyDisplayedProject = container;
       }
     });
   };
 
+  const initializeCarousel = () => {
+    initializeCarouselProjectsClasses();
+    slidingImgs.forEach((container, i) => {
+      container.classList.add(projectsCarouselClasses[i]);
+      if (projectsCarouselClasses[i] === "carouselCenter") handleCarouselBoxShadow(container);
+    });
+  };
 
-  initializeCarouselProjectsClasses();
-  console.log(projectsCarouselClasses);
-  return { moveCarousel, getCurrentlyDisplayedProject };
+
+  return { initializeCarousel, moveCarousel, getCurrentlyDisplayedProject };
 }
 
 const ProjectDescription = (container) => {
@@ -140,6 +133,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const slidingImgs = imgSliderContainer.querySelectorAll(".sliding-img");
 
   const carousel = Carousel(imgSliderContainer, slidingImgs);
+  carousel.initializeCarousel();
+
   const projectDescription = ProjectDescription(projectDescriptionContainer);
 
   let currentlyDisplayedProject = null;
