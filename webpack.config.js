@@ -1,7 +1,6 @@
 import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 // eslint-disable-next-line no-underscore-dangle
@@ -13,6 +12,8 @@ export default {
   mode: "development",
   entry: {
     index: "./src/index.js",
+    DOM: "./src/DOM.js",
+    logic: "./src/logic.js",
     utils: "./src/utils.js",
   },
   output: {
