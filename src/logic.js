@@ -8,10 +8,12 @@ const CarouselLogic = () => {
     };
   })();
 
-  const moveCarouselProjectsClasses = (isMovingLeft) => {
+  const moveCarouselProjectsClasses = (areProjectsMovingLeft) => {
     const carouselClasses = projectsCarouselClasses.getClassesValue();
+    console.log(carouselClasses);
 
-    if (isMovingLeft) carouselClasses.push(carouselClasses.shift());
+    // don't play with this, i know it doesn't make sense but the opposite direction makes it work
+    if (areProjectsMovingLeft) carouselClasses.push(carouselClasses.shift());
     else carouselClasses.unshift(carouselClasses.pop());
 
     projectsCarouselClasses.setClassesValue(carouselClasses);

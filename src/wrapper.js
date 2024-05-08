@@ -15,10 +15,8 @@ const Carousel = (imgSliderContainer) => {
     carouselDOM.initializeCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
-  const slideCarousel = (isMovingLeft) => {
-    if (isMovingLeft) carouselLogic.moveCarouselProjectsClasses(true);
-    else carouselLogic.moveCarouselProjectsClasses(false);
-
+  const slideCarousel = (areProjectsMovingLeft) => {
+    carouselLogic.moveCarouselProjectsClasses(areProjectsMovingLeft);
     carouselDOM.moveCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
