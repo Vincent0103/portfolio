@@ -13,13 +13,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectDescription = ProjectDescription(projectDescriptionContainer);
 
   let currentlyDisplayedProject = null;
-  const rect = imgSliderContainer.getBoundingClientRect();
+  let rect = imgSliderContainer.getBoundingClientRect();
+
+  window.addEventListener("resize", () => {
+    rect = imgSliderContainer.getBoundingClientRect();
+  });
 
   imgSliderContainer.addEventListener("click", (e) => {
     const clickedX = e.clientX - rect.left;
 
     const isClickedLeft = clickedX < rect.width / 6;
     const isClickedRight = clickedX > rect.width * (5 / 6);
+
     if (isClickedLeft || isClickedRight) {
       if (isClickedLeft) carousel.slideCarousel(false);
       else carousel.slideCarousel(true);
