@@ -10,7 +10,7 @@ beforeEach(() => {
 });
 
 describe("initialize carousel project classes", () => {
-  test("throw error when there is there is a negative or 0 amount of sliding images", () => {
+  test("throw error when there is a negative or null amount of sliding images", () => {
     let initializeCarousel = carouselLogic.initializeCarouselProjectsClasses;
     expect(() => initializeCarousel(0)).toThrow("Cannot initialize with a null or negative length");
 
