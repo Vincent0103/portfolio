@@ -1,14 +1,21 @@
 import "./style.css";
 
-function CarouselDOM(imgSliderContainerParam, slidingImgParam) {
-  const slidingImgs = slidingImgParam;
-  let currentlyDisplayedProject = null;
+function CarouselDOM(slidingImgsArg) {
+  const slidingImgs = slidingImgsArg;
 
-  const setCurrentlyDisplayedProject = (container) => {
-    currentlyDisplayedProject = container;
-  };
+  const projectDisplay = (() => {
+    let currentlyDisplayedProject = null;
 
-  const getCurrentlyDisplayedProject = () => currentlyDisplayedProject;
+    return {
+      setCurrentlyDisplayedProject(container) {
+        currentlyDisplayedProject = container;
+      },
+
+      getCurrentlyDisplayedProject() {
+        return currentlyDisplayedProject;
+      }
+    };
+  })();
 
   const handleCarouselBoxShadow = (container, isRemovingBoxShadow) => {
     if (isRemovingBoxShadow) container.classList.remove("box-shadow-visible");
@@ -27,7 +34,7 @@ function CarouselDOM(imgSliderContainerParam, slidingImgParam) {
 
       if (projectsCarouselClasses[i] === "carouselCenter") {
         handleCarouselBoxShadow(container);
-        setCurrentlyDisplayedProject(container);
+        projectDisplay.setCurrentlyDisplayedProject(container);
       }
     });
   };
@@ -40,7 +47,7 @@ function CarouselDOM(imgSliderContainerParam, slidingImgParam) {
   };
 
 
-  return { initializeCarousel, moveCarousel, getCurrentlyDisplayedProject };
+  return { initializeCarousel, moveCarousel, projectDisplay };
 }
 
 const ProjectDescription = (container) => {

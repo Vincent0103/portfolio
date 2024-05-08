@@ -1,29 +1,6 @@
-import CarouselDOM, { ProjectDescription } from "./DOM.js";
-import CarouselLogic from "./logic.js";
+import { ProjectDescription } from "./DOM.js";
+import Carousel from "./wrapper.js";
 
-
-const Carousel = (imgSliderContainer) => {
-  const slidingImgs = imgSliderContainer.querySelectorAll(".sliding-img");
-
-  const carouselDOM = CarouselDOM(imgSliderContainer, slidingImgs);
-  const carouselLogic = CarouselLogic();
-
-  const getCurrentlyDisplayedProject = () => carouselDOM.getCurrentlyDisplayedProject();
-
-  const initialize = () => {
-    carouselLogic.initializeCarouselProjectsClasses(slidingImgs);
-    carouselDOM.initializeCarousel(carouselLogic.getProjectsCarouselClasses());
-  };
-
-  const slideCarousel = (isMovingLeft) => {
-    if (isMovingLeft) carouselLogic.moveCarouselProjectsClasses(true);
-    else carouselLogic.moveCarouselProjectsClasses(false);
-
-    carouselDOM.moveCarousel(carouselLogic.getProjectsCarouselClasses());
-  };
-
-  return { initialize, slideCarousel, getCurrentlyDisplayedProject };
-};
 
 window.addEventListener("DOMContentLoaded", () => {
   const projectsSection = document.querySelector(".projects-section");

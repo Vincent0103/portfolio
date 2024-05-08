@@ -14,6 +14,7 @@ export default {
     index: "./src/index.js",
     DOM: "./src/DOM.js",
     logic: "./src/logic.js",
+    wrapper: "./src/wrapper.js",
     utils: "./src/utils.js",
   },
   output: {
