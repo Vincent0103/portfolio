@@ -17,12 +17,16 @@ const CarouselLogic = () => {
     projectsCarouselClasses.setClassesValue(carouselClasses);
   };
 
-  const initializeCarouselProjectsClasses = (slidingImgs) => {
-    const { length } = slidingImgs;
+  const initializeCarouselProjectsClasses = (slidingImgsLength) => {
+    const length = slidingImgsLength;
+    if (length <= 0) throw new Error("Cannot initialize with a null or negative length");
+
     const slidingDirections = ["carouselHideLeft", "carouselLeftLeft", "carouselLeft",
       "carouselCenter", "carouselRight", "carouselRightRight", "carouselHideRight"];
 
-    if (length === 1) return [slidingDirections[3]];
+    if (length === 1) {
+      return projectsCarouselClasses.setClassesValue([slidingDirections[3]]);
+    }
 
     const tempClasses = [];
     let start = 2;

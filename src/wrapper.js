@@ -11,7 +11,7 @@ const Carousel = (imgSliderContainer) => {
   const getCurrentlyDisplayedProject = () => carouselDOM.getCurrentlyDisplayedProject();
 
   const initialize = () => {
-    carouselLogic.initializeCarouselProjectsClasses(slidingImgs);
+    carouselLogic.initializeCarouselProjectsClasses(slidingImgs.length);
     carouselDOM.initializeCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
