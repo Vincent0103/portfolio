@@ -120,16 +120,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _DOM_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DOM.js */ \"./src/DOM.js\");\n/* harmony import */ var _wrapper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./wrapper.js */ \"./src/wrapper.js\");\n\n\n\n\nwindow.addEventListener(\"DOMContentLoaded\", () => {\n  const projectsSection = document.querySelector(\".projects-section\");\n  const imgSliderContainer = projectsSection.querySelector(\".img-slider-container\");\n  const projectDescriptionContainer = projectsSection.querySelector(\".project-description-container\");\n\n  const carousel = (0,_wrapper_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(imgSliderContainer);\n  carousel.initialize();\n\n  const projectDescription = (0,_DOM_js__WEBPACK_IMPORTED_MODULE_0__.ProjectDescription)(projectDescriptionContainer);\n\n  let currentlyDisplayedProject = null;\n  const rect = imgSliderContainer.getBoundingClientRect();\n\n  imgSliderContainer.addEventListener(\"click\", (e) => {\n    const clickedX = e.clientX - rect.left;\n\n    const isClickedLeft = clickedX < rect.width / 6;\n    const isClickedRight = clickedX > rect.width * (5 / 6);\n    if (isClickedLeft || isClickedRight) {\n      if (isClickedLeft) carousel.slideCarousel(false);\n      else carousel.slideCarousel(true);\n      currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();\n      projectDescription.handleProjectDescription(currentlyDisplayedProject);\n    }\n  });\n});\n\n\n//# sourceURL=webpack://portfolio_package/./src/index.js?");
-
-/***/ }),
-
 /***/ "./src/logic.js":
 /*!**********************!*\
   !*** ./src/logic.js ***!
@@ -227,7 +217,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/wrapper.js");
 /******/ 	
 /******/ })()
 ;
