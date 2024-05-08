@@ -8,7 +8,7 @@ function CarouselDOM(slidingImgsArg) {
 
     return {
       setCurrentlyDisplayedProject(container) { currentlyDisplayedProject = container; },
-      getCurrentlyDisplayedProject() { return currentlyDisplayedProject; }
+      getCurrentlyDisplayedProject() { return currentlyDisplayedProject.cloneNode(); }
     };
   })();
 

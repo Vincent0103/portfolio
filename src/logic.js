@@ -3,8 +3,8 @@ const CarouselLogic = () => {
     let classesValue;
 
     return {
-      setClassesValue(array) { classesValue = array; },
-      getClassesValue() { return classesValue; }
+      setClassesValue(array) { classesValue = [...array]; },
+      getClassesValue() { return [...classesValue]; }
     };
   })();
 
@@ -13,6 +13,8 @@ const CarouselLogic = () => {
 
     if (isMovingLeft) carouselClasses.unshift(carouselClasses.pop());
     else carouselClasses.push(carouselClasses.shift());
+
+    projectsCarouselClasses.setClassesValue(carouselClasses);
   };
 
   const initializeCarouselProjectsClasses = (slidingImgs) => {
