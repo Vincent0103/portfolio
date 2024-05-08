@@ -1,11 +1,18 @@
 const CarouselLogic = () => {
-  let projectsCarouselClasses;
+  const projectsCarouselClasses = (() => {
+    let classesValue;
 
-  const getProjectsCarouselClasses = () => projectsCarouselClasses;
+    return {
+      setClassesValue(array) { classesValue = array; },
+      getClassesValue() { return classesValue; }
+    };
+  })();
 
   const moveCarouselProjectsClasses = (isMovingLeft) => {
-    if (isMovingLeft) projectsCarouselClasses.unshift(projectsCarouselClasses.pop());
-    else projectsCarouselClasses.push(projectsCarouselClasses.shift());
+    const carouselClasses = projectsCarouselClasses.getClassesValue();
+
+    if (isMovingLeft) carouselClasses.unshift(carouselClasses.pop());
+    else carouselClasses.push(carouselClasses.shift());
   };
 
   const initializeCarouselProjectsClasses = (slidingImgs) => {
@@ -43,16 +50,16 @@ const CarouselLogic = () => {
         }
       }
 
-      projectsCarouselClasses = [...tempClasses];
+      projectsCarouselClasses.setClassesValue([...tempClasses]);
       return;
     }
 
     for (let i = start; i < end; i += 1) tempClasses.push(slidingDirections[i]);
-    projectsCarouselClasses = [...tempClasses];
+    projectsCarouselClasses.setClassesValue([...tempClasses]);
   };
 
   return {
-    getProjectsCarouselClasses,
+    getProjectsCarouselClasses: projectsCarouselClasses.getClassesValue,
     moveCarouselProjectsClasses,
     initializeCarouselProjectsClasses
   };

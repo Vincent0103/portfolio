@@ -4,16 +4,11 @@ function CarouselDOM(slidingImgsArg) {
   const slidingImgs = slidingImgsArg;
 
   const projectDisplay = (() => {
-    let currentlyDisplayedProject = null;
+    let currentlyDisplayedProject;
 
     return {
-      setCurrentlyDisplayedProject(container) {
-        currentlyDisplayedProject = container;
-      },
-
-      getCurrentlyDisplayedProject() {
-        return currentlyDisplayedProject;
-      }
+      setCurrentlyDisplayedProject(container) { currentlyDisplayedProject = container; },
+      getCurrentlyDisplayedProject() { return currentlyDisplayedProject; }
     };
   })();
 
@@ -47,7 +42,11 @@ function CarouselDOM(slidingImgsArg) {
   };
 
 
-  return { initializeCarousel, moveCarousel, projectDisplay };
+  return {
+    initializeCarousel,
+    moveCarousel,
+    getCurrentlyDisplayedProject: projectDisplay.getCurrentlyDisplayedProject
+  };
 }
 
 const ProjectDescription = (container) => {
