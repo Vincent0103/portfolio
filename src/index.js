@@ -14,9 +14,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let currentlyDisplayedProject = null;
   let rect = imgSliderContainer.getBoundingClientRect();
+  const IMG_RATIO = 0.504;
+  console.log(rect.width);
+  imgSliderContainer.style.height = `${rect.width * IMG_RATIO}px`;
+
 
   window.addEventListener("resize", () => {
     rect = imgSliderContainer.getBoundingClientRect();
+    imgSliderContainer.style.height = `${rect.width * IMG_RATIO}px`;
   });
 
   imgSliderContainer.addEventListener("click", (e) => {

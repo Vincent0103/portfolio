@@ -16,6 +16,7 @@
 html {
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: white;
+  scroll-behavior: smooth;
 }
 
 h1 {
@@ -44,14 +45,14 @@ main {
 }
 
 .banner-heading {
+  display: flex;
   max-width: 100%;
+  justify-content: center;
   margin-top: 0;
-  object-fit: cover;
-  object-position: left center;
 }
 
 .banner-heading img {
-  max-width: 100%;
+  height: min(150vh, 1500px);
 }
 
 main > * {
@@ -70,8 +71,10 @@ main > * {
 
 .img-slider-container {
   position: relative;
-  width: 60vw;
-  height: calc(60vw * var(--img-ratio));
+  width: 100%;
+  /* height: calc(100% * var(--img-ratio)); */
+  /* width: 60vw;
+  height: calc(60vw * var(--img-ratio)); */
   user-select: none;
   transition: border .2s;
 }
@@ -188,3 +191,23 @@ main > * {
 .hide { opacity: 0 }
 
 .show { opacity: 1 }
+
+.arrows-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.arrows-container > svg {
+  fill: rgba(0, 0, 0, .7);
+  max-width: 48px;
+  max-height: 48px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
+}
+
