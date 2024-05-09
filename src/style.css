@@ -48,11 +48,13 @@ main {
   display: flex;
   max-width: 100%;
   justify-content: center;
+  overflow-x: hidden;
   margin-top: 0;
 }
 
 .banner-heading img {
-  height: min(150vh, 1500px);
+  max-height: min(150vh, 1500px);
+  object-fit: cover;
 }
 
 main > * {
