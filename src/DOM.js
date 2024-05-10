@@ -62,6 +62,7 @@ const ProjectDescription = (container) => {
     "weather-app": "Esse sint doloribus nam molestias nulla recusandae tempore quibusdam porro voluptatum possimus beatae ex qui, vitae explicabo magnam eaque nobis. Consectetur, quod.",
     "image-slider": "Totam consequuntur esse minus ipsum sit earum doloribus magnam quaerat distinctio voluptatum nobis at, animi commodi sint laboriosam, provident deserunt. Aliquam, placeat.",
     "admin-dashboard": "At dolorem enim, totam inventore fugiat voluptate, officiis dignissimos, tempora ipsam ex deleniti sequi distinctio harum delectus rem nostrum tempore quidem voluptates.",
+    "landing-page": "Quia quibusdam aut deserunt suscipit? Optio, sit laborum! Ex asperiores quasi aliquam vero odit, libero quidem quisquam, voluptas, porro beatae ducimus dolorum.",
   };
 
   const handleProjectDescription = (currentlyDisplayedProject) => {
@@ -71,7 +72,7 @@ const ProjectDescription = (container) => {
 
     activeP.classList.remove("show");
     activeP.classList.add("hide");
-    hiddenP.textContent = projectsDescription[currentlyDisplayedProject.id];
+    hiddenP.textContent = projectsDescription[currentlyDisplayedProject.id] || "";
     hiddenP.classList.remove("hide");
     hiddenP.classList.add("show");
   };

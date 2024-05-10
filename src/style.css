@@ -68,15 +68,12 @@ main > * {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 180px;
 }
 
 .img-slider-container {
   position: relative;
-  width: 100%;
-  /* height: calc(100% * var(--img-ratio)); */
-  /* width: 60vw;
-  height: calc(60vw * var(--img-ratio)); */
+  width: 60vw;
+  height: calc(60vw * var(--img-ratio));
   user-select: none;
   transition: border .2s;
 }
@@ -176,11 +173,11 @@ main > * {
 
 .project-description-container {
   position: relative;
+  text-align: center;
   margin: 40px 0;
 }
 
 .project-description-container > p {
-  text-align: center;
   transition: opacity .2s;
 }
 
