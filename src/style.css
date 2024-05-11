@@ -48,13 +48,28 @@ main {
   display: flex;
   max-width: 100%;
   justify-content: center;
+  align-items: center;
   overflow-x: hidden;
   margin-top: 0;
 }
 
 .banner-heading img {
-  max-height: min(150vh, 1500px);
-  object-fit: cover;
+  max-height: min(140vh, 1500px);
+
+  @media (max-aspect-ratio: 17/10) {
+    margin-left: 10%;
+  }
+
+  @media (max-aspect-ratio: 31/20) {
+    margin-left: 25%;
+  }
+
+  @media (max-aspect-ratio: 7/5) {
+    margin-left: 40%;
+  }
+  @media (max-aspect-ratio: 31/25) {
+    margin-left: 55%;
+  }
 }
 
 main > * {
@@ -68,6 +83,7 @@ main > * {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 180px;
 }
 
 .img-slider-container {
@@ -173,11 +189,11 @@ main > * {
 
 .project-description-container {
   position: relative;
-  text-align: center;
   margin: 40px 0;
 }
 
 .project-description-container > p {
+  text-align: center;
   transition: opacity .2s;
 }
 

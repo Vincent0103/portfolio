@@ -14,9 +14,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   let currentlyDisplayedProject = null;
   let rect = imgSliderContainer.getBoundingClientRect();
-  const IMG_RATIO = 0.504;
-  console.log(rect.width);
-
 
   window.addEventListener("resize", () => {
     rect = imgSliderContainer.getBoundingClientRect();
