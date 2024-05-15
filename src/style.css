@@ -55,6 +55,7 @@ main {
 
 .banner-heading img {
   max-height: min(140vh, 1500px);
+  user-select: none;
 
   @media (max-aspect-ratio: 17/10) {
     margin-left: 10%;
@@ -69,6 +70,10 @@ main {
   }
   @media (max-aspect-ratio: 31/25) {
     margin-left: 55%;
+  }
+
+  @media (max-aspect-ratio: 28/25) {
+    max-width: 330vw;
   }
 }
 
@@ -96,7 +101,6 @@ main > * {
     width: 70vw;
     height: calc(70vw * var(--img-ratio));
   }
-
 
   @media (max-width: 1200px) {
     width: 80vw;
