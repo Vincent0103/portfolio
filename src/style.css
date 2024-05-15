@@ -92,13 +92,13 @@ main > * {
   height: calc(60vw * var(--img-ratio));
   transition: border .2s;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1500px) {
     width: 70vw;
     height: calc(70vw * var(--img-ratio));
   }
 
 
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     width: 80vw;
     height: calc(80vw * var(--img-ratio));
   }
