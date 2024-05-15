@@ -91,6 +91,17 @@ main > * {
   width: 60vw;
   height: calc(60vw * var(--img-ratio));
   transition: border .2s;
+
+  @media (max-width: 1200px) {
+    width: 70vw;
+    height: calc(70vw * var(--img-ratio));
+  }
+
+
+  @media (max-width: 900px) {
+    width: 80vw;
+    height: calc(80vw * var(--img-ratio));
+  }
 }
 
 .img-slider-container .sliding-img {
