@@ -109,6 +109,7 @@ main > * {
   display: flex;
   align-items: center;
   transition: transform .2s;
+  user-select: none;
 }
 
 .img-slider-container .sliding-img::before {

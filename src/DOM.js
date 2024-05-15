@@ -62,6 +62,7 @@ const ProjectDescription = (container) => {
     "weather-app": "Esse sint doloribus nam molestias nulla recusandae tempore quibusdam porro voluptatum possimus beatae ex qui, vitae explicabo magnam eaque nobis. Consectetur, quod.",
     "image-slider": "Totam consequuntur esse minus ipsum sit earum doloribus magnam quaerat distinctio voluptatum nobis at, animi commodi sint laboriosam, provident deserunt. Aliquam, placeat.",
     "admin-dashboard": "At dolorem enim, totam inventore fugiat voluptate, officiis dignissimos, tempora ipsam ex deleniti sequi distinctio harum delectus rem nostrum tempore quidem voluptates.",
+    "landing-page": "Necessitatibus rerum quaerat veritatis explicabo officiis fugit velit, dolorum quidem eligendi exercitationem quia molestias earum consectetur, aliquid, temporibus culpa minima officia eum.",
   };
 
   const handleProjectDescription = (currentlyDisplayedProject) => {
