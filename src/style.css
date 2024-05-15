@@ -90,7 +90,6 @@ main > * {
   position: relative;
   width: 60vw;
   height: calc(60vw * var(--img-ratio));
-  user-select: none;
   transition: border .2s;
 }
 
