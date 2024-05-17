@@ -5,7 +5,7 @@ import Carousel from "./wrapper.js";
 window.addEventListener("DOMContentLoaded", () => {
   const projectsSection = document.querySelector(".projects-section");
   const imgSliderContainer = projectsSection.querySelector(".img-slider-container");
-  const projectDescriptionContainer = projectsSection.querySelector(".project-description-container");
+  const projectDescriptionContainer = projectsSection.querySelector(".project-summary-container");
 
   const carousel = Carousel(imgSliderContainer);
   carousel.initialize();

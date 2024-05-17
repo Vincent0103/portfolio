@@ -27,6 +27,11 @@ h2 {
   font-size: 5rem;
 }
 
+h3 {
+  font-size: 2rem;
+  margin: 8px 0;
+}
+
 p {
   font-size: 1.5rem;
   color: #9e9e9e;
@@ -84,28 +89,22 @@ main > * {
 }
 
 .projects-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin-bottom: 180px;
 }
 
+.current-project-container {
+  display: flex;
+  gap: 60px;
+}
+
 .img-slider-container {
   position: relative;
-  width: 60vw;
-  height: calc(60vw * var(--img-ratio));
+  align-self: center;
+  width: min(1000px, 35vw);
+  height: min(calc(1000px * var(--img-ratio)), calc(35vw * var(--img-ratio)));
+  flex-shrink: 0;
   transition: border .2s;
-
-  @media (max-width: 1500px) {
-    width: 70vw;
-    height: calc(70vw * var(--img-ratio));
-  }
-
-  @media (max-width: 1200px) {
-    width: 80vw;
-    height: calc(80vw * var(--img-ratio));
-  }
 }
 
 .img-slider-container .sliding-img {
@@ -200,20 +199,27 @@ main > * {
   opacity: .5;
 }
 
-.project-description-container {
+.project-related-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-related-container > .project-summary-container,
+.project-related-container > .project-learnt-container {
   position: relative;
-  margin: 40px 0;
 }
 
-.project-description-container > p {
-  text-align: center;
+.project-related-container p {
   transition: opacity .2s;
+  margin: 5px 0;
 }
 
-.project-description-container > :last-child {
+.project-summary-container > :last-child,
+.project-learnt-container > :last-child {
   position: absolute;
   top: 0;
-  left: 0;
+  margin: 0;
 }
 
 .hide { opacity: 0 }
