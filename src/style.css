@@ -83,28 +83,36 @@ main {
 }
 
 main > * {
-  max-width: 70%;
-  min-height: 70%;
-  margin: 50px 0;
+  max-width: 1500px;
+  margin-left: 50px;
+  margin-right: 50px;
+
 }
 
 .projects-section {
-  align-items: center;
+  width: 1500px;
   margin-bottom: 180px;
+  @media screen and (max-width: 1620px) {
+    max-width: 1500px;
+    width: auto;
+  }
 }
 
 .current-project-container {
   display: flex;
-  gap: 60px;
+  gap: 70px;
 }
 
 .img-slider-container {
   position: relative;
-  align-self: center;
-  width: min(1000px, 35vw);
-  height: min(calc(1000px * var(--img-ratio)), calc(35vw * var(--img-ratio)));
+  width: 800px;
+  height: calc(800px * var(--img-ratio));
   flex-shrink: 0;
   transition: border .2s;
+
+  @media screen and (max-width: 1620px) {
+    width: 53.3%;
+  }
 }
 
 .img-slider-container .sliding-img {
@@ -205,8 +213,7 @@ main > * {
   gap: 20px;
 }
 
-.project-related-container > .project-summary-container,
-.project-related-container > .project-learnt-container {
+.project-related-container > * {
   position: relative;
 }
 
@@ -215,16 +222,15 @@ main > * {
   margin: 5px 0;
 }
 
-.project-summary-container > :last-child,
-.project-learnt-container > :last-child {
+.hide {
   position: absolute;
-  top: 0;
-  margin: 0;
+  top: 50px;
+  opacity: 0;
 }
 
-.hide { opacity: 0 }
-
-.show { opacity: 1 }
+.show {
+  opacity: 1;
+}
 
 .arrows-container {
   display: flex;

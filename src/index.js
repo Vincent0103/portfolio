@@ -5,12 +5,13 @@ import Carousel from "./wrapper.js";
 window.addEventListener("DOMContentLoaded", () => {
   const projectsSection = document.querySelector(".projects-section");
   const imgSliderContainer = projectsSection.querySelector(".img-slider-container");
-  const projectDescriptionContainer = projectsSection.querySelector(".project-summary-container");
+  const projectSummaryContainer = projectsSection.querySelector(".project-summary-container");
+  const projectLearntContainer = projectsSection.querySelector(".project-learnt-container");
 
   const carousel = Carousel(imgSliderContainer);
   carousel.initialize();
 
-  const projectDescription = ProjectDescription(projectDescriptionContainer);
+  const projectDescription = ProjectDescription(projectSummaryContainer, projectLearntContainer);
 
   let currentlyDisplayedProject = null;
   let rect = imgSliderContainer.getBoundingClientRect();
@@ -29,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (isClickedLeft) carousel.slideCarousel(false);
       else carousel.slideCarousel(true);
       currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();
-      projectDescription.handleProjectDescription(currentlyDisplayedProject);
+      projectDescription.handleProjectRelated(currentlyDisplayedProject);
     }
   });
 });
