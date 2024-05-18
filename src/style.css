@@ -112,6 +112,11 @@ main > * {
   width: 800px;
   height: calc(800px * var(--img-ratio));
   transition: border .2s;
+
+  @media screen and (max-width: 1620px) {
+    width: 49.4vw;
+    height: calc(49.4vw * var(--img-ratio));
+  }
 }
 
 .img-slider-container .sliding-img {

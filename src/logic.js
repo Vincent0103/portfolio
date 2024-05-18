@@ -10,7 +10,6 @@ const CarouselLogic = () => {
 
   const moveCarouselProjectsClasses = (areProjectsMovingLeft) => {
     const carouselClasses = projectsCarouselClasses.getClassesValue();
-    console.log(carouselClasses);
 
     // don't play with this, i know it doesn't make sense but the opposite direction makes it work
     if (areProjectsMovingLeft) carouselClasses.unshift(carouselClasses.pop());
