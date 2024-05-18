@@ -4,7 +4,7 @@ const CarouselLogic = () => {
 
     return {
       setClassesValue(array) { classesValue = [...array]; },
-      getClassesValue() { return [...classesValue]; }
+      getClassesValue() { return [...classesValue]; },
     };
   })();
 
@@ -69,7 +69,7 @@ const CarouselLogic = () => {
   return {
     getProjectsCarouselClasses: projectsCarouselClasses.getClassesValue,
     moveCarouselProjectsClasses,
-    initializeCarouselProjectsClasses
+    initializeCarouselProjectsClasses,
   };
 };
 

@@ -1,5 +1,7 @@
-export default function positiveMod(a, b) {
-  return ((a % b) + b) % b;
-}
+const toCamelCase = (string) => string.split("-").map((word, i) => {
+  if (i !== 0) return word.charAt(0).toUpperCase() + word.slice(1);
+  return word;
+}).join("");
 
-export const isObject = (target) => typeof target === "object" && target !== null && !Array.isArray(target);
+
+export default toCamelCase;
