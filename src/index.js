@@ -1,5 +1,6 @@
 import { ProjectDescription } from "./DOM.js";
 import Carousel from "./wrapper.js";
+import { throttle } from "./utils.js";
 
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -19,4 +20,28 @@ window.addEventListener("DOMContentLoaded", () => {
   );
 
   carousel.handleCarouselClick(projectDescription);
+
+  const aboutSection = document.querySelector(".about-section");
+  const animatedH2Container = aboutSection.querySelector(".animated-h2-container");
+  const h2 = animatedH2Container.querySelector("h2");
+  const aboutTitleUnderline = animatedH2Container.querySelector(".underline");
+  const aboutTitleUnderlineShadow = animatedH2Container.querySelector(".underline-shadow");
+
+  const onScroll = () => {
+    const rect = aboutSection.getBoundingClientRect();
+
+    if (rect.bottom <= 1400) {
+      h2.classList.add("spawn-heading");
+      aboutTitleUnderline.classList.add("spawn-underline");
+      aboutTitleUnderlineShadow.classList.add("spawn-underline");
+    }
+
+    if (rect.bottom > 1400) {
+      h2.classList.remove("spawn-heading");
+      aboutTitleUnderline.classList.remove("spawn-underline");
+      aboutTitleUnderlineShadow.classList.remove("spawn-underline");
+    }
+  };
+
+  window.addEventListener("scroll", throttle(onScroll, 200));
 });

@@ -101,8 +101,6 @@ main > * {
 .h2-container > h2 {
   margin: 0;
   transform: translateY(100%);
-  animation: spawn-heading 1s forwards;
-  animation-delay: 4s;
 }
 
 .animated-h2-container > .underline {
@@ -113,17 +111,17 @@ main > * {
   height: .2rem;
   background-color: #fff;
   opacity: .1;
-  animation: spawn-underline 1s forwards;
-  animation-delay: 4s;
 }
 
 .animated-h2-container > .underline-shadow {
   filter: blur(10px);
   top: 100px;
   opacity: .1;
-  animation: spawn-underline 1s forwards;
-  animation-delay: 4s;
 }
+
+.spawn-heading {animation: spawn-heading 1s forwards;}
+
+.spawn-underline {animation: spawn-underline 1s forwards;}
 
 @keyframes spawn-heading {
   0% {
