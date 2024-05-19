@@ -18,24 +18,5 @@ window.addEventListener("DOMContentLoaded", () => {
     projectDateContainer,
   );
 
-  let currentlyDisplayedProject = null;
-  let rect = imgSliderContainer.getBoundingClientRect();
-
-  window.addEventListener("resize", () => {
-    rect = imgSliderContainer.getBoundingClientRect();
-  });
-
-  imgSliderContainer.addEventListener("click", (e) => {
-    const clickedX = e.clientX - rect.left;
-
-    const isClickedLeft = clickedX < rect.width / 6;
-    const isClickedRight = clickedX > rect.width * (5 / 6);
-
-    if (isClickedLeft || isClickedRight) {
-      if (isClickedLeft) carousel.slideCarousel(false);
-      else carousel.slideCarousel(true);
-      currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();
-      projectDescription.handleProjectRelated(currentlyDisplayedProject);
-    }
-  });
+  carousel.handleCarouselClick(projectDescription);
 });

@@ -42,7 +42,6 @@ function CarouselDOM(slidingImgsArg) {
     });
   };
 
-
   return {
     initializeCarousel,
     moveCarousel,

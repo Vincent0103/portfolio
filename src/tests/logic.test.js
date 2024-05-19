@@ -63,15 +63,16 @@ describe("move carousel project classes", () => {
 
     carouselLogic2.moveCarouselProjectsClasses(true);
     carouselLogic2.moveCarouselProjectsClasses(true);
-    expect(carouselLogic2.getProjectsCarouselClasses()).toEqual(["carouselLeft", "carouselCenter",
-      "carouselRight", "carouselRightRight", "carouselHideRight", "carouselHideLeft", "carouselLeftLeft"]);
+    expect(carouselLogic2.getProjectsCarouselClasses()).toEqual(["carouselRightRight", "carouselHideRight",
+      "carouselHideLeft", "carouselLeftLeft", "carouselLeft", "carouselCenter", "carouselRight",
+    ]);
   });
 
   test("shift carousel classes alternatively on the sides", () => {
     carouselLogic.moveCarouselProjectsClasses(true);
     carouselLogic.moveCarouselProjectsClasses(false);
     carouselLogic.moveCarouselProjectsClasses(true);
-    expect(carouselLogic.getProjectsCarouselClasses()).toEqual(["carouselLeft", "carouselCenter", "carouselRight", "carouselLeftLeft"]);
+    expect(carouselLogic.getProjectsCarouselClasses()).toEqual(["carouselRight", "carouselLeftLeft", "carouselLeft", "carouselCenter"]);
 
     carouselLogic2.moveCarouselProjectsClasses(false);
     carouselLogic2.moveCarouselProjectsClasses(true);

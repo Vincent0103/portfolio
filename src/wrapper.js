@@ -20,7 +20,30 @@ const Carousel = (imgSliderContainer) => {
     carouselDOM.moveCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
-  return { initialize, slideCarousel, getCurrentlyDisplayedProject };
+  const handleCarouselClick = (projectDescription) => {
+    let currentlyDisplayedProject = null;
+    let rect = imgSliderContainer.getBoundingClientRect();
+
+    window.addEventListener("resize", () => {
+      rect = imgSliderContainer.getBoundingClientRect();
+    });
+
+    imgSliderContainer.addEventListener("click", (e) => {
+      const clickedX = e.clientX - rect.left;
+
+      const isClickedLeft = clickedX < rect.width / 6;
+      const isClickedRight = clickedX > rect.width * (5 / 6);
+
+      if (isClickedLeft || isClickedRight) {
+        if (isClickedLeft) slideCarousel(false);
+        else slideCarousel(true);
+        currentlyDisplayedProject = getCurrentlyDisplayedProject();
+        projectDescription.handleProjectRelated(currentlyDisplayedProject);
+      }
+    });
+  };
+
+  return { initialize, handleCarouselClick };
 };
 
 export default Carousel;
