@@ -27,21 +27,19 @@ window.addEventListener("DOMContentLoaded", () => {
   const aboutTitleUnderline = animatedH2Container.querySelector(".underline");
   const aboutTitleUnderlineShadow = animatedH2Container.querySelector(".underline-shadow");
 
-  const onScroll = () => {
-    const rect = aboutSection.getBoundingClientRect();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        h2.classList.add("spawn-heading");
+        aboutTitleUnderline.classList.add("spawn-underline");
+        aboutTitleUnderlineShadow.classList.add("spawn-underline");
+      } else {
+        h2.classList.remove("spawn-heading");
+        aboutTitleUnderline.classList.remove("spawn-underline");
+        aboutTitleUnderlineShadow.classList.remove("spawn-underline");
+      }
+    });
+  });
 
-    if (rect.bottom <= 1400) {
-      h2.classList.add("spawn-heading");
-      aboutTitleUnderline.classList.add("spawn-underline");
-      aboutTitleUnderlineShadow.classList.add("spawn-underline");
-    }
-
-    if (rect.bottom > 1400) {
-      h2.classList.remove("spawn-heading");
-      aboutTitleUnderline.classList.remove("spawn-underline");
-      aboutTitleUnderlineShadow.classList.remove("spawn-underline");
-    }
-  };
-
-  window.addEventListener("scroll", throttle(onScroll, 200));
+  observer.observe(animatedH2Container);
 });
