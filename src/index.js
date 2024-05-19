@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   carousel.handleCarouselClick(projectDescription);
 
-  const handleHeadingAnimations = (animatedHeadingContainer) => {
+  const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
     const h2Container = animatedHeadingContainer.querySelector(".h2-container");
     const h2 = h2Container.querySelector("h2");
     const aboutTitleUnderline = animatedHeadingContainer.querySelector(".underline");
@@ -36,6 +36,8 @@ window.addEventListener("DOMContentLoaded", () => {
           timeoutId = setTimeout(() => {
             h2Container.style.overflowY = "visible";
           }, 800);
+
+          if (animateOnce) observer.unobserve(animatedHeadingContainer);
         } else {
           h2.classList.remove("spawn-heading");
           aboutTitleUnderline.classList.remove("spawn-underline");
@@ -50,5 +52,6 @@ window.addEventListener("DOMContentLoaded", () => {
   };
 
   const animatedH2Container = document.querySelectorAll(".animated-h2-container");
-  animatedH2Container.forEach((container) => { handleHeadingAnimations(container); });
+  handleHeadingAnimations(animatedH2Container[0], false);
+  handleHeadingAnimations(animatedH2Container[1], true);
 });
