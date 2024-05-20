@@ -160,7 +160,7 @@ const addHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
     delay(800)
       .then(() => {
         h2Container.style.overflowY = "visible";
-        return delay(400);
+        return delay(500);
       })
       .then(() => {
         resolveIntersection();
