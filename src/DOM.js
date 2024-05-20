@@ -152,12 +152,22 @@ const addHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
     aboutTitleUnderline.classList.add("spawn-underline");
     aboutTitleUnderlineShadow.classList.add("spawn-underline");
 
-    timeoutId = setTimeout(() => {
-      h2Container.style.overflowY = "visible";
-      setTimeout(() => {
+    // eslint-disable-next-line no-promise-executor-return
+    const delay = (ms) => new Promise((resolve) => {
+      timeoutId = setTimeout(resolve, ms);
+    });
+
+    delay(800)
+      .then(() => {
+        h2Container.style.overflowY = "visible";
+        return delay(400);
+      })
+      .then(() => {
         resolveIntersection();
-      }, 300);
-    }, 800);
+      })
+      .catch((err) => {
+        console.error("An error occurred: ", err);
+      });
   };
 
   const removeHeadingAnimation = () => {
@@ -200,7 +210,6 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
   let currentProjectTitle = projectTitle.querySelector(".current-project-title");
   let upcomingProjectTitle = projectTitle.querySelector(".upcoming-project-title");
 
-  let currentTextWidth = currentProjectTitle.offsetWidth;
 
   const update = (currentlyDisplayedProject) => {
     upcomingProjectTitle = projectTitle.querySelector(".project-title-right");
@@ -209,7 +218,6 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
     console.log(upcomingProjectTitle, currentProjectTitle, lastProjectTitle);
 
     upcomingProjectTitle.textContent = toTitle(currentlyDisplayedProject.id);
-    currentTextWidth = upcomingProjectTitle.offsetWidth;
 
 
     lastProjectTitle.classList.remove("project-title-left");

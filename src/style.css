@@ -170,7 +170,7 @@ main > * {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  min-width: 40vw;
+  width: 100%;
 }
 
 .project-title-container .underline {
@@ -185,7 +185,7 @@ main > * {
   white-space: nowrap;
   top: 0;
   left: 0;
-  transform: translateX(40vw);
+  transform: translateX(1500px);
 }
 
 .project-title-center,
@@ -195,10 +195,10 @@ main > * {
 
 .project-title-center {transform: translateX(0);}
 
-.project-title-left {transform: translateX(-100%);}
+.project-title-left {transform: translateX(-1500px);}
 
 .project-title-right {
-  transform: translateX(40vw);
+  transform: translateX(1500px);
   transition: none;
 }
 
