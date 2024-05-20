@@ -140,44 +140,51 @@ const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
     resolveIntersection = resolve;
   });
 
+  const applyHeadingAnimation = () => {
+    h2.classList.add("spawn-heading");
+
+    h2.classList.remove("spawn-heading-idle");
+    h2.classList.add("spawn-heading-forward");
+
+    aboutTitleUnderline.classList.add("spawn-underline");
+    aboutTitleUnderlineShadow.classList.add("spawn-underline");
+
+    timeoutId = setTimeout(() => {
+      h2Container.style.overflowY = "visible";
+      setTimeout(() => {
+        resolveIntersection();
+      }, 1200);
+    }, 800);
+  };
+
+  const removeHeadingAnimation = () => {
+    h2.classList.remove("spawn-heading");
+
+    h2.classList.remove("spawn-heading-forward");
+    h2.classList.add("spawn-heading-idle");
+
+    aboutTitleUnderline.classList.remove("spawn-underline");
+    aboutTitleUnderlineShadow.classList.remove("spawn-underline");
+
+    clearTimeout(timeoutId);
+
+    h2Container.style.overflowY = "hidden";
+  };
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        h2.classList.add("spawn-heading");
-
-        h2.classList.remove("spawn-heading-idle");
-        h2.classList.add("spawn-heading-forward");
-
-        aboutTitleUnderline.classList.add("spawn-underline");
-        aboutTitleUnderlineShadow.classList.add("spawn-underline");
-
-        timeoutId = setTimeout(() => {
-          h2Container.style.overflowY = "visible";
-          setTimeout(() => {
-            resolveIntersection();
-          }, 400);
-        }, 800);
-
+        applyHeadingAnimation();
         if (animateOnce) observer.unobserve(animatedHeadingContainer);
       } else {
-        h2.classList.remove("spawn-heading");
-
-        h2.classList.remove("spawn-heading-forward");
-        h2.classList.add("spawn-heading-idle");
-
-        aboutTitleUnderline.classList.remove("spawn-underline");
-        aboutTitleUnderlineShadow.classList.remove("spawn-underline");
-
-        clearTimeout(timeoutId);
-
-        h2Container.style.overflowY = "hidden";
+        removeHeadingAnimation();
       }
     });
   });
 
   observer.observe(animatedHeadingContainer);
 
-  // Wait for the first projects title animation finish
+  // Wait for the first projects title animation to finish
   if (animateOnce) return intersectionPromise;
 };
 
@@ -193,10 +200,12 @@ const handleProjectTitleAnimation = (projectTitleContainer, firstAnimationPromis
   firstAnimationPromise.then(() => {
     projectsFirstTitle.classList.remove("spawn-heading");
     projectsFirstTitle.classList.add("minimize-up");
-    projectsFirstTitle.textContent = "Project:";
+    setTimeout(() => {
+      projectsFirstTitle.textContent = "Project:";
+    }, 400);
 
     // currentProjectTitle.style.transform = `translateX(-${currentTextWidth}px)`;
-    currentProjectTitle.style.transition = "transform 1s";
+    currentProjectTitle.style.transition = "transform .5s cubic-bezier(.86,-0.01,.83,.67)";
     currentProjectTitle.style.transform = `translateX(0)`;
     projectTitle.style.minWidth = `${upcomingTextWidth}px`;
   });
