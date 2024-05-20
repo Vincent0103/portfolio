@@ -118,9 +118,13 @@ main > * {
   opacity: .1;
 }
 
+.spawn-heading-forward {transform: translateY(0);}
+
+.spawn-heading-idle {transform: translateY(100%);}
+
 .spawn-heading {animation: spawn-heading 1s;}
 
-.spawn-underline {animation: spawn-underline 1s;}
+.spawn-underline {animation: spawn-underline 1s forwards;}
 
 @keyframes spawn-heading {
   0% {

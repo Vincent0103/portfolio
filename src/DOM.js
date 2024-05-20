@@ -135,20 +135,36 @@ const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
   const aboutTitleUnderlineShadow = animatedHeadingContainer.querySelector(".underline-shadow");
   let timeoutId;
 
+  let resolveIntersection;
+  const intersectionPromise = new Promise((resolve) => {
+    resolveIntersection = resolve;
+  });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         h2.classList.add("spawn-heading");
+
+        h2.classList.remove("spawn-heading-idle");
+        h2.classList.add("spawn-heading-forward");
+
         aboutTitleUnderline.classList.add("spawn-underline");
         aboutTitleUnderlineShadow.classList.add("spawn-underline");
 
         timeoutId = setTimeout(() => {
           h2Container.style.overflowY = "visible";
+          setTimeout(() => {
+            resolveIntersection();
+          }, 400);
         }, 800);
 
         if (animateOnce) observer.unobserve(animatedHeadingContainer);
       } else {
         h2.classList.remove("spawn-heading");
+
+        h2.classList.remove("spawn-heading-forward");
+        h2.classList.add("spawn-heading-idle");
+
         aboutTitleUnderline.classList.remove("spawn-underline");
         aboutTitleUnderlineShadow.classList.remove("spawn-underline");
 
@@ -160,9 +176,12 @@ const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
   });
 
   observer.observe(animatedHeadingContainer);
+
+  // Wait for the first projects title animation finish
+  if (animateOnce) return intersectionPromise;
 };
 
-const handleProjectTitleAnimation = (projectTitleContainer) => {
+const handleProjectTitleAnimation = (projectTitleContainer, firstAnimationPromise) => {
   const projectTitle = projectTitleContainer;
   const projectsFirstTitle = projectTitle.querySelector(".projects-first-title");
   const currentProjectTitle = projectTitle.querySelector(".current-project-title");
@@ -171,15 +190,16 @@ const handleProjectTitleAnimation = (projectTitleContainer) => {
   const currentTextWidth = currentProjectTitle.offsetWidth;
   const upcomingTextWidth = upcomingProjectTitle.offsetWidth;
 
-  setTimeout(() => {
+  firstAnimationPromise.then(() => {
     projectsFirstTitle.classList.remove("spawn-heading");
     projectsFirstTitle.classList.add("minimize-up");
+    projectsFirstTitle.textContent = "Project:";
 
     // currentProjectTitle.style.transform = `translateX(-${currentTextWidth}px)`;
     currentProjectTitle.style.transition = "transform 1s";
     currentProjectTitle.style.transform = `translateX(0)`;
     projectTitle.style.minWidth = `${upcomingTextWidth}px`;
-  }, 1600);
+  });
 };
 
 export default CarouselDOM;

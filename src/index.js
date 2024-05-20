@@ -23,8 +23,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const [aboutH2Container, projectsH2Container] = document.querySelectorAll(".animated-h2-container");
   handleHeadingAnimations(aboutH2Container, false);
-  handleHeadingAnimations(projectsH2Container, true);
+  const projectsTitleAnimating = handleHeadingAnimations(projectsH2Container, true);
 
   const projectTitleContainer = projectsSection.querySelector(".project-title-container");
-  handleProjectTitleAnimation(projectTitleContainer);
+  handleProjectTitleAnimation(projectTitleContainer, projectsTitleAnimating);
 });
