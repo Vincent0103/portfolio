@@ -21,7 +21,6 @@ const Carousel = (imgSliderContainer) => {
   };
 
   const handleCarouselClick = (projectDescription) => {
-    let currentlyDisplayedProject = null;
     let rect = imgSliderContainer.getBoundingClientRect();
 
     window.addEventListener("resize", () => {
@@ -37,13 +36,12 @@ const Carousel = (imgSliderContainer) => {
       if (isClickedLeft || isClickedRight) {
         if (isClickedLeft) slideCarousel(false);
         else slideCarousel(true);
-        currentlyDisplayedProject = getCurrentlyDisplayedProject();
-        projectDescription.handleProjectRelated(currentlyDisplayedProject);
+        projectDescription.handleProjectRelated(getCurrentlyDisplayedProject());
       }
     });
   };
 
-  return { initialize, handleCarouselClick };
+  return { initialize, handleCarouselClick, getCurrentlyDisplayedProject };
 };
 
 export default Carousel;

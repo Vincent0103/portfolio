@@ -26,5 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectsTitleAnimating = handleHeadingAnimations(projectsH2Container, true);
 
   const projectTitleContainer = projectsSection.querySelector(".project-title-container");
-  handleProjectTitleAnimation(projectTitleContainer, projectsTitleAnimating);
+  handleProjectTitleAnimation(
+    projectTitleContainer,
+    projectsTitleAnimating,
+    carousel.getCurrentlyDisplayedProject(),
+  );
 });

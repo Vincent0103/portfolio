@@ -1,4 +1,4 @@
-import toCamelCase from "./utils.js";
+import toCamelCase, { toTitle } from "./utils.js";
 import "./style.css";
 
 function CarouselDOM(slidingImgsArg) {
@@ -38,7 +38,10 @@ function CarouselDOM(slidingImgsArg) {
   const initializeCarousel = (projectsCarouselClasses) => {
     slidingImgs.forEach((container, i) => {
       container.classList.add(projectsCarouselClasses[i]);
-      if (projectsCarouselClasses[i] === "carouselCenter") handleCarouselBoxShadow(container);
+      if (projectsCarouselClasses[i] === "carouselCenter") {
+        handleCarouselBoxShadow(container);
+        projectDisplay.setCurrentlyDisplayedProject(container);
+      }
     });
   };
 
@@ -188,7 +191,11 @@ const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
   if (animateOnce) return intersectionPromise;
 };
 
-const handleProjectTitleAnimation = (projectTitleContainer, firstAnimationPromise) => {
+const handleProjectTitleAnimation = (
+  projectTitleContainer,
+  firstAnimationPromise,
+  currentlyDisplayedProject,
+) => {
   const projectTitle = projectTitleContainer;
   const projectsFirstTitle = projectTitle.querySelector(".projects-first-title");
   const currentProjectTitle = projectTitle.querySelector(".current-project-title");
@@ -205,7 +212,8 @@ const handleProjectTitleAnimation = (projectTitleContainer, firstAnimationPromis
     }, 400);
 
     // currentProjectTitle.style.transform = `translateX(-${currentTextWidth}px)`;
-    currentProjectTitle.style.transition = "transform .5s cubic-bezier(.86,-0.01,.83,.67)";
+    currentProjectTitle.textContent = toTitle(currentlyDisplayedProject.id);
+    currentProjectTitle.style.transition = "transform .5s cubic-bezier(.86,-0.01,.62,1.09)";
     currentProjectTitle.style.transform = `translateX(0)`;
     projectTitle.style.minWidth = `${upcomingTextWidth}px`;
   });

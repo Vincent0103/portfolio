@@ -192,7 +192,7 @@ main > * {
 .projects-first-title.minimize-up {
   transform: scale(.3) translate(-115%, -160%);
   color: #676767;
-  transition: transform .5s cubic-bezier(.86,-0.01,.83,.67), color .5s cubic-bezier(.86,-0.01,.83,.67);
+  transition: transform .5s cubic-bezier(.86,-0.01,.62,1.09), color .5s cubic-bezier(.86,-0.01,.62,1.09);
 }
 
 .current-project-container {

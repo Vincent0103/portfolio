@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst toCamelCase = (string) => string.split(\"-\").map((word, i) => {\n  if (i !== 0) return word.charAt(0).toUpperCase() + word.slice(1);\n  return word;\n}).join(\"\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toCamelCase);\n\n\n//# sourceURL=webpack://portfolio_package/./src/utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   toTitle: () => (/* binding */ toTitle)\n/* harmony export */ });\nconst toCamelCase = (string) => string.split(\"-\").map((word, i) => {\n  if (i !== 0) return word.charAt(0).toUpperCase() + word.slice(1);\n  return word;\n}).join(\"\");\n\nconst toTitle = (string) => string.split(\"-\").map((word) => word[0].toUpperCase() + word.slice(1)).join(\" \");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (toCamelCase);\n\n\nconsole.log(toTitle(\"tic-tac-toe\"));\n\n\n//# sourceURL=webpack://portfolio_package/./src/utils.js?");
 
 /***/ })
 
