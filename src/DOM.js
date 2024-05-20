@@ -131,7 +131,7 @@ const ProjectDescription = (...containers) => {
   return { handleProjectRelated };
 };
 
-const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
+const addHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
   const h2Container = animatedHeadingContainer.querySelector(".h2-container");
   const h2 = h2Container.querySelector("h2");
   const aboutTitleUnderline = animatedHeadingContainer.querySelector(".underline");
@@ -156,7 +156,7 @@ const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
       h2Container.style.overflowY = "visible";
       setTimeout(() => {
         resolveIntersection();
-      }, 1200);
+      }, 300);
     }, 800);
   };
 
@@ -191,33 +191,55 @@ const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
   if (animateOnce) return intersectionPromise;
 };
 
-const handleProjectTitleAnimation = (
-  projectTitleContainer,
-  firstAnimationPromise,
-  currentlyDisplayedProject,
-) => {
+
+const ProjectTitleAnimation = (projectTitleContainer) => {
   const projectTitle = projectTitleContainer;
   const projectsFirstTitle = projectTitle.querySelector(".projects-first-title");
-  const currentProjectTitle = projectTitle.querySelector(".current-project-title");
-  const upcomingProjectTitle = projectTitle.querySelector(".upcoming-project-title");
 
-  const currentTextWidth = currentProjectTitle.offsetWidth;
-  const upcomingTextWidth = upcomingProjectTitle.offsetWidth;
+  let lastProjectTitle = projectTitle.querySelector(".last-project-title");
+  let currentProjectTitle = projectTitle.querySelector(".current-project-title");
+  let upcomingProjectTitle = projectTitle.querySelector(".upcoming-project-title");
 
-  firstAnimationPromise.then(() => {
-    projectsFirstTitle.classList.remove("spawn-heading");
-    projectsFirstTitle.classList.add("minimize-up");
-    setTimeout(() => {
-      projectsFirstTitle.textContent = "Project:";
-    }, 400);
+  let currentTextWidth = currentProjectTitle.offsetWidth;
 
-    // currentProjectTitle.style.transform = `translateX(-${currentTextWidth}px)`;
-    currentProjectTitle.textContent = toTitle(currentlyDisplayedProject.id);
-    currentProjectTitle.style.transition = "transform .5s cubic-bezier(.86,-0.01,.62,1.09)";
-    currentProjectTitle.style.transform = `translateX(0)`;
-    projectTitle.style.minWidth = `${upcomingTextWidth}px`;
-  });
+  const update = (currentlyDisplayedProject) => {
+    upcomingProjectTitle = projectTitle.querySelector(".project-title-right");
+    currentProjectTitle = projectTitle.querySelector(".project-title-center");
+    lastProjectTitle = projectTitle.querySelector(".project-title-left");
+    console.log(upcomingProjectTitle, currentProjectTitle, lastProjectTitle);
+
+    upcomingProjectTitle.textContent = toTitle(currentlyDisplayedProject.id);
+    currentTextWidth = upcomingProjectTitle.offsetWidth;
+
+
+    lastProjectTitle.classList.remove("project-title-left");
+    lastProjectTitle.classList.add("project-title-right");
+
+    currentProjectTitle.classList.remove("project-title-center");
+    currentProjectTitle.classList.add("project-title-left");
+
+    upcomingProjectTitle.classList.remove("project-title-right");
+    upcomingProjectTitle.classList.add("project-title-center");
+  };
+
+  const initialize = (firstAnimationPromise, currentlyDisplayedProject) => {
+    firstAnimationPromise.then(() => {
+      projectsFirstTitle.classList.remove("spawn-heading");
+      projectsFirstTitle.classList.add("minimize-up");
+      setTimeout(() => {
+        projectsFirstTitle.textContent = "Project:";
+      }, 400);
+
+      currentProjectTitle.textContent = toTitle(currentlyDisplayedProject.id);
+
+      lastProjectTitle.classList.add("project-title-left");
+      currentProjectTitle.classList.add("project-title-center");
+      upcomingProjectTitle.classList.add("project-title-right");
+    });
+  };
+
+  return { initialize, update };
 };
 
 export default CarouselDOM;
-export { ProjectDescription, handleHeadingAnimations, handleProjectTitleAnimation };
+export { ProjectDescription, addHeadingAnimations, ProjectTitleAnimation };

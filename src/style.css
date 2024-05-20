@@ -170,6 +170,7 @@ main > * {
   display: inline-block;
   position: relative;
   overflow: hidden;
+  min-width: 40vw;
 }
 
 .project-title-container .underline {
@@ -177,12 +178,28 @@ main > * {
 }
 
 .upcoming-project-title,
-.current-project-title {
+.current-project-title,
+.last-project-title {
   display: inline-block;
   position: absolute;
+  white-space: nowrap;
   top: 0;
   left: 0;
-  transform: translateX(100%);
+  transform: translateX(40vw);
+}
+
+.project-title-center,
+.project-title-left {
+  transition: transform .5s cubic-bezier(.86,-0.01,.62,1.09);
+}
+
+.project-title-center {transform: translateX(0);}
+
+.project-title-left {transform: translateX(-100%);}
+
+.project-title-right {
+  transform: translateX(40vw);
+  transition: none;
 }
 
 .projects-first-title {

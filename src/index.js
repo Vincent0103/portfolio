@@ -1,4 +1,4 @@
-import { ProjectDescription, handleHeadingAnimations, handleProjectTitleAnimation } from "./DOM.js";
+import { ProjectDescription, addHeadingAnimations, ProjectTitleAnimation } from "./DOM.js";
 import Carousel from "./wrapper.js";
 
 
@@ -22,13 +22,21 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
   const [aboutH2Container, projectsH2Container] = document.querySelectorAll(".animated-h2-container");
-  handleHeadingAnimations(aboutH2Container, false);
-  const projectsTitleAnimating = handleHeadingAnimations(projectsH2Container, true);
+  addHeadingAnimations(aboutH2Container, false);
+  const projectsTitleAnimating = addHeadingAnimations(projectsH2Container, true);
 
   const projectTitleContainer = projectsSection.querySelector(".project-title-container");
-  handleProjectTitleAnimation(
-    projectTitleContainer,
-    projectsTitleAnimating,
-    carousel.getCurrentlyDisplayedProject(),
-  );
+  const projectTitleAnimation = ProjectTitleAnimation(projectTitleContainer);
+  let lastDisplayedProject = carousel.getCurrentlyDisplayedProject();
+
+  projectTitleAnimation.initialize(projectsTitleAnimating, lastDisplayedProject);
+
+  imgSliderContainer.addEventListener("click", () => {
+    const currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();
+
+    if (lastDisplayedProject.id !== currentlyDisplayedProject.id) {
+      lastDisplayedProject = currentlyDisplayedProject;
+      projectTitleAnimation.update(currentlyDisplayedProject);
+    }
+  });
 });
