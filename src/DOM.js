@@ -128,5 +128,59 @@ const ProjectDescription = (...containers) => {
   return { handleProjectRelated };
 };
 
+const handleHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
+  const h2Container = animatedHeadingContainer.querySelector(".h2-container");
+  const h2 = h2Container.querySelector("h2");
+  const aboutTitleUnderline = animatedHeadingContainer.querySelector(".underline");
+  const aboutTitleUnderlineShadow = animatedHeadingContainer.querySelector(".underline-shadow");
+  let timeoutId;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        h2.classList.add("spawn-heading");
+        aboutTitleUnderline.classList.add("spawn-underline");
+        aboutTitleUnderlineShadow.classList.add("spawn-underline");
+
+        timeoutId = setTimeout(() => {
+          h2Container.style.overflowY = "visible";
+        }, 800);
+
+        if (animateOnce) observer.unobserve(animatedHeadingContainer);
+      } else {
+        h2.classList.remove("spawn-heading");
+        aboutTitleUnderline.classList.remove("spawn-underline");
+        aboutTitleUnderlineShadow.classList.remove("spawn-underline");
+
+        clearTimeout(timeoutId);
+
+        h2Container.style.overflowY = "hidden";
+      }
+    });
+  });
+
+  observer.observe(animatedHeadingContainer);
+};
+
+const handleProjectTitleAnimation = (projectTitleContainer) => {
+  const projectTitle = projectTitleContainer;
+  const projectsFirstTitle = projectTitle.querySelector(".projects-first-title");
+  const currentProjectTitle = projectTitle.querySelector(".current-project-title");
+  const upcomingProjectTitle = projectTitle.querySelector(".upcoming-project-title");
+
+  const currentTextWidth = currentProjectTitle.offsetWidth;
+  const upcomingTextWidth = upcomingProjectTitle.offsetWidth;
+
+  setTimeout(() => {
+    projectsFirstTitle.classList.remove("spawn-heading");
+    projectsFirstTitle.classList.add("minimize-up");
+
+    // currentProjectTitle.style.transform = `translateX(-${currentTextWidth}px)`;
+    currentProjectTitle.style.transition = "transform 1s";
+    currentProjectTitle.style.transform = `translateX(0)`;
+    projectTitle.style.minWidth = `${upcomingTextWidth}px`;
+  }, 1600);
+};
+
 export default CarouselDOM;
-export { ProjectDescription };
+export { ProjectDescription, handleHeadingAnimations, handleProjectTitleAnimation };
