@@ -27,12 +27,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const projectTitleContainer = projectsSection.querySelector(".project-title-container");
   const projectTitleAnimation = ProjectTitleAnimation(projectTitleContainer);
-  let lastDisplayedProject = carousel.getCurrentlyDisplayedProject();
+  let lastDisplayedProject = carousel.getDisplayedProject("lastDisplayedProject");
 
   projectTitleAnimation.initialize(projectsTitleAnimating, lastDisplayedProject);
 
   imgSliderContainer.addEventListener("click", () => {
-    const currentlyDisplayedProject = carousel.getCurrentlyDisplayedProject();
+    const currentlyDisplayedProject = carousel.getDisplayedProject("currentlyDisplayedProject");
 
     if (lastDisplayedProject.id !== currentlyDisplayedProject.id) {
       lastDisplayedProject = currentlyDisplayedProject;

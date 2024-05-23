@@ -5,13 +5,27 @@ function CarouselDOM(slidingImgsArg) {
   const slidingImgs = slidingImgsArg;
 
   const projectDisplay = (() => {
-    let currentlyDisplayedProject;
+    const projects = {
+      currentlyDisplayedProject: null,
+      nextDisplayedProject: null,
+      pastDisplayedProject: null,
+    };
 
     return {
-      setCurrentlyDisplayedProject(container) { currentlyDisplayedProject = container; },
-      getCurrentlyDisplayedProject() { return currentlyDisplayedProject.cloneNode(); },
+      setDisplayedProject(displayedProjectName, container) {
+        projects[displayedProjectName] = container;
+      },
+      getDisplayedProject(displayedProjectName) {
+        return projects[displayedProjectName];
+      },
     };
   })();
+
+  const displayedProjectClasses = {
+    "carousel-center": "currentlyDisplayedProject",
+    "carousel-left": "pastDisplayedProject",
+    "carousel-right": "nextDisplayedProject",
+  };
 
   const handleCarouselBoxShadow = (container, isRemovingBoxShadow) => {
     if (isRemovingBoxShadow) container.classList.remove("box-shadow-visible");
@@ -28,9 +42,11 @@ function CarouselDOM(slidingImgsArg) {
         container.classList.add(projectsCarouselClasses[i]);
       }
 
-      if (projectsCarouselClasses[i] === "carousel-center") {
-        handleCarouselBoxShadow(container);
-        projectDisplay.setCurrentlyDisplayedProject(container);
+      const currentClass = projectsCarouselClasses[i];
+
+      if (currentClass in displayedProjectClasses) {
+        if (currentClass === "carousel-center") handleCarouselBoxShadow(container);
+        projectDisplay.setDisplayedProject(displayedProjectClasses[currentClass], container);
       }
     });
   };
@@ -38,9 +54,12 @@ function CarouselDOM(slidingImgsArg) {
   const initializeCarousel = (projectsCarouselClasses) => {
     slidingImgs.forEach((container, i) => {
       container.classList.add(projectsCarouselClasses[i]);
-      if (projectsCarouselClasses[i] === "carousel-center") {
-        handleCarouselBoxShadow(container);
-        projectDisplay.setCurrentlyDisplayedProject(container);
+
+      const currentClass = projectsCarouselClasses[i];
+
+      if (currentClass in displayedProjectClasses) {
+        if (currentClass === "carousel-center") handleCarouselBoxShadow(container);
+        projectDisplay.setDisplayedProject(displayedProjectClasses[currentClass], container);
       }
     });
   };
@@ -48,7 +67,7 @@ function CarouselDOM(slidingImgsArg) {
   return {
     initializeCarousel,
     moveCarousel,
-    getCurrentlyDisplayedProject: projectDisplay.getCurrentlyDisplayedProject,
+    getDisplayedProject: projectDisplay.getDisplayedProject,
   };
 }
 

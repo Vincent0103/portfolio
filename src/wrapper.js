@@ -9,7 +9,7 @@ const Carousel = (imgSliderContainer) => {
   const carouselDOM = CarouselDOM(slidingImgs);
   const carouselLogic = CarouselLogic();
 
-  const getCurrentlyDisplayedProject = () => carouselDOM.getCurrentlyDisplayedProject();
+  const getDisplayedProject = () => carouselDOM.getDisplayedProject("currentlyDisplayedProject");
 
   const initialize = () => {
     carouselLogic.initializeCarouselProjectsClasses(slidingImgs.length);
@@ -37,14 +37,14 @@ const Carousel = (imgSliderContainer) => {
       if (isClickedLeft || isClickedRight) {
         if (isClickedLeft) slideCarousel(false);
         else slideCarousel(true);
-        projectDescription.handleProjectRelated(getCurrentlyDisplayedProject());
+        projectDescription.handleProjectRelated(getDisplayedProject("currentlyDisplayedProject"));
       }
     };
 
     imgSliderContainer.addEventListener("click", throttle(onClick, 100));
   };
 
-  return { initialize, handleCarouselClick, getCurrentlyDisplayedProject };
+  return { initialize, handleCarouselClick, getDisplayedProject };
 };
 
 export default Carousel;
