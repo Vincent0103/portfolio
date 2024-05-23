@@ -177,9 +177,7 @@ main > * {
   min-width: 320px;
 }
 
-.upcoming-project-title,
-.current-project-title,
-.last-project-title {
+.project-title {
   display: inline-block;
   position: absolute;
   white-space: nowrap;
@@ -188,16 +186,16 @@ main > * {
   transform: translateX(1500px);
 }
 
-.project-title-center,
-.project-title-left {
-  transition: transform .5s cubic-bezier(.86,-0.01,.62,1.09);
+.project-title.center,
+.project-title.left {
+  transition: transform .2s;
 }
 
-.project-title-center {transform: translateX(0);}
+.project-title.center {transform: translateX(0);}
 
-.project-title-left {transform: translateX(-1500px);}
+.project-title.left {transform: translateX(-1500px);}
 
-.project-title-right {
+.project-title.right {
   transform: translateX(1500px);
   transition: none;
 }
@@ -207,9 +205,9 @@ main > * {
 }
 
 .projects-first-title.minimize-up {
-  transform: scale(.3) translate(-115%, -160%);
+  transform: scale(.3) translate(-115%, -170%);
   color: #676767;
-  transition: transform .5s cubic-bezier(.86,-0.01,.62,1.09), color .5s cubic-bezier(.86,-0.01,.62,1.09);
+  transition: transform .2s cubic-bezier(.86,-0.01,.62,1.09), color .2s cubic-bezier(.86,-0.01,.62,1.09);
 }
 
 .current-project-container {
@@ -263,58 +261,58 @@ main > * {
   transition: opacity .2s;
 }
 
-.carouselLeftLeft {
+.carousel-left-left {
   transform: translateX(-13%) scale(.8);
   z-index: -3;
 }
 
-.carouselLeftLeft::before {
+.carousel-left-left::before {
   opacity: .85;
 }
 
 
-.carouselLeft {
+.carousel-left {
   transform: translateX(-7%) scale(.9);
   z-index: -2;
 }
 
-.carouselLeft::before {
+.carousel-left::before {
   opacity: .6;
 }
 
-.carouselCenter {
+.carousel-center {
   transform: translateX(0) scale(1);
   z-index: 0;
 }
 
-.carouselCenter::before {
+.carousel-center::before {
   opacity: 0;
 }
 
-.carouselRight {
+.carousel-right {
   transform: translateX(7%) scale(.9);
   z-index: -2;
 }
 
-.carouselRight::before {
+.carousel-right::before {
   opacity: .6;
 }
 
-.carouselRightRight {
+.carousel-right-right {
   transform: translateX(13%) scale(.8);
   z-index: -3;
 }
 
-.carouselRightRight::before {
+.carousel-right-right::before {
   opacity: .85;
 }
 
-.carouselHideLeft {
+.carousel-hide-left {
   transform: translateX(-19%) scale(.7);
   opacity: 0;
 }
 
-.carouselHideRight {
+.carousel-hide-right {
   transform: translateX(19%) scale(.7);
   opacity: 0;
 }

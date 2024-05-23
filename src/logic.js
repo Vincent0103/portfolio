@@ -22,8 +22,8 @@ const CarouselLogic = () => {
     const length = slidingImgsLength;
     if (length <= 0) throw new Error("Cannot initialize with a null or negative length");
 
-    const slidingDirections = ["carouselHideLeft", "carouselLeftLeft", "carouselLeft",
-      "carouselCenter", "carouselRight", "carouselRightRight", "carouselHideRight"];
+    const slidingDirections = ["carousel-hide-left", "carousel-left-left", "carousel-left",
+      "carousel-center", "carousel-right", "carousel-right-right", "carousel-hide-right"];
 
     if (length === 1) {
       return projectsCarouselClasses.setClassesValue([slidingDirections[3]]);
@@ -45,14 +45,14 @@ const CarouselLogic = () => {
 
       for (let i = 0; i < length; i += 1) {
         if (carouselHideLefts > 0) {
-          tempClasses.push("carouselHideLeft");
+          tempClasses.push("carousel-hide-left");
           carouselHideLefts -= 1;
         } else if (viewableSlidingDirectionsAmount > 0) {
           slidingDirectionsIndex = 5 - viewableSlidingDirectionsAmount + 1;
           tempClasses.push(slidingDirections[slidingDirectionsIndex]);
           viewableSlidingDirectionsAmount -= 1;
         } else if (carouselHideRights > 0) {
-          tempClasses.push("carouselHideRight");
+          tempClasses.push("carousel-hide-right");
           carouselHideRights -= 1;
         }
       }

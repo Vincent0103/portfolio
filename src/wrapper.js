@@ -1,5 +1,6 @@
 import CarouselDOM from "./DOM.js";
 import CarouselLogic from "./logic.js";
+import { throttle } from "./utils.js";
 
 
 const Carousel = (imgSliderContainer) => {
@@ -27,7 +28,7 @@ const Carousel = (imgSliderContainer) => {
       rect = imgSliderContainer.getBoundingClientRect();
     });
 
-    imgSliderContainer.addEventListener("click", (e) => {
+    const onClick = (e) => {
       const clickedX = e.clientX - rect.left;
 
       const isClickedLeft = clickedX < rect.width / 6;
@@ -38,7 +39,9 @@ const Carousel = (imgSliderContainer) => {
         else slideCarousel(true);
         projectDescription.handleProjectRelated(getCurrentlyDisplayedProject());
       }
-    });
+    };
+
+    imgSliderContainer.addEventListener("click", throttle(onClick, 100));
   };
 
   return { initialize, handleCarouselClick, getCurrentlyDisplayedProject };
