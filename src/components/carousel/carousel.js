@@ -1,6 +1,6 @@
-import CarouselDOM from "./DOM.js";
-import CarouselLogic from "./logic.js";
-import { throttle } from "./utils.js";
+import CarouselDOM from "./carousel-DOM.js";
+import CarouselLogic from "./carousel-logic.js";
+import { throttle } from "../../utils.js";
 
 
 const Carousel = (imgSliderContainer) => {

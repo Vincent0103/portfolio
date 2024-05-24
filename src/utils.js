@@ -19,5 +19,3 @@ function throttle(func, delay) {
 
 export default toCamelCase;
 export { toTitle, throttle };
-
-console.log(toTitle("tic-tac-toe"));

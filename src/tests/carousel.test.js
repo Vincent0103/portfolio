@@ -1,4 +1,4 @@
-import CarouselLogic from "../logic.js";
+import CarouselLogic from "../components/carousel/carousel-logic.js";
 
 let carouselLogic;
 let carouselLogic2;

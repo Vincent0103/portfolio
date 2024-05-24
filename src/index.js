@@ -1,5 +1,8 @@
-import { ProjectDescription, addHeadingAnimations, ProjectTitleAnimation } from "./DOM.js";
-import Carousel from "./wrapper.js";
+import "./style.css";
+import ProjectDescription from "./components/projectDescription/projectDescription.js";
+import addHeadingAnimations from "./components/animations/heading.js";
+import ProjectTitleAnimation from "./components/animations/project-title.js";
+import Carousel from "./components/carousel/carousel.js";
 
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -27,12 +30,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const projectTitleContainer = projectsSection.querySelector(".project-title-container");
   const projectTitleAnimation = ProjectTitleAnimation(projectTitleContainer);
+  let currentlyDisplayedProject = carousel.getDisplayedProject("currentlyDisplayedProject");
+  const nextDisplayedProject = carousel.getDisplayedProject("nextDisplayedProject");
   let lastDisplayedProject = carousel.getDisplayedProject("lastDisplayedProject");
+  console.log(nextDisplayedProject);
 
-  projectTitleAnimation.initialize(projectsTitleAnimating, lastDisplayedProject);
+  projectTitleAnimation.initialize(
+    projectsTitleAnimating,
+    currentlyDisplayedProject,
+    nextDisplayedProject,
+  );
 
   imgSliderContainer.addEventListener("click", () => {
-    const currentlyDisplayedProject = carousel.getDisplayedProject("currentlyDisplayedProject");
+    currentlyDisplayedProject = carousel.getDisplayedProject("currentlyDisplayedProject");
 
     if (lastDisplayedProject.id !== currentlyDisplayedProject.id) {
       lastDisplayedProject = currentlyDisplayedProject;
