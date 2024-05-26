@@ -1,70 +1,89 @@
 import { toTitle } from "../../utils.js";
 
 const ProjectTitleAnimation = (projectTitleContainer) => {
-  const projectTitle = projectTitleContainer;
-  const projectsFirstTitle = projectTitle.querySelector(".projects-first-title");
+  const getNextIndex = (toLeft, currentIndex, array) => {
+    let nextIndex;
+    if (toLeft) {
+      nextIndex = (currentIndex - 1 + array.length) % array.length;
+    } else {
+      nextIndex = (currentIndex + 1) % array.length;
+    }
+    return nextIndex;
+  };
+
+  const updateTransitioningSide = (toLeft, targetTitle) => {
+    const addingClass = (toLeft) ? "moving-left" : "moving-right";
+    const removingClass = (toLeft) ? "moving-right" : "moving-left";
+
+    if (!targetTitle.classList.contains(addingClass)) {
+      targetTitle.classList.add(addingClass);
+      targetTitle.classList.remove(removingClass);
+    }
+  };
+
+  const extractPositionClass = (targetTitle) => {
+    const regex = /\s((left)|(center)|(right))/;
+    const match = targetTitle.className.match(regex);
+    return (match) ? match[0].trimStart() : "";
+  };
 
   const transitionProjectTitle = (projectTitles, toLeft, textToDisplay) => {
-    const projectTitleClasses = ["left", "center", "right"];
+    const PROJECT_TITLE_CLASSES = ["left", "center", "right"];
     const newClasses = [];
 
     projectTitles.forEach((title) => {
-      const regex = /\s((left)|(center)|(right))/;
-      const currentClass = title.className.match(regex)[0].trimStart();
-      title.classList.remove(currentClass);
+      const targetTitle = title;
 
+      const positionClass = extractPositionClass(targetTitle);
+      targetTitle.classList.remove(positionClass);
 
-      const currentIndex = projectTitleClasses.indexOf(currentClass);
-      let nextIndex;
+      updateTransitioningSide(toLeft, targetTitle);
 
-      if (toLeft) {
-        if (!title.classList.contains("moving-left")) {
-          title.classList.add("moving-left");
-          title.classList.remove("moving-right");
-        }
-        if (currentClass === "right") title.textContent = textToDisplay;
-        nextIndex = (currentIndex - 1 + projectTitleClasses.length) % projectTitleClasses.length;
-      } else {
-        if (!title.classList.contains("moving-right")) {
-          title.classList.add("moving-right");
-          title.classList.remove("moving-left");
-        }
-        if (currentClass === "left") title.textContent = textToDisplay;
-        nextIndex = (currentIndex + 1) % projectTitleClasses.length;
-      }
+      if (toLeft && positionClass === "right") targetTitle.textContent = textToDisplay;
+      else if (positionClass === "left") targetTitle.textContent = textToDisplay;
 
-      newClasses.push(projectTitleClasses[nextIndex]);
-      console.log(projectTitleClasses[nextIndex]);
+      const currentIndex = PROJECT_TITLE_CLASSES.indexOf(positionClass);
+      const nextIndex = getNextIndex(toLeft, currentIndex, PROJECT_TITLE_CLASSES);
+      newClasses.push(PROJECT_TITLE_CLASSES[nextIndex]);
     });
 
-    projectTitles.forEach((title, i) => {
-      const currentClassesItem = newClasses[i];
-      title.classList.add(currentClassesItem);
-    });
+    projectTitles.forEach((title, i) => title.classList.add(newClasses[i]));
   };
 
 
+  const projectTitles = [...projectTitleContainer.querySelectorAll(".project-title")];
+
   const update = (displayedProjectName, isTransitioningToLeft) => {
-    const projectTitles = [...projectTitle.querySelectorAll(".project-title")];
     const textToDisplay = toTitle(displayedProjectName);
 
     transitionProjectTitle(projectTitles, isTransitioningToLeft, textToDisplay);
   };
 
+  const minimizeUpFirstTitle = (projectsFirstTitle) => {
+    const target = projectsFirstTitle;
+
+    target.classList.remove("spawn-heading");
+    target.classList.add("minimize-up");
+    setTimeout(() => {
+      target.textContent = "Project:";
+    }, 160);
+  };
+
+  const transitionFirstProjectTitle = (currentProjectTitle, displayedProjectName) => {
+    const targetProjectTitle = currentProjectTitle;
+    targetProjectTitle.classList.remove("right");
+    targetProjectTitle.textContent = toTitle(displayedProjectName);
+
+    targetProjectTitle.classList.add("center");
+  };
+
   const initialize = (firstAnimationPromise, displayedProjectName) => {
     firstAnimationPromise.then(() => {
-      const currentProjectTitle = projectTitle.querySelector(".project-title.right");
+      const projectsFirstTitle = projectTitleContainer.querySelector(".projects-first-title");
+      minimizeUpFirstTitle(projectsFirstTitle);
 
-      projectsFirstTitle.classList.remove("spawn-heading");
-      projectsFirstTitle.classList.add("minimize-up");
-      setTimeout(() => {
-        projectsFirstTitle.textContent = "Project:";
-      }, 160);
-
-      currentProjectTitle.classList.remove("right");
-      currentProjectTitle.textContent = toTitle(displayedProjectName);
-
-      currentProjectTitle.classList.add("center");
+      const currentProjectTitle = projectTitleContainer.querySelector(".project-title.right");
+      transitionFirstProjectTitle(currentProjectTitle, displayedProjectName);
     });
   };
 
