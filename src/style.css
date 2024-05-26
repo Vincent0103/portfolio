@@ -186,17 +186,28 @@ main > * {
   transform: translateX(1500px);
 }
 
-.project-title.center,
-.project-title.left {
+.project-title.center {
+  transform: translateX(0);
   transition: transform .2s;
 }
 
-.project-title.center {transform: translateX(0);}
+.project-title.moving-left.left {
+  transform: translateX(-1500px);
+  transition: transform .2s;
+}
 
-.project-title.left {transform: translateX(-1500px);}
-
-.project-title.right {
+.project-title.moving-left.right {
   transform: translateX(1500px);
+  transition: none;
+}
+
+.project-title.moving-right.right {
+  transform: translateX(1500px);
+  transition: transform .2s;
+}
+
+.project-title.moving-right.left {
+  transform: translateX(-1500px);
   transition: none;
 }
 

@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (pastDisplayedProjectName !== displayedProjectName) {
       pastDisplayedProjectName = displayedProjectName;
-      projectTitleAnimation.update(displayedProjectName, true);
+      projectTitleAnimation.update(displayedProjectName, (clickedSide === "right"));
       // TODO: CHANGE SLIDING IMAGES WRONG DIRECTION
     }
   });

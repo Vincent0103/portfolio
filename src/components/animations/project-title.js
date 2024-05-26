@@ -9,23 +9,32 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
     const newClasses = [];
 
     projectTitles.forEach((title) => {
-      const regex = /(left)|(center)|(right)/;
-      const currentClass = title.className.match(regex)[0];
+      const regex = /\s((left)|(center)|(right))/;
+      const currentClass = title.className.match(regex)[0].trimStart();
       title.classList.remove(currentClass);
 
-      if (currentClass === "right") title.textContent = textToDisplay;
 
       const currentIndex = projectTitleClasses.indexOf(currentClass);
       let nextIndex;
 
-
       if (toLeft) {
+        if (!title.classList.contains("moving-left")) {
+          title.classList.add("moving-left");
+          title.classList.remove("moving-right");
+        }
+        if (currentClass === "right") title.textContent = textToDisplay;
         nextIndex = (currentIndex - 1 + projectTitleClasses.length) % projectTitleClasses.length;
       } else {
+        if (!title.classList.contains("moving-right")) {
+          title.classList.add("moving-right");
+          title.classList.remove("moving-left");
+        }
+        if (currentClass === "left") title.textContent = textToDisplay;
         nextIndex = (currentIndex + 1) % projectTitleClasses.length;
       }
 
       newClasses.push(projectTitleClasses[nextIndex]);
+      console.log(projectTitleClasses[nextIndex]);
     });
 
     projectTitles.forEach((title, i) => {
