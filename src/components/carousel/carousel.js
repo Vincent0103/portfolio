@@ -51,7 +51,7 @@ const Carousel = (imgSliderContainer) => {
       }
     };
 
-    imgSliderContainer.addEventListener("click", throttle(onClick, 200));
+    imgSliderContainer.addEventListener("click", throttle(onClick, 100));
   };
 
   return {
