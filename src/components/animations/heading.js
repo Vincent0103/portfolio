@@ -1,4 +1,4 @@
-const addHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
+const HeadingAnimation = (animatedHeadingContainer, animateOnce) => {
   const h2Container = animatedHeadingContainer.querySelector(".h2-container");
   const h2 = h2Container.querySelector("h2");
   const aboutTitleUnderline = animatedHeadingContainer.querySelector(".underline");
@@ -51,21 +51,24 @@ const addHeadingAnimations = (animatedHeadingContainer, animateOnce) => {
     h2Container.style.overflowY = "hidden";
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        applyHeadingAnimation();
-        if (animateOnce) observer.unobserve(animatedHeadingContainer);
-      } else {
-        removeHeadingAnimation();
-      }
+  const add = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          applyHeadingAnimation();
+          if (animateOnce) observer.unobserve(animatedHeadingContainer);
+        } else {
+          removeHeadingAnimation();
+        }
+      });
     });
-  });
 
-  observer.observe(animatedHeadingContainer);
+    observer.observe(animatedHeadingContainer);
+  };
 
-  // Wait for the first projects title animation to finish
-  if (animateOnce) return intersectionPromise;
+  const getResolvingAnimation = () => intersectionPromise;
+
+  return { add, getResolvingAnimation };
 };
 
-export default addHeadingAnimations;
+export default HeadingAnimation;

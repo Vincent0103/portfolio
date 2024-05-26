@@ -13,8 +13,11 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
       const currentClass = title.className.match(regex)[0];
       title.classList.remove(currentClass);
 
+      if (currentClass === "right") title.textContent = textToDisplay;
+
       const currentIndex = projectTitleClasses.indexOf(currentClass);
       let nextIndex;
+
 
       if (toLeft) {
         nextIndex = (currentIndex - 1 + projectTitleClasses.length) % projectTitleClasses.length;
@@ -28,19 +31,18 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
     projectTitles.forEach((title, i) => {
       const currentClassesItem = newClasses[i];
       title.classList.add(currentClassesItem);
-      if (currentClassesItem === "right") title.textContent = textToDisplay;
     });
   };
 
 
-  const update = (currentlyDisplayedProject) => {
+  const update = (displayedProjectName, isTransitioningToLeft) => {
     const projectTitles = [...projectTitle.querySelectorAll(".project-title")];
-    const textToDisplay = toTitle(currentlyDisplayedProject.id);
+    const textToDisplay = toTitle(displayedProjectName);
 
-    transitionProjectTitle(projectTitles, true, textToDisplay);
+    transitionProjectTitle(projectTitles, isTransitioningToLeft, textToDisplay);
   };
 
-  const initialize = (firstAnimationPromise, currentlyDisplayedProject, nextDisplayedProject) => {
+  const initialize = (firstAnimationPromise, displayedProjectName) => {
     firstAnimationPromise.then(() => {
       const currentProjectTitle = projectTitle.querySelector(".project-title.right");
 
@@ -51,7 +53,7 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
       }, 160);
 
       currentProjectTitle.classList.remove("right");
-      currentProjectTitle.textContent = toTitle(currentlyDisplayedProject.id);
+      currentProjectTitle.textContent = toTitle(displayedProjectName);
 
       currentProjectTitle.classList.add("center");
     });

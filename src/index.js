@@ -1,6 +1,6 @@
 import "./style.css";
 import ProjectDescription from "./components/projectDescription/projectDescription.js";
-import addHeadingAnimations from "./components/animations/heading.js";
+import HeadingAnimation from "./components/animations/heading.js";
 import ProjectTitleAnimation from "./components/animations/project-title.js";
 import Carousel from "./components/carousel/carousel.js";
 
@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectDateContainer = projectsSection.querySelector(".project-date-container");
 
   const carousel = Carousel(imgSliderContainer);
+
   carousel.initialize();
 
   const projectDescription = ProjectDescription(
@@ -25,28 +26,29 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
   const [aboutH2Container, projectsH2Container] = document.querySelectorAll(".animated-h2-container");
-  addHeadingAnimations(aboutH2Container, false);
-  const projectsTitleAnimating = addHeadingAnimations(projectsH2Container, true);
+  HeadingAnimation(aboutH2Container, false).add();
+  const projectsHeadingAnimation = HeadingAnimation(projectsH2Container, true);
+  projectsHeadingAnimation.add();
 
   const projectTitleContainer = projectsSection.querySelector(".project-title-container");
   const projectTitleAnimation = ProjectTitleAnimation(projectTitleContainer);
-  let currentlyDisplayedProject = carousel.getDisplayedProject("currentlyDisplayedProject");
-  const nextDisplayedProject = carousel.getDisplayedProject("nextDisplayedProject");
-  let lastDisplayedProject = carousel.getDisplayedProject("lastDisplayedProject");
-  console.log(nextDisplayedProject);
 
+  let displayedProjectName = carousel.getDisplayedProjectName();
   projectTitleAnimation.initialize(
-    projectsTitleAnimating,
-    currentlyDisplayedProject,
-    nextDisplayedProject,
+    projectsHeadingAnimation.getResolvingAnimation(),
+    displayedProjectName,
   );
 
+  let pastDisplayedProjectName = null;
+  let clickedSide;
   imgSliderContainer.addEventListener("click", () => {
-    currentlyDisplayedProject = carousel.getDisplayedProject("currentlyDisplayedProject");
+    displayedProjectName = carousel.getDisplayedProjectName();
+    clickedSide = carousel.getClickedSide();
 
-    if (lastDisplayedProject.id !== currentlyDisplayedProject.id) {
-      lastDisplayedProject = currentlyDisplayedProject;
-      projectTitleAnimation.update(currentlyDisplayedProject);
+    if (pastDisplayedProjectName !== displayedProjectName) {
+      pastDisplayedProjectName = displayedProjectName;
+      projectTitleAnimation.update(displayedProjectName, true);
+      // TODO: CHANGE SLIDING IMAGES WRONG DIRECTION
     }
   });
 });

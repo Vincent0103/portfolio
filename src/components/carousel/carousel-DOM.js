@@ -1,28 +1,14 @@
 function CarouselDOM(slidingImgsArg) {
   const slidingImgs = slidingImgsArg;
 
-  const projectDisplay = (() => {
-    const projects = {
-      currentlyDisplayedProject: null,
-      nextDisplayedProject: null,
-      pastDisplayedProject: null,
-    };
+  const projectDisplayName = (() => {
+    let displayedProject = null;
 
     return {
-      setDisplayedProject(displayedProjectName, container) {
-        projects[displayedProjectName] = container;
-      },
-      getDisplayedProject(displayedProjectName) {
-        return projects[displayedProjectName];
-      },
+      setDisplayedProject: (name) => { displayedProject = name; },
+      getDisplayedProject: () => displayedProject,
     };
   })();
-
-  const displayedProjectClasses = {
-    "carousel-center": "currentlyDisplayedProject",
-    "carousel-left": "pastDisplayedProject",
-    "carousel-right": "nextDisplayedProject",
-  };
 
   const handleCarouselBoxShadow = (container, isRemovingBoxShadow) => {
     if (isRemovingBoxShadow) container.classList.remove("box-shadow-visible");
@@ -41,9 +27,9 @@ function CarouselDOM(slidingImgsArg) {
 
       const currentClass = projectsCarouselClasses[i];
 
-      if (currentClass in displayedProjectClasses) {
-        if (currentClass === "carousel-center") handleCarouselBoxShadow(container);
-        projectDisplay.setDisplayedProject(displayedProjectClasses[currentClass], container);
+      if (currentClass === "carousel-center") {
+        handleCarouselBoxShadow(container);
+        projectDisplayName.setDisplayedProject(container.id);
       }
     });
   };
@@ -54,9 +40,9 @@ function CarouselDOM(slidingImgsArg) {
 
       const currentClass = projectsCarouselClasses[i];
 
-      if (currentClass in displayedProjectClasses) {
-        if (currentClass === "carousel-center") handleCarouselBoxShadow(container);
-        projectDisplay.setDisplayedProject(displayedProjectClasses[currentClass], container);
+      if (currentClass === "carousel-center") {
+        handleCarouselBoxShadow(container);
+        projectDisplayName.setDisplayedProject(container.id);
       }
     });
   };
@@ -64,7 +50,7 @@ function CarouselDOM(slidingImgsArg) {
   return {
     initializeCarousel,
     moveCarousel,
-    getDisplayedProject: projectDisplay.getDisplayedProject,
+    getDisplayedProjectName: projectDisplayName.getDisplayedProject,
   };
 }
 

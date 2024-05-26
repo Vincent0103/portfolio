@@ -56,14 +56,14 @@ const ProjectDescription = (...containers) => {
     },
   };
 
-  const handleProjectRelated = (currentlyDisplayedProject) => {
+  const handleProjectRelated = (displayedProjectName) => {
     sectionDescriptionContainers.forEach((container) => {
       const activeP = container.querySelector("p.show");
       const hiddenP = container.querySelector("p.hide");
 
       activeP.classList.remove("show");
       activeP.classList.add("hide");
-      const projectName = toCamelCase(currentlyDisplayedProject.id);
+      const projectName = toCamelCase(displayedProjectName);
       if (container.classList.contains("project-summary-container")) {
         hiddenP.textContent = projectsData[projectName].summary;
       } else if (container.classList.contains("project-learnt-container")) {

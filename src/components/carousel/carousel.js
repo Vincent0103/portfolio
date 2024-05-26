@@ -9,7 +9,16 @@ const Carousel = (imgSliderContainer) => {
   const carouselDOM = CarouselDOM(slidingImgs);
   const carouselLogic = CarouselLogic();
 
-  const getDisplayedProject = () => carouselDOM.getDisplayedProject("currentlyDisplayedProject");
+  const getDisplayedProjectName = () => carouselDOM.getDisplayedProjectName();
+
+  const clickedSide = (() => {
+    let temp = null;
+
+    return {
+      get: () => temp,
+      set: (value) => { temp = value; },
+    };
+  })();
 
   const initialize = () => {
     carouselLogic.initializeCarouselProjectsClasses(slidingImgs.length);
@@ -31,20 +40,26 @@ const Carousel = (imgSliderContainer) => {
     const onClick = (e) => {
       const clickedX = e.clientX - rect.left;
 
-      const isClickedLeft = clickedX < rect.width / 6;
       const isClickedRight = clickedX > rect.width * (5 / 6);
+      const isClickedLeft = clickedX < rect.width / 6;
 
-      if (isClickedLeft || isClickedRight) {
-        if (isClickedLeft) slideCarousel(false);
-        else slideCarousel(true);
-        projectDescription.handleProjectRelated(getDisplayedProject("currentlyDisplayedProject"));
+      if (isClickedRight || isClickedLeft) {
+        const isRight = isClickedRight;
+        slideCarousel(isRight);
+        clickedSide.set((isRight) ? "right" : "left");
+        projectDescription.handleProjectRelated(getDisplayedProjectName());
       }
     };
 
     imgSliderContainer.addEventListener("click", throttle(onClick, 100));
   };
 
-  return { initialize, handleCarouselClick, getDisplayedProject };
+  return {
+    initialize,
+    handleCarouselClick,
+    getDisplayedProjectName,
+    getClickedSide: clickedSide.get,
+  };
 };
 
 export default Carousel;
