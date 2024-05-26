@@ -10,7 +10,13 @@ const HeadingAnimation = (animatedHeadingContainer, animateOnce) => {
     resolveIntersection = resolve;
   });
 
+  // eslint-disable-next-line no-promise-executor-return
+  const delay = (ms) => new Promise((resolve) => {
+    timeoutId = setTimeout(resolve, ms);
+  });
+
   const applyHeadingAnimation = () => {
+    const HEADING_MOVING_UP_TIME = 800;
     h2.classList.add("spawn-heading");
 
     h2.classList.remove("spawn-heading-idle");
@@ -19,21 +25,13 @@ const HeadingAnimation = (animatedHeadingContainer, animateOnce) => {
     aboutTitleUnderline.classList.add("spawn-underline");
     aboutTitleUnderlineShadow.classList.add("spawn-underline");
 
-    // eslint-disable-next-line no-promise-executor-return
-    const delay = (ms) => new Promise((resolve) => {
-      timeoutId = setTimeout(resolve, ms);
-    });
 
-    delay(800)
+    delay(HEADING_MOVING_UP_TIME)
       .then(() => {
         h2Container.style.overflowY = "visible";
-        return delay(500);
-      })
-      .then(() => {
-        resolveIntersection();
-      })
-      .catch((err) => {
-        console.error("An error occurred: ", err);
+        h2.addEventListener("animationend", () => {
+          delay(200).then(() => resolveIntersection());
+        });
       });
   };
 
