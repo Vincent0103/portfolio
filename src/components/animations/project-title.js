@@ -75,15 +75,24 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
     targetProjectTitle.textContent = toTitle(displayedProjectName);
 
     targetProjectTitle.classList.add("center");
+
+    return new Promise((resolve) => {
+      targetProjectTitle.addEventListener("transitionend", () => {
+        resolve();
+      }, { once: true });
+    });
   };
 
-  const initialize = (firstAnimationPromise, displayedProjectName) => {
-    firstAnimationPromise.then(() => {
+  const initialize = async (firstAnimationPromise, displayedProjectName) => {
+    await firstAnimationPromise.then(async () => {
       const projectsFirstTitle = projectTitleContainer.querySelector(".projects-first-title");
       minimizeUpFirstTitle(projectsFirstTitle);
 
       const currentProjectTitle = projectTitleContainer.querySelector(".project-title.right");
-      transitionFirstProjectTitle(currentProjectTitle, displayedProjectName);
+      await transitionFirstProjectTitle(
+        currentProjectTitle,
+        displayedProjectName,
+      );
     });
   };
 

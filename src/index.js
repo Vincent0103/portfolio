@@ -22,8 +22,6 @@ window.addEventListener("DOMContentLoaded", () => {
     projectDateContainer,
   );
 
-  carousel.handleCarouselClick(projectDescription);
-
 
   const [aboutH2Container, projectsH2Container] = document.querySelectorAll(".animated-h2-container");
   HeadingAnimation(aboutH2Container, false).add();
@@ -37,18 +35,21 @@ window.addEventListener("DOMContentLoaded", () => {
   projectTitleAnimation.initialize(
     projectsHeadingAnimation.getResolvingAnimation(),
     displayedProjectName,
-  );
+  )
+    .then(() => {
+      carousel.handleCarouselClick(projectDescription);
 
-  let pastDisplayedProjectName = null;
-  let clickedSide;
-  imgSliderContainer.addEventListener("click", () => {
-    displayedProjectName = carousel.getDisplayedProjectName();
-    clickedSide = carousel.getClickedSide();
+      let pastDisplayedProjectName = null;
+      let clickedSide;
 
-    if (pastDisplayedProjectName !== displayedProjectName) {
-      pastDisplayedProjectName = displayedProjectName;
-      projectTitleAnimation.update(displayedProjectName, (clickedSide === "right"));
-      // TODO: CHANGE SLIDING IMAGES WRONG DIRECTION
-    }
-  });
+      imgSliderContainer.addEventListener("click", () => {
+        displayedProjectName = carousel.getDisplayedProjectName();
+        clickedSide = carousel.getClickedSide();
+
+        if (pastDisplayedProjectName !== displayedProjectName) {
+          pastDisplayedProjectName = displayedProjectName;
+          projectTitleAnimation.update(displayedProjectName, (clickedSide === "right"));
+        }
+      });
+    });
 });
