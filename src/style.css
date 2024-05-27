@@ -191,7 +191,7 @@ main > * {
   transition: transform .2s;
 }
 
-.project-title.moving-left.left {
+.project-title.left {
   transform: translateX(-1500px);
   transition: transform .2s;
 }

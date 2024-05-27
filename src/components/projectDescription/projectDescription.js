@@ -5,38 +5,38 @@ const ProjectDescription = (...containers) => {
 
   const projectsData = {
     battleship: {
-      summary: "Maxime, soluta minus omnis ab consectetur enim voluptates perspiciatis iusto distinctio delectus libero? Ut fugit sapiente architecto nihil enim aut itaque ullam.",
-      learnt: "Maxime, soluta minus omnis ab consectetur enim voluptates perspiciatis iusto distinctio delectus libero? Ut fugit sapiente architecto nihil enim aut itaque ullam.",
+      summary: "A strategic game where the objective is to sink the opponent's ships before they sink yours. The game features ship placement, hit tracking and it is played against an ai.",
+      learnt: "Deepening of my understanding of JavaScript, implementation of testing methodologies (unit testing and TDD).",
       releaseDate: "2024-02-17",
     },
     calculator: {
-      summary: "Incidunt quasi, eaque amet non, at aliquam sint dicta accusamus autem rerum facere, praesentium nam veritatis dolor adipisci in magni accusantium ea!",
-      learnt: "Incidunt quasi, eaque amet non, at aliquam sint dicta accusamus autem rerum facere, praesentium nam veritatis dolor adipisci in magni accusantium ea!",
+      summary: "A basic calculator that performs basic arithmetic operations such as addition, substraction, multiplication and division.",
+      learnt: "Object-Oriented Programming (OOP), node.js, arrays, loops, DOM manipulation and events.",
       releaseDate: "2023-07-14",
     },
     restaurantPage: {
-      summary: "Dolor labore et autem dicta sit. Dolores atque blanditiis praesentium, enim ipsa molestiae ut veniam sed animi itaque eligendi magni quibusdam tempore?",
-      learnt: "Dolor labore et autem dicta sit. Dolores atque blanditiis praesentium, enim ipsa molestiae ut veniam sed animi itaque eligendi magni quibusdam tempore?",
+      summary: "A web application that provides information about a fictional restaurant. It features a clean, intuitive layout with sections for the restaurant's menu, location and contact information.",
+      learnt: "Enhancement of my understanding of JavaScript ES6 Modules, classes, webpack, and the use of factory functions and the module pattern.",
       releaseDate: "2023-08-04",
     },
     landingPage: {
-      summary: "Hello, this is a placeholder of the summary",
-      learnt: "however, this is a placeholder of what i learnt",
+      summary: "Showcases the ability to create a visually appealing and user-friendly interface that serves as the entry point to a website/service.",
+      learnt: "Introduction to CSS foundations, including inspecting HTML & CSS, block and inline styling, and flexbox.",
       releaseDate: "2023-06-18",
     },
     knightTravails: {
-      summary: "Quae ut temporibus corrupti error natus ullam ex deserunt, exercitationem sunt quos distinctio eos in nam assumenda nisi suscipit accusantium ab nostrum.",
-      learnt: "Quae ut temporibus corrupti error natus ullam ex deserunt, exercitationem sunt quos distinctio eos in nam assumenda nisi suscipit accusantium ab nostrum.",
+      summary: "An app that finds the shortest path for a knight to travel from point A to point B on a chessboard. The starting and ending locations are entirely choosable by the user.",
+      learnt: "Introduction to computer science, including recursion, time and space complexity, and the use of common data structures and algorithms such as hash maps, binary search trees, and linked lists.",
       releaseDate: "2023-10-27",
     },
     ticTacToe: {
-      summary: "Cum nobis minus, iusto ducimus odio magnam nesciunt quas accusamus maxime nam eius, explicabo et facere voluptas doloremque blanditiis laudantium, nihil non!",
-      learnt: "Cum nobis minus, iusto ducimus odio magnam nesciunt quas accusamus maxime nam eius, explicabo et facere voluptas doloremque blanditiis laudantium, nihil non!",
+      summary: "A web app that allows two players to compete in a classic game of Tic Tac Toe. The game is playable against an a.i. however it only does random moves.",
+      learnt: "Javascript best practices (organizing code) including objects and object contructors. To finish off with factory functions and the module pattern.",
       releaseDate: "2023-07-29",
     },
     todoList: {
-      summary: "Voluptates, minima totam. Non modi distinctio sunt. Sequi obcaecati ipsam, repellendus inventore repudiandae nisi asperiores necessitatibus consequuntur minus dicta optio voluptate rerum!",
-      learnt: "Voluptates, minima totam. Non modi distinctio sunt. Sequi obcaecati ipsam, repellendus inventore repudiandae nisi asperiores necessitatibus consequuntur minus dicta optio voluptate rerum!",
+      summary: "An app that allows users to manage their tasks effectively. It showcases the ability to create, read, and delete tasks, providing a practical tool for personal productivity.",
+      learnt: "Deepening of my understanding of javascript ES6 modules, webpack where i got introduced to JSON aswell as OOP principles.",
       releaseDate: "2023-08-14",
     },
     weatherApp: {

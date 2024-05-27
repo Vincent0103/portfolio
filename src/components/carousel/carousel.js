@@ -44,9 +44,8 @@ const Carousel = (imgSliderContainer) => {
       const isClickedLeft = clickedX < rect.width / 6;
 
       if (isClickedRight || isClickedLeft) {
-        const isRight = isClickedRight;
-        slideCarousel(isRight);
-        clickedSide.set((isRight) ? "right" : "left");
+        slideCarousel(isClickedRight);
+        clickedSide.set((isClickedRight) ? "right" : "left");
         projectDescription.handleProjectRelated(getDisplayedProjectName());
       }
     };
