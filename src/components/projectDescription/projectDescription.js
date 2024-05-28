@@ -40,18 +40,18 @@ const ProjectDescription = (...containers) => {
       releaseDate: "2023-08-14",
     },
     weatherApp: {
-      summary: "Esse sint doloribus nam molestias nulla recusandae tempore quibusdam porro voluptatum possimus beatae ex qui, vitae explicabo magnam eaque nobis. Consectetur, quod.",
-      learnt: "Esse sint doloribus nam molestias nulla recusandae tempore quibusdam porro voluptatum possimus beatae ex qui, vitae explicabo magnam eaque nobis. Consectetur, quod.",
+      summary: "A dynamic web application that provides real-time weather information from a location that the user input in.",
+      learnt: "Linting, including dynamic UI, form validation and a big part about asynchronous JavaScript and APIs.",
       releaseDate: "2023-10-15",
     },
     imageSlider: {
-      summary: "Totam consequuntur esse minus ipsum sit earum doloribus magnam quaerat distinctio voluptatum nobis at, animi commodi sint laboriosam, provident deserunt. Aliquam, placeat.",
-      learnt: "Totam consequuntur esse minus ipsum sit earum doloribus magnam quaerat distinctio voluptatum nobis at, animi commodi sint laboriosam, provident deserunt. Aliquam, placeat.",
+      summary: "An app that allows users to view a series of images in a sequential manner.",
+      learnt: "Deepening of my knowledge of JavaScript by making smart algorithms including web design where i took my time to make it look satisfying.",
       releaseDate: "2023-08-17",
     },
     adminDashboard: {
-      summary: "At dolorem enim, totam inventore fugiat voluptate, officiis dignissimos, tempora ipsam ex deleniti sequi distinctio harum delectus rem nostrum tempore quidem voluptates.",
-      learnt: "At dolorem enim, totam inventore fugiat voluptate, officiis dignissimos, tempora ipsam ex deleniti sequi distinctio harum delectus rem nostrum tempore quidem voluptates.",
+      summary: "An app designed to manage and visualize data effectively as an admin. It showcases a well-structured layout that can be adapted to popular applications.",
+      learnt: "Introduction to grid aswell as it's advanced properties like when to use flexbox over grid for layout design.",
       releaseDate: "2023-07-22",
     },
   };
