@@ -408,11 +408,51 @@ main > * {
   }
 
   .img-slider-container {
-    min-width: 100%;
+    width: 100%;
   }
 
   .project-date-container {
     align-self: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main > * {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: initial;
+  }
+
+  .animated-h2-container {
+    margin: 26.56px 0;
+  }
+
+  .animated-h2-container > .h2-container {
+    height: 40px;
+  }
+
+  .animated-h2-container > .underline {
+    top: 40px;
+    min-width: 98px;
+  }
+
+  .project-title-container .underline {
+    min-width: 130px;
+  }
+
+  .project-date-container > p {
+    font-size: .8rem;
   }
 }
 
