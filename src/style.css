@@ -375,35 +375,31 @@ main > * {
 
 @media screen and (max-width: 1620px) {
   .projects-section {
-    max-width: 1500px;
     width: auto;
+    max-width: 1500px;
   }
 }
 
 @media screen and (max-width: 1200px){
   h2 {
-    font-size: 3rem;
-  }
-
-  p {
-    font-size: initial;
+    font-size: 4rem;
   }
 
   .animated-h2-container {
-    margin: 39.84px 0;
+    margin: 53.1px 0;
   }
 
   .animated-h2-container > .h2-container {
-    height: 55px;
+    height: 70px;
   }
 
   .animated-h2-container > .underline {
-    top: 55px;
-    min-width: 145px;
+    top: 70px;
+    min-width: 190px;
   }
 
   .project-title-container .underline {
-    min-width: 193px;
+    min-width: 258px;
   }
 
   .current-project-container {
@@ -412,7 +408,7 @@ main > * {
   }
 
   .img-slider-container {
-    width: 100%;
+    min-width: 100%;
   }
 
   .project-date-container {
