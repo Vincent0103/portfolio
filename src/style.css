@@ -61,25 +61,6 @@ main {
 .banner-heading img {
   max-height: min(140vh, 1500px);
   user-select: none;
-
-  @media screen and (max-aspect-ratio: 17/10) {
-    margin-left: 10%;
-  }
-
-  @media screen and (max-aspect-ratio: 31/20) {
-    margin-left: 25%;
-  }
-
-  @media screen and (max-aspect-ratio: 7/5) {
-    margin-left: 40%;
-  }
-  @media screen and (max-aspect-ratio: 31/25) {
-    margin-left: 55%;
-  }
-
-  @media screen and (max-aspect-ratio: 28/25) {
-    max-width: 330vw;
-  }
 }
 
 main > * {
@@ -160,10 +141,6 @@ main > * {
 .projects-section {
   width: 1500px;
   margin-bottom: 180px;
-  @media screen and (max-width: 1620px) {
-    max-width: 1500px;
-    width: auto;
-  }
 }
 
 .project-title-container {
@@ -229,16 +206,12 @@ main > * {
   column-gap: 70px;
 }
 
+
 .img-slider-container {
   position: relative;
   grid-row: 1/2;
   width: 800px;
   height: calc(800px * var(--img-ratio));
-
-  @media screen and (max-width: 1620px) {
-    width: 49.4vw;
-    height: calc(49.4vw * var(--img-ratio));
-  }
 }
 
 .img-slider-container .sliding-img {
@@ -400,3 +373,55 @@ main > * {
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
 }
 
+@media screen and (max-width: 1200px){
+  .current-project-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .project-related-container {
+    grid-row: 3;
+  }
+}
+
+@media screen and (max-aspect-ratio: 17/10) {
+  .banner-heading img {
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-aspect-ratio: 31/20) {
+  .banner-heading img {
+    margin-left: 25%;
+  }
+}
+
+@media screen and (max-aspect-ratio: 7/5) {
+  .banner-heading img {
+    margin-left: 40%;
+  }
+}
+@media screen and (max-aspect-ratio: 31/25) {
+  .banner-heading img {
+    margin-left: 55%;
+  }
+}
+
+@media screen and (max-aspect-ratio: 28/25) {
+  .banner-heading img {
+    max-width: 330vw;
+  }
+}
+
+@media screen and (max-width: 1620px) {
+  .projects-section {
+    max-width: 1500px;
+    width: auto;
+  }
+
+  .img-slider-container {
+    width: 49.4vw;
+    height: calc(49.4vw * var(--img-ratio));
+  }
+}
