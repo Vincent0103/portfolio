@@ -18,7 +18,7 @@ const ProjectRelated = (arrayContainers) => {
     },
     restaurantPage: {
       summary: "A web app providing details about a fictional restaurant, featuring menu, location, and contact sections.",
-      learnt: "Deepening JavaScript ES6 Modules, classes, webpack. Learning of factory functions and the module pattern.",
+      learnt: "Deepening of JavaScript ES6 Modules, classes, webpack. Learning of factory functions and the module pattern.",
       releaseDate: "2023-08-04",
       preview: "https://vincent0103.github.io/restaurant-page/",
       code: "https://github.com/Vincent0103/restaurant-page/",
