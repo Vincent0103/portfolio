@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Indivisible';
+  src: url('./assets/fonts/Indivisible-SemiBold.woff2') format('woff2'),
+       url('./assets/fonts/Indivisible-SemiBold.woff') format('woff'),
+       url('./assets/fonts/Indivisible-SemiBold.eot') format('eot'),
+       url('./assets/fonts/Indivisible-SemiBold.ttf') format('ttf');
+}
+
 :root {
   --img-ratio: 0.504;
   --box-shadow-bgc: 53, 56, 92;
@@ -341,6 +349,34 @@ main > * {
 .project-related-container p {
   transition: opacity .2s;
   margin: 5px 0;
+}
+
+.project-related-container > .project-btns {
+  display: flex;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.project-btns > * {
+  background-color: #050505;
+  color: white;
+  font-family: "Indivisible";
+  border: 1px solid rgb(30, 30, 30);
+  box-sizing: border-box;
+  border-radius: .5rem;
+  font-size: 1.8rem;
+  padding: .75rem 1rem;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, .8);
+  text-decoration: none #D1D5DB solid;
+  text-decoration-thickness: auto;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color .1s;
+}
+
+.project-btns > *:hover {
+  background-color: #0f0f0f;
 }
 
 .hide {

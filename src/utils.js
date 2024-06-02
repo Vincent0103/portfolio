@@ -6,10 +6,14 @@ const toCamelCase = (string) => {
   }).join("");
 };
 
-const toTitle = (string) => string.split("-").map((word) => word[0].toUpperCase() + word.slice(1)).join(" ");
+const toTitle = (string) => {
+  if (typeof string !== "string") return null;
+  return string.split("-").map((word) => word[0].toUpperCase() + word.slice(1)).join(" ");
+}
 
 function throttle(func, delay) {
   let lastCall = 0;
+  if (typeof func !== "function" || typeof delay !== "number") return null;
   return function applyThrottle(...args) {
     const now = new Date().getTime();
     if (now - lastCall < delay) {
