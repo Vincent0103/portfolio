@@ -5,7 +5,7 @@ const ProjectDescription = (...containers) => {
 
   const projectsData = {
     battleship: {
-      summary: "A strategic battleship game against an A.I where you aim to sink the opponent's ships before they sink yours.",
+      summary: "A strategic battleship game played against an A.I where you aim to sink the opponent's ships before they sink yours.",
       learnt: "Deepening of JavaScript and A.I. Introduction to testing methodologies (unit testing and TDD).",
       releaseDate: "2024-02-17",
     },
