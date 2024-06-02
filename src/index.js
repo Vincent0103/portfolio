@@ -1,5 +1,5 @@
 import "./style.css";
-import ProjectDescription from "./components/projectDescription/projectDescription.js";
+import ProjectRelated from "./components/projectRelated/projectRelated.js";
 import HeadingAnimation from "./components/animations/heading.js";
 import ProjectTitleAnimation from "./components/animations/project-title.js";
 import Carousel from "./components/carousel/carousel.js";
@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   carousel.initialize();
 
-  const projectDescription = ProjectDescription(
+  const projectRelated = ProjectRelated(
     projectSummaryContainer,
     projectLearntContainer,
     projectDateContainer,
@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
     displayedProjectName,
   )
     .then(() => {
-      carousel.handleCarouselClick(projectDescription);
+      carousel.handleCarouselClick(projectRelated);
 
       let pastDisplayedProjectName = null;
       let clickedSide;

@@ -1,6 +1,6 @@
 import toCamelCase from "../../utils.js";
 
-const ProjectDescription = (...containers) => {
+const ProjectRelated = (...containers) => {
   const sectionDescriptionContainers = [...containers];
 
   const projectsData = {
@@ -79,4 +79,4 @@ const ProjectDescription = (...containers) => {
   return { handleProjectRelated };
 };
 
-export default ProjectDescription;
+export default ProjectRelated;
