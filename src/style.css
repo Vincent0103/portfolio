@@ -375,8 +375,19 @@ main > * {
   transition: background-color .1s;
 }
 
+.project-btns > .preview-btn {
+  background-color: #dab359;
+  color: black;
+  border: 1px solid rgb(149, 123, 61);
+  box-shadow: 0 1px 2px 0 rgba(218, 179, 89, .8);
+}
+
 .project-btns > *:hover {
   background-color: #0f0f0f;
+}
+
+.project-btns > .preview-btn:hover {
+  background-color: #f1c661;
 }
 
 .hide {
