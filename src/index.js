@@ -55,13 +55,4 @@ window.addEventListener("DOMContentLoaded", () => {
         }
       });
     });
-
-  window.addEventListener("resize", () => updateElementHeight(imgSliderContainer));
-  updateElementHeight(imgSliderContainer);
 });
-
-const updateElementHeight = (imgSliderContainer) => {
-  const width = window.getComputedStyle(imgSliderContainer).getPropertyValue("width");
-  imgSliderContainer.style.height = `calc(${width} * var(--img-ratio))`;
-  console.log("updating");
-}

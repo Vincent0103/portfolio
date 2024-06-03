@@ -217,19 +217,23 @@ main > * {
 
 .img-slider-container {
   position: relative;
+  min-width: 600px;
   grid-row: 1/2;
-  width: 800px;
-  height: calc(800px * var(--img-ratio));
 }
 
 .img-slider-container .sliding-img {
   position: absolute;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 100%;
   transition: transform .2s;
   user-select: none;
+}
+
+.img-slider-container .sliding-img.carousel-center {
+  position: relative;
 }
 
 .img-slider-container .sliding-img::before {
@@ -455,7 +459,7 @@ main > * {
   }
 
   .img-slider-container {
-    width: 100%;
+    min-width: auto;
   }
 
   .project-date-container {
