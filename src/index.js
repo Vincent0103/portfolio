@@ -40,7 +40,8 @@ window.addEventListener("DOMContentLoaded", () => {
     displayedProjectName,
   )
     .then(() => {
-      carousel.handleCarouselClick(projectRelated);
+      carousel.handleCarouselClick();
+      carousel.handleCarouselHover();
 
       const slide = () => {
         slidingSide = carousel.getSlidingSide();
@@ -62,7 +63,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       imgSliderContainer.addEventListener("click", () => {
         clearInterval(intervalId);
-        slide();
+        if (carousel.getHasClickedSide()) slide();
         intervalId = setInterval(slide, 7000);
       });
     });

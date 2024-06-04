@@ -30,31 +30,69 @@ const Carousel = (imgSliderContainer) => {
     carouselDOM.moveCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
-  const handleCarouselClick = () => {
-    let rect = imgSliderContainer.getBoundingClientRect();
+  let rect
+  let rightRectArea
+  let leftRectArea;
 
-    window.addEventListener("resize", () => {
-      rect = imgSliderContainer.getBoundingClientRect();
-    });
+  const updateBoundingRect = (element) => {
+    rect = element.getBoundingClientRect();
+    rightRectArea = rect.width * (5 / 6);
+    leftRectArea = rect.width / 6;
+  }
+
+  let hasClickedOnSides = false;
+
+  const handleCarouselClick = () => {
+    updateBoundingRect(imgSliderContainer);
+
+    window.addEventListener("resize", () => updateBoundingRect(imgSliderContainer));
 
     const onClick = (e) => {
+      hasClickedOnSides = false;
       const clickedX = e.clientX - rect.left;
 
-      const isClickedRight = clickedX > rect.width * (5 / 6);
-      const isClickedLeft = clickedX < rect.width / 6;
+      const isClickedRight = clickedX > rightRectArea;
+      const isClickedLeft = clickedX < leftRectArea;
 
-      if (isClickedRight || isClickedLeft) slidingSide.set((isClickedRight) ? "left" : "right");
+      if (isClickedRight || isClickedLeft) {
+        slidingSide.set((isClickedRight) ? "left" : "right");
+        hasClickedOnSides = true;
+      }
     };
 
     imgSliderContainer.addEventListener("click", throttle(onClick, 100));
   };
 
+  const handleCarouselHover = () => {
+    const [leftArrowSvg, rightArrowSvg] = imgSliderContainer.querySelectorAll("svg#left-arrow, svg#right-arrow");
+    imgSliderContainer.addEventListener("mousemove", (e) => {
+      const mousePositionX = e.clientX - rect.left;
+
+      const isHoveringRight = mousePositionX > rightRectArea;
+      const isHoveringLeft = mousePositionX < leftRectArea;
+
+      if (isHoveringLeft) leftArrowSvg.classList.add("grow");
+      else if (isHoveringRight) rightArrowSvg.classList.add("grow");
+      else {
+        leftArrowSvg.classList.remove("grow");
+        rightArrowSvg.classList.remove("grow");
+      }
+    });
+
+    imgSliderContainer.addEventListener("mouseleave", () => {
+      leftArrowSvg.classList.remove("grow");
+      rightArrowSvg.classList.remove("grow");
+    });
+  }
+
   return {
     initialize,
     slide,
     handleCarouselClick,
+    handleCarouselHover,
     getDisplayedProjectName,
     getSlidingSide: slidingSide.get,
+    getHasClickedSide: () => hasClickedOnSides,
   };
 };
 
