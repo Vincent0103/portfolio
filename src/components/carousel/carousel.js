@@ -30,7 +30,7 @@ const Carousel = (imgSliderContainer) => {
     carouselDOM.moveCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
-  const handleCarouselClick = (projectRelated) => {
+  const handleCarouselClick = () => {
     let rect = imgSliderContainer.getBoundingClientRect();
 
     window.addEventListener("resize", () => {
@@ -43,11 +43,7 @@ const Carousel = (imgSliderContainer) => {
       const isClickedRight = clickedX > rect.width * (5 / 6);
       const isClickedLeft = clickedX < rect.width / 6;
 
-      if (isClickedRight || isClickedLeft) {
-        slide(isClickedRight);
-        slidingSide.set((isClickedRight) ? "left" : "right");
-        projectRelated.update(getDisplayedProjectName());
-      }
+      if (isClickedRight || isClickedLeft) slidingSide.set((isClickedRight) ? "left" : "right");
     };
 
     imgSliderContainer.addEventListener("click", throttle(onClick, 100));

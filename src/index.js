@@ -42,7 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(() => {
       carousel.handleCarouselClick(projectRelated);
 
-      const autoSlide = () => {
+      const slide = () => {
         slidingSide = carousel.getSlidingSide();
 
         carousel.slide((slidingSide === "left"));
@@ -58,16 +58,12 @@ window.addEventListener("DOMContentLoaded", () => {
       let slidingSide;
       let pastDisplayedProjectName = null;
 
-      let intervalId = setInterval(autoSlide, 10000);
+      let intervalId = setInterval(slide, 7000);
 
       imgSliderContainer.addEventListener("click", () => {
         clearInterval(intervalId);
-        displayedProjectName = carousel.getDisplayedProjectName();
-        slidingSide = carousel.getSlidingSide();
-
-        projectTitleAnimation.update(pastDisplayedProjectName, displayedProjectName, (slidingSide === "left"));
-        pastDisplayedProjectName = displayedProjectName;
-        intervalId = setInterval(autoSlide, 10000);
+        slide();
+        intervalId = setInterval(slide, 7000);
       });
     });
 });
