@@ -53,9 +53,10 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
 
   const projectTitles = [...projectTitleContainer.querySelectorAll(".project-title")];
 
-  const update = (displayedProjectName, isTransitioningToLeft) => {
+  const update = (pastDisplayedProjectName, displayedProjectName, isTransitioningToLeft) => {
+    if (pastDisplayedProjectName === displayedProjectName) return;
+    
     const textToDisplay = toTitle(displayedProjectName);
-
     transitionProjectTitle(projectTitles, isTransitioningToLeft, textToDisplay);
   };
 

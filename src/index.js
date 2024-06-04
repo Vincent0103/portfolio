@@ -42,17 +42,32 @@ window.addEventListener("DOMContentLoaded", () => {
     .then(() => {
       carousel.handleCarouselClick(projectRelated);
 
+      const autoSlide = () => {
+        slidingSide = carousel.getSlidingSide();
+
+        carousel.slide((slidingSide === "left"));
+
+        displayedProjectName = carousel.getDisplayedProjectName();
+
+        projectRelated.update(displayedProjectName);
+        projectTitleAnimation.update(pastDisplayedProjectName, displayedProjectName, (slidingSide === "left"));
+
+        pastDisplayedProjectName = displayedProjectName;
+      }
+
+      let slidingSide;
       let pastDisplayedProjectName = null;
-      let clickedSide;
+
+      let intervalId = setInterval(autoSlide, 10000);
 
       imgSliderContainer.addEventListener("click", () => {
+        clearInterval(intervalId);
         displayedProjectName = carousel.getDisplayedProjectName();
-        clickedSide = carousel.getClickedSide();
+        slidingSide = carousel.getSlidingSide();
 
-        if (pastDisplayedProjectName !== displayedProjectName) {
-          pastDisplayedProjectName = displayedProjectName;
-          projectTitleAnimation.update(displayedProjectName, (clickedSide === "right"));
-        }
+        projectTitleAnimation.update(pastDisplayedProjectName, displayedProjectName, (slidingSide === "left"));
+        pastDisplayedProjectName = displayedProjectName;
+        intervalId = setInterval(autoSlide, 10000);
       });
     });
 });

@@ -5,8 +5,8 @@ function CarouselDOM(slidingImgsArg) {
     let displayedProject = null;
 
     return {
-      setDisplayedProject: (name) => { displayedProject = name; },
-      getDisplayedProject: () => displayedProject,
+      set: (name) => { displayedProject = name; },
+      get: () => displayedProject,
     };
   })();
 
@@ -19,7 +19,7 @@ function CarouselDOM(slidingImgsArg) {
         container.classList.remove(BOX_SHADOW_VISIBLE);
       } else {
         container.classList.add(BOX_SHADOW_VISIBLE);
-        projectDisplayName.setDisplayedProject(container.id);
+        projectDisplayName.set(container.id);
       }
     }
   };
@@ -61,7 +61,7 @@ function CarouselDOM(slidingImgsArg) {
   return {
     initializeCarousel,
     moveCarousel,
-    getDisplayedProjectName: projectDisplayName.getDisplayedProject,
+    getDisplayedProjectName: projectDisplayName.get,
   };
 }
 

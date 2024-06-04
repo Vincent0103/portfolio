@@ -74,7 +74,7 @@ const ProjectRelated = (arrayContainers) => {
     },
   };
 
-  const handleProjectRelated = (displayedProjectName) => {
+  const update = (displayedProjectName) => {
     const containers = [...arrayContainers];
     const mapped = {
       0: "summary",
@@ -106,7 +106,7 @@ const ProjectRelated = (arrayContainers) => {
     });
   };
 
-  return { handleProjectRelated };
+  return { update };
 };
 
 export default ProjectRelated;

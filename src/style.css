@@ -73,8 +73,7 @@ main {
 
 main > * {
   max-width: 1500px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: auto 50px;
 }
 
 .animated-h2-container {
@@ -146,11 +145,6 @@ main > * {
   }
 }
 
-.projects-section {
-  width: 1500px;
-  margin-bottom: 180px;
-}
-
 .project-title-container {
   display: inline-block;
   position: relative;
@@ -209,7 +203,7 @@ main > * {
 .current-project-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr auto;
   justify-items: start;
   column-gap: 70px;
 }
@@ -420,16 +414,9 @@ main > * {
 
 .arrows-container > svg {
   fill: rgba(0, 0, 0, .7);
-  max-width: 10%;
-  max-height: 10%;
+  max-width: 13%;
+  max-height: 13%;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
-}
-
-@media screen and (max-width: 1620px) {
-  .projects-section {
-    width: auto;
-    max-width: 1500px;
-  }
 }
 
 @media screen and (max-width: 1200px){
