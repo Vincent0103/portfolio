@@ -444,12 +444,43 @@ main > * {
 
 .contact-section > h1 {
   text-align: center;
+  animation: growing-up-and-down 15s ease-in-out infinite;
 }
 
 .contact-section > .email-glow-container {
   position: absolute;
   top: 0;
   opacity: .7;
+}
+
+@keyframes growing-up-and-down {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  12.5% {
+    transform: scale(.95) rotate(1deg);
+  }
+  25% {
+    transform: scale(1) rotate(2deg);
+  }
+  37.5% {
+    transform: scale(.95) rotate(1deg);
+  }
+  50% {
+    transform: scale(1) rotate(0);
+  }
+  62.5% {
+    transform: scale(.95) rotate(-1deg);
+  }
+  75% {
+    transform: scale(1) rotate(-2deg);
+  }
+  87.5% {
+    transform: scale(.95) rotate(-1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
 }
 
 @media screen and (max-width: 1200px){
