@@ -20,6 +20,15 @@ const Carousel = (imgSliderContainer) => {
     };
   })();
 
+  const hasClickedSide = (() => {
+    let temp = false;
+
+    return {
+      set: (value) => { temp = value; },
+      get: () => temp,
+    }
+  })();
+
   const initialize = () => {
     carouselLogic.initializeCarouselProjectsClasses(slidingImgs.length);
     carouselDOM.initializeCarousel(carouselLogic.getProjectsCarouselClasses());
@@ -40,15 +49,13 @@ const Carousel = (imgSliderContainer) => {
     leftRectArea = rect.width / 6;
   }
 
-  let hasClickedOnSides = false;
-
   const handleCarouselClick = () => {
     updateBoundingRect(imgSliderContainer);
 
     window.addEventListener("resize", () => updateBoundingRect(imgSliderContainer));
 
     const onClick = (e) => {
-      hasClickedOnSides = false;
+      hasClickedSide.set(false);
       const clickedX = e.clientX - rect.left;
 
       const isClickedRight = clickedX > rightRectArea;
@@ -56,7 +63,7 @@ const Carousel = (imgSliderContainer) => {
 
       if (isClickedRight || isClickedLeft) {
         slidingSide.set((isClickedRight) ? "left" : "right");
-        hasClickedOnSides = true;
+        hasClickedSide.set(true);
       }
     };
 
@@ -92,7 +99,7 @@ const Carousel = (imgSliderContainer) => {
     handleCarouselHover,
     getDisplayedProjectName,
     getSlidingSide: slidingSide.get,
-    getHasClickedSide: () => hasClickedOnSides,
+    getHasClickedSide: hasClickedSide.get,
   };
 };
 
