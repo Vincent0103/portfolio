@@ -1,5 +1,5 @@
 import "./style.css";
-import ProjectRelated from "./components/projectRelated/projectRelated.js";
+import ProjectRelated from "./components/projectRelated/project-related.js";
 import HeadingAnimation from "./components/animations/heading.js";
 import ProjectTitleAnimation from "./components/animations/project-title.js";
 import Carousel from "./components/carousel/carousel.js";
@@ -43,6 +43,9 @@ window.addEventListener("DOMContentLoaded", () => {
       carousel.handleCarouselClick();
       carousel.handleCarouselHover();
 
+      let slidingSide;
+      let pastDisplayedProjectName = null;
+
       const slide = () => {
         slidingSide = carousel.getSlidingSide();
 
@@ -54,10 +57,8 @@ window.addEventListener("DOMContentLoaded", () => {
         projectTitleAnimation.update(pastDisplayedProjectName, displayedProjectName, (slidingSide === "left"));
 
         pastDisplayedProjectName = displayedProjectName;
-      }
+      };
 
-      let slidingSide;
-      let pastDisplayedProjectName = null;
 
       let intervalId = setInterval(slide, 7000);
 

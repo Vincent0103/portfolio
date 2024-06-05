@@ -1,16 +1,7 @@
 import { toTitle } from "../../utils.js";
+import ProjectTitleLogic from "./project-title-logic.js";
 
 const ProjectTitleAnimation = (projectTitleContainer) => {
-  const getNextIndex = (toLeft, currentIndex, array) => {
-    let nextIndex;
-    if (toLeft) {
-      nextIndex = (currentIndex - 1 + array.length) % array.length;
-    } else {
-      nextIndex = (currentIndex + 1) % array.length;
-    }
-    return nextIndex;
-  };
-
   const updateTransitioningSide = (toLeft, targetTitle) => {
     const addingClass = (toLeft) ? "moving-left" : "moving-right";
     const removingClass = (toLeft) ? "moving-right" : "moving-left";
@@ -21,20 +12,15 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
     }
   };
 
-  const extractPositionClass = (targetTitle) => {
-    const regex = /\s((left)|(center)|(right))/;
-    const match = targetTitle.className.match(regex);
-    return (match) ? match[0].trimStart() : "";
-  };
-
   const transitionProjectTitle = (projectTitles, toLeft, textToDisplay) => {
     const PROJECT_TITLE_CLASSES = ["left", "center", "right"];
     const newClasses = [];
+    const projectTitleLogic = ProjectTitleLogic();
 
     projectTitles.forEach((title) => {
       const targetTitle = title;
 
-      const positionClass = extractPositionClass(targetTitle);
+      const positionClass = projectTitleLogic.extractPositionClass(targetTitle);
       targetTitle.classList.remove(positionClass);
 
       updateTransitioningSide(toLeft, targetTitle);
@@ -43,7 +29,8 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
       else if (positionClass === "left") targetTitle.textContent = textToDisplay;
 
       const currentIndex = PROJECT_TITLE_CLASSES.indexOf(positionClass);
-      const nextIndex = getNextIndex(toLeft, currentIndex, PROJECT_TITLE_CLASSES);
+      const nextIndex = projectTitleLogic.getNextIndex(toLeft, currentIndex, PROJECT_TITLE_CLASSES);
+
       newClasses.push(PROJECT_TITLE_CLASSES[nextIndex]);
     });
 
@@ -55,7 +42,7 @@ const ProjectTitleAnimation = (projectTitleContainer) => {
 
   const update = (pastDisplayedProjectName, displayedProjectName, isTransitioningToLeft) => {
     if (pastDisplayedProjectName === displayedProjectName) return;
-    
+
     const textToDisplay = toTitle(displayedProjectName);
     transitionProjectTitle(projectTitles, isTransitioningToLeft, textToDisplay);
   };
