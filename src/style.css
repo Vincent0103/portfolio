@@ -203,7 +203,7 @@ main > * {
 .current-project-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr auto;
+  grid-template-rows: repeat(2, 1fr);
   justify-items: start;
   column-gap: 70px;
 }
@@ -212,6 +212,7 @@ main > * {
 .img-slider-container {
   position: relative;
   min-width: 600px;
+  height: 100%;
   grid-row: 1/2;
 }
 
