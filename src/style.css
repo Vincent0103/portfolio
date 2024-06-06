@@ -28,11 +28,11 @@ html {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 5rem;
 }
 
 h2 {
-  font-size: 5rem;
+  font-size: 4.5rem;
 }
 
 h3 {
@@ -43,6 +43,7 @@ h3 {
 p {
   font-size: 1.5rem;
   color: #9e9e9e;
+  font-weight: 300;
 }
 
 hr {
@@ -68,7 +69,7 @@ main {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
-  margin-top: 0;
+  margin: 0;
 }
 
 .banner-heading img {
@@ -78,13 +79,20 @@ main {
 
 main > * {
   max-width: 1500px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin: 30px 50px;
+}
+
+main > .about-section {
+  margin-top: 0;
 }
 
 .animated-h2-container {
   position: relative;
-  margin: 66.4px 0;
+  margin: 60px 0;
+}
+
+.about-section > .animated-h2-container {
+  margin-top: 0;
 }
 
 .animated-h2-container > .h2-container {
@@ -96,59 +104,29 @@ main > * {
   margin: 0;
 }
 
-.animated-h2-container > .underline {
-  position: absolute;
-  top: 90px;
-  min-width: 240px;
-  border-radius: 50%;
-  height: .15rem;
-  background-color: #fff;
-  opacity: .1;
-}
-
-.animated-h2-container > .underline-shadow {
-  filter: blur(10px);
-  top: 100px;
-  opacity: .1;
-}
-
 .spawn-heading-forward {transform: translateY(0);}
 
 .spawn-heading-idle {transform: translateY(100%);}
 
 .spawn-heading {animation: spawn-heading 1s;}
 
-.spawn-underline {animation: spawn-underline 1s forwards;}
-
 @keyframes spawn-heading {
   0% {
-    transform: translateY(100%);
+    transform: translateY(20%);
+    filter: blur(10px);
     opacity: 0;
-  }
+    }
 
-  80% {
+    80% {
     transform: translateY(-10%);
+    filter: blur(0);
     opacity: 1;
-  }
+    }
 
-  100% {
+    100% {
     transform: translateY(0);
   }
 
-}
-
-@keyframes spawn-underline {
-  0% {
-    opacity: .1;
-  }
-
-  80% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
 }
 
 .project-title-container {
@@ -156,10 +134,6 @@ main > * {
   position: relative;
   overflow: hidden;
   width: 100%;
-}
-
-.project-title-container .underline {
-  min-width: 320px;
 }
 
 .project-title {
@@ -201,7 +175,7 @@ main > * {
 }
 
 .projects-first-title.minimize-up {
-  transform: scale(.3) translate(-115%, -170%);
+  transform: scale(.3) translate(-115%, -180%);
   color: #676767;
   transition: transform .2s cubic-bezier(.86,-0.01,.62,1.09), color .2s cubic-bezier(.86,-0.01,.62,1.09);
 }
@@ -434,23 +408,53 @@ main > * {
 .contact-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  position: relative;
   overflow: hidden;
   width: 100%;
   height: 1000px;
-  margin: 50px 0;
 }
 
-.contact-section > h1 {
-  text-align: center;
-  animation: growing-up-and-down 15s ease-in-out infinite;
+.hr-and-glow-container {
+  position: relative;
+  width: 100%;
 }
 
-.contact-section > .email-glow-container {
+.contact-section .email-glow-container {
   position: absolute;
   top: 0;
   opacity: .7;
+  z-index: -1;
+}
+
+.contact-section > .contact-related-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-related-container > h1 {
+  text-align: center;
+  animation: growing-up-and-down 15s ease-in-out infinite;
+}
+.contact-related-container > .links-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 80%;
+}
+
+.links-container > .link-container {
+  display: flex;
+  gap: 20px;
+}
+
+.contact-related-container > .links-container svg {
+  fill: white;
+  max-width: 48px;
+  min-height: 48px;
+}
+
+.links-container > .link-container#instagram {
+  justify-self: end;
 }
 
 @keyframes growing-up-and-down {
@@ -496,15 +500,6 @@ main > * {
     height: 70px;
   }
 
-  .animated-h2-container > .underline {
-    top: 70px;
-    min-width: 190px;
-  }
-
-  .project-title-container .underline {
-    min-width: 258px;
-  }
-
   .current-project-container {
     display: flex;
     flex-direction: column;
@@ -548,15 +543,6 @@ main > * {
 
   .animated-h2-container > .h2-container {
     height: 40px;
-  }
-
-  .animated-h2-container > .underline {
-    top: 40px;
-    min-width: 98px;
-  }
-
-  .project-title-container .underline {
-    min-width: 130px;
   }
 
   .project-date-container > p {

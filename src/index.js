@@ -26,8 +26,9 @@ window.addEventListener("DOMContentLoaded", () => {
     projectCodeBtn
   ]);
 
-  const [aboutH2Container, projectsH2Container] = document.querySelectorAll(".animated-h2-container");
+  const [aboutH2Container, projectsH2Container, contactH2Container] = document.querySelectorAll(".animated-h2-container");
   HeadingAnimation(aboutH2Container, false).add();
+  HeadingAnimation(contactH2Container, false).add();
   const projectsHeadingAnimation = HeadingAnimation(projectsH2Container, true);
   projectsHeadingAnimation.add();
 
