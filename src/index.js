@@ -1,4 +1,5 @@
 import "./style.css";
+import AboutRelated from "./components/aboutRelated/about-related.js";
 import ProjectRelated from "./components/projectRelated/project-related.js";
 import HeadingAnimation from "./components/animations/heading.js";
 import ProjectTitleAnimation from "./components/animations/project-title.js";
@@ -6,6 +7,7 @@ import Carousel from "./components/carousel/carousel.js";
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  const aboutSection = document.querySelector(".about-section");
   const projectsSection = document.querySelector(".projects-section");
   const imgSliderContainer = projectsSection.querySelector(".img-slider-container");
   const projectSummaryContainer = projectsSection.querySelector(".project-summary-container");
@@ -17,6 +19,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const carousel = Carousel(imgSliderContainer);
 
   carousel.initialize();
+
+  const aboutRelated = AboutRelated(aboutSection);
+  aboutRelated.handleMoreBtnClick();
 
   const projectRelated = ProjectRelated([
     projectSummaryContainer,
