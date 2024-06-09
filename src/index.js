@@ -1,6 +1,7 @@
 import "./style.css";
 import AboutRelated from "./components/aboutRelated/about-related.js";
 import ProjectRelated from "./components/projectRelated/project-related.js";
+import ContactRelated from "./components/contactRelated/contact-related.js";
 import HeadingAnimation from "./components/animations/heading.js";
 import ProjectTitleAnimation from "./components/animations/project-title.js";
 import Carousel from "./components/carousel/carousel.js";
@@ -9,6 +10,7 @@ import Carousel from "./components/carousel/carousel.js";
 window.addEventListener("DOMContentLoaded", () => {
   const aboutSection = document.querySelector(".about-section");
   const projectsSection = document.querySelector(".projects-section");
+  const contactSection = document.querySelector(".contact-section");
   const imgSliderContainer = projectsSection.querySelector(".img-slider-container");
   const projectSummaryContainer = projectsSection.querySelector(".project-summary-container");
   const projectLearntContainer = projectsSection.querySelector(".project-learnt-container");
@@ -30,6 +32,9 @@ window.addEventListener("DOMContentLoaded", () => {
     projectPreviewBtn,
     projectCodeBtn
   ]);
+
+  const contactRelated = ContactRelated(contactSection);
+  contactRelated.handleEmailClick();
 
   const [aboutH2Container, projectsH2Container, contactH2Container] = document.querySelectorAll(".animated-h2-container");
   HeadingAnimation(aboutH2Container, false).add();

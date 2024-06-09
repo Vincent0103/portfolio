@@ -28,7 +28,7 @@ const AboutRelated = (aboutSectionElement) => {
     a.setAttribute("href", "https://www.theodinproject.com/");
     a.textContent = "The Odin Project";
     p.appendChild(a);
-
+    
     const remainingText = document.createTextNode(" course (which made this portfolio possible ❤︎).");
     p.appendChild(remainingText);
 
