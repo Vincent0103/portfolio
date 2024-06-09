@@ -488,7 +488,6 @@ main > .contact-section {
   width: 100%;
   padding-left: 50px;
   padding-right: 50px;
-  box-sizing: border-box;
 }
 
 .hr-and-glow-container {
@@ -576,6 +575,12 @@ main > .contact-section {
   }
   100% {
     transform: scale(1) rotate(0);
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  main > .contact-section {
+    box-sizing: border-box;
   }
 }
 
