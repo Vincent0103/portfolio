@@ -4,6 +4,14 @@ const AboutRelated = (aboutSectionElement) => {
   const transitionHeightOnAppend = (paragraphsContainer) => {
     const container = paragraphsContainer;
     const newHeight = container.scrollHeight;
+    const hasLowCPU = navigator?.hardwareConcurrency < 4;
+
+    if (hasLowCPU) {
+      container.style.transition = "none";
+      container.style.maxHeight = "none";
+      return;
+    }
+
     container.style.maxHeight = `${newHeight}px`;
 
     container.addEventListener("transitionend", () => {
@@ -30,19 +38,23 @@ const AboutRelated = (aboutSectionElement) => {
     paragraphsContainer.append(p, p2);
   };
 
+  const handleParagraphsContainerClick = (e, paragraphsContainer) => {
+    const { bottom } = paragraphsContainer.getBoundingClientRect();
+    const clickY = e.clientY;
+    const currentClickPosition = bottom - clickY;
+    const MORE_BTN_POSITION = 120;
+
+    if (currentClickPosition <= MORE_BTN_POSITION) {
+      paragraphsContainer.classList.remove("before", "after");
+      appendRemainingText(paragraphsContainer);
+      transitionHeightOnAppend(paragraphsContainer);
+      paragraphsContainer.removeEventListener("click", handleParagraphsContainerClick);
+    }
+  };
+
   const handleMoreBtnClick = () => {
     const paragraphsContainer = aboutSection.querySelector(".paragraphs-container");
-    paragraphsContainer.addEventListener("click", (e) => {
-      const rect = paragraphsContainer.getBoundingClientRect();
-      const clickY = e.clientY;
-      const currentClickPosition = rect.bottom - clickY;
-      const MORE_BTN_POSITION = 120;
-      if (currentClickPosition <= MORE_BTN_POSITION) {
-        paragraphsContainer.classList.remove("before", "after");
-        appendRemainingText(paragraphsContainer);
-        transitionHeightOnAppend(paragraphsContainer);
-      }
-    });
+    paragraphsContainer.addEventListener("click", (e) => handleParagraphsContainerClick(e, paragraphsContainer));
   };
 
   return { handleMoreBtnClick };

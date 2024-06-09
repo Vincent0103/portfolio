@@ -132,7 +132,7 @@ main > .about-section {
   color: #d2d2d2;
   position: absolute;
   top: 90%;
-  left: 50%;
+  left: 45%;
   background-image: url('./assets/icons/down.svg');
   background-repeat: no-repeat;
   background-position: 65px 6px;
@@ -161,7 +161,7 @@ main > .about-section {
   object-fit: cover;
   max-width: 100%;
   min-height: 300px;
-  max-height: 450px;
+  max-height: 400px;
 }
 
 .animated-h2-container {
@@ -419,7 +419,7 @@ main > .about-section {
 .project-btns > * {
   background-color: #050505;
   color: white;
-  font-family: "Indivisible";
+  font-family: "Indivisible", "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border: 1px solid rgb(30, 30, 30);
   box-sizing: border-box;
   border-radius: .5rem;
@@ -484,24 +484,29 @@ main > .about-section {
   transform: scale(1.3);
 }
 
-.contact-section {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+main > .contact-section {
   width: 100%;
-  height: 1000px;
+  padding-left: 50px;
+  padding-right: 50px;
+  box-sizing: border-box;
 }
 
 .hr-and-glow-container {
   position: relative;
-  width: 100%;
 }
 
 .contact-section .email-glow-container {
   position: absolute;
   top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   opacity: .7;
   z-index: -1;
+}
+
+.contact-section .email-glow-container img {
+  width: 100%;
 }
 
 .contact-section > .contact-related-container {
@@ -513,7 +518,7 @@ main > .about-section {
 .contact-related-container > h1 {
   text-align: center;
   margin: 50px 0;
-  font-family: "Indivisible";
+  font-family: "Indivisible", "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background: linear-gradient(to bottom, #fdf8c6, #c78d3e);
   -webkit-background-clip: text;
   color: transparent;
@@ -529,6 +534,8 @@ main > .about-section {
 
 .links-container > .link-container {
   display: flex;
+  /* justify-content: center; */
+  align-items: center;
   gap: 20px;
 }
 
@@ -573,6 +580,10 @@ main > .about-section {
 }
 
 @media screen and (max-width: 1200px){
+  h1 {
+    font-size: 4.5rem;
+  }
+
   h2 {
     font-size: 4rem;
   }
@@ -586,7 +597,7 @@ main > .about-section {
   }
 
   .animated-h2-container {
-    margin: 53.1px 0;
+    margin: 60px 0;
   }
 
   .animated-h2-container > .h2-container {
@@ -607,10 +618,30 @@ main > .about-section {
   }
 }
 
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   main > * {
     margin-left: 25px;
     margin-right: 25px;
+  }
+
+  main > .contact-section {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .contact-related-container > h1 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 2rem;
   }
 
   h2 {
@@ -630,6 +661,12 @@ main > .about-section {
     font-size: initial;
   }
 
+  .about-section .paragraphs-container.after::after {
+    font-size: 1.2rem;
+    background-position: 50px 2px;
+    left: 40%;
+  }
+
   .animated-h2-container {
     margin: 26.56px 0;
   }
@@ -638,8 +675,24 @@ main > .about-section {
     height: 40px;
   }
 
+  .project-title {
+    margin: 26.56px 0;
+  }
+
   .project-date-container > p {
     font-size: .8rem;
+  }
+
+  .contact-related-container > .links-container > .link-container {
+    gap: 10px;
+  }
+
+  .contact-related-container > .links-container p {
+    font-size: .7rem;
+  }
+  .contact-related-container > .links-container svg {
+    max-width: 24px;
+    max-height: 24px;
   }
 }
 
