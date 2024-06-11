@@ -682,6 +682,10 @@ footer > p {
     font-size: 4rem;
   }
 
+  nav > .links-container {
+    gap: 60px;
+  }
+
   .about-section .paragraphs-container {
     min-width: auto;
   }
@@ -710,11 +714,46 @@ footer > p {
   .project-date-container {
     align-self: center;
   }
+
+  .contact-related-container > .links-container > .link-container {
+    gap: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .contact-related-container > .links-container > .link-container > p {
+    font-size: 1.2rem;
+  }
+
+  .copied-pop-up-container {
+    width: 75px;
+    height: 35px;
+  }
+
+  .copied-pop-up-container > p {
+    font-size: .9rem;
+  }
 }
 
 @media screen and (max-width: 800px) {
   h1 {
     font-size: 3.5rem;
+  }
+
+  main > nav {
+    height: 60px;
+  }
+
+  nav > h3 {
+    font-size: 1.5rem;
+  }
+
+  nav > .links-container {
+    gap: 40px;
+  }
+
+  nav > .links-container h3 {
+    font-size: 1rem;
   }
 }
 
@@ -722,6 +761,10 @@ footer > p {
   main > * {
     margin-left: 25px;
     margin-right: 25px;
+  }
+
+  main > nav {
+    display: none;
   }
 
   main > .contact-section {
@@ -778,7 +821,9 @@ footer > p {
   }
 
   .contact-related-container > .links-container > .link-container {
-    gap: 10px;
+    gap: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .contact-related-container > .links-container p {
@@ -787,6 +832,24 @@ footer > p {
   .contact-related-container > .links-container svg {
     max-width: 24px;
     max-height: 24px;
+  }
+
+  .copied-pop-up-container {
+    width: 55px;
+    height: 25px;
+  }
+
+  .copied-pop-up-container > p {
+    font-size: .7rem;
+  }
+
+  footer {
+    margin-top: 10px;
+    height: 40px;
+  }
+
+  footer > p {
+    font-size: .8rem;
   }
 }
 

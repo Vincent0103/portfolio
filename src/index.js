@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const contactRelated = ContactRelated(contactSection);
   contactRelated.handleContactClick();
 
-  const navbar = Navbar(navbarContainer, aboutRelated, projectRelated, contactRelated);
+  const navbar = Navbar(navbarContainer);
   navbar.handleLinkClick();
 
   const [aboutH2Container, projectsH2Container, contactH2Container] = document.querySelectorAll(".animated-h2-container");
