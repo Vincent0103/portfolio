@@ -535,9 +535,16 @@ main > .contact-section {
 
 .links-container > .link-container {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
+  width: min-content;
+  cursor: pointer;
+  padding-left: 50px;
+  padding-right: 50px;
   gap: 20px;
+}
+
+.links-container a {
+  text-decoration: none;
 }
 
 .contact-related-container > .links-container svg {

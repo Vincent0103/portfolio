@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
   ]);
 
   const contactRelated = ContactRelated(contactSection);
-  contactRelated.handleEmailClick();
+  contactRelated.handleContactClick();
 
   const [aboutH2Container, projectsH2Container, contactH2Container] = document.querySelectorAll(".animated-h2-container");
   HeadingAnimation(aboutH2Container, false).add();
