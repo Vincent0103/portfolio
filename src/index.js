@@ -1,4 +1,6 @@
+import "./loading-screen-styles.css";
 import "./style.css";
+
 import Navbar from "./components/navbar/navbar.js";
 import LoadingScreen from "./components/loadingScreen/loading-screen.js";
 import AboutRelated from "./components/aboutRelated/about-related.js";
@@ -11,6 +13,8 @@ import Carousel from "./components/carousel/carousel.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const loadingScreenContainer = document.querySelector(".loading-screen-container");
+  const loadingScreen = LoadingScreen(loadingScreenContainer);
+
   const navbarContainer = document.querySelector("nav");
   const aboutSection = document.querySelector(".about-section");
   const projectsSection = document.querySelector(".projects-section");
@@ -22,7 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectPreviewBtn = projectsSection.querySelector(".project-btns > .preview-btn");
   const projectCodeBtn = projectsSection.querySelector(".project-btns > .code-btn");
 
-  const loadingScreen = LoadingScreen(loadingScreenContainer);
 
   const aboutRelated = AboutRelated(aboutSection);
 

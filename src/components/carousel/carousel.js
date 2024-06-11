@@ -38,8 +38,12 @@ const Carousel = (imgSliderContainer) => {
     carouselLogic.initializeCarouselProjectsClasses(slidingImgs.length);
     carouselDOM.initializeCarousel(carouselLogic.getProjectsCarouselClasses());
 
-    // the initialize function gets executed last in index.js which is why the resolve is here
-    resolveCarousel();
+    try {
+      // the initialize function gets executed last in index.js which is why the resolve is here
+      resolveCarousel();
+    } catch (error) {
+      console.error("resolveCarousel failed:", error);
+    }
   };
 
   const slide = (areProjectsMovingLeft) => {

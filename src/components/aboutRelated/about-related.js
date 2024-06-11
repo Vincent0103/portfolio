@@ -60,7 +60,11 @@ const AboutRelated = (aboutSectionElement) => {
   const handleMoreBtnClick = () => {
     const paragraphsContainer = aboutSection.querySelector(".paragraphs-container");
     paragraphsContainer.addEventListener("click", (e) => handleParagraphsContainerClick(e, paragraphsContainer));
-    resolveAboutSection();
+    try {
+      resolveAboutSection();
+    } catch (error) {
+      console.error("resolveAboutSection failed: ", error);
+    }
   };
 
   return { handleMoreBtnClick, loadingAboutSection };

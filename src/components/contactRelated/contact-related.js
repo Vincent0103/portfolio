@@ -118,7 +118,12 @@ const ContactRelated = (contactSectionElement) => {
     discordLink.addEventListener("click", (e) => {
       onClipboardCopy(e, "vinctcode", "discord", copiedPopUp, copiedPopUpContainer);
     });
-    resolveContactRelated();
+    try {
+      // the initialize function gets executed last in index.js which is why the resolve is here
+      resolveContactRelated();
+    } catch (error) {
+      console.error("resolveContactRelated failed:", error);
+    }
   };
 
   return { handleContactClick, loadingContactRelated };
