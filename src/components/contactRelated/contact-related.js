@@ -59,7 +59,9 @@ const ContactRelated = (contactSectionElement) => {
 
   const onAnotherBtnClick = (copiedPopUpContainer, forSection) => {
     if (timeoutId) clearTimeout(timeoutId);
-    contactRelatedContainer.removeChild(copiedPopUpContainer);
+    if (contactRelatedContainer.contains(copiedPopUpContainer)) {
+      contactRelatedContainer.removeChild(copiedPopUpContainer);
+    }
     clickableMap[forSection] = true;
   };
 
