@@ -26,12 +26,20 @@ const Carousel = (imgSliderContainer) => {
     return {
       set: (value) => { temp = value; },
       get: () => temp,
-    }
+    };
   })();
+
+  let resolveCarousel;
+  const loadingCarousel = () => new Promise((resolve) => {
+    resolveCarousel = resolve;
+  });
 
   const initialize = () => {
     carouselLogic.initializeCarouselProjectsClasses(slidingImgs.length);
     carouselDOM.initializeCarousel(carouselLogic.getProjectsCarouselClasses());
+
+    // the initialize function gets executed last in index.js which is why the resolve is here
+    resolveCarousel();
   };
 
   const slide = (areProjectsMovingLeft) => {
@@ -39,15 +47,15 @@ const Carousel = (imgSliderContainer) => {
     carouselDOM.moveCarousel(carouselLogic.getProjectsCarouselClasses());
   };
 
-  let rect
-  let rightRectArea
+  let rect;
+  let rightRectArea;
   let leftRectArea;
 
   const updateBoundingRect = (element) => {
     rect = element.getBoundingClientRect();
     rightRectArea = rect.width * (5 / 6);
     leftRectArea = rect.width / 6;
-  }
+  };
 
   const handleCarouselClick = () => {
     updateBoundingRect(imgSliderContainer);
@@ -70,6 +78,7 @@ const Carousel = (imgSliderContainer) => {
     imgSliderContainer.addEventListener("click", throttle(onClick, 100));
   };
 
+
   const handleCarouselHover = () => {
     const [leftArrowSvg, rightArrowSvg] = imgSliderContainer.querySelectorAll("svg#left-arrow, svg#right-arrow");
     imgSliderContainer.addEventListener("mousemove", (e) => {
@@ -78,9 +87,11 @@ const Carousel = (imgSliderContainer) => {
       const isHoveringRight = mousePositionX > rightRectArea;
       const isHoveringLeft = mousePositionX < leftRectArea;
 
-      if (isHoveringLeft) leftArrowSvg.classList.add("grow");
-      else if (isHoveringRight) rightArrowSvg.classList.add("grow");
-      else {
+      if (isHoveringLeft) {
+        leftArrowSvg.classList.add("grow");
+      } else if (isHoveringRight) {
+        rightArrowSvg.classList.add("grow");
+      } else {
         leftArrowSvg.classList.remove("grow");
         rightArrowSvg.classList.remove("grow");
       }
@@ -90,7 +101,7 @@ const Carousel = (imgSliderContainer) => {
       leftArrowSvg.classList.remove("grow");
       rightArrowSvg.classList.remove("grow");
     });
-  }
+  };
 
   return {
     initialize,
@@ -100,6 +111,7 @@ const Carousel = (imgSliderContainer) => {
     getDisplayedProjectName,
     getSlidingSide: slidingSide.get,
     getHasClickedSide: hasClickedSide.get,
+    loadingCarousel,
   };
 };
 

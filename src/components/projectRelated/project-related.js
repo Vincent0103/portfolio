@@ -82,7 +82,7 @@ const ProjectRelated = (arrayContainers) => {
       2: "releaseDate",
       3: "preview",
       4: "code",
-    }
+    };
     const projectName = toCamelCase(displayedProjectName);
 
     let activeP;
@@ -106,7 +106,14 @@ const ProjectRelated = (arrayContainers) => {
     });
   };
 
-  return { update };
+  const loadingProjectRelated = () => new Promise((resolve) => {
+    // already resolving because it is supposed to wait for the
+    // ProjectRelated module to load since this function is located inside
+    // ProjectRelated, it's already loaded.
+    resolve();
+  });
+
+  return { update, loadingProjectRelated };
 };
 
 export default ProjectRelated;

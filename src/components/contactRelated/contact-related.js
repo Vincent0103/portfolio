@@ -100,6 +100,11 @@ const ContactRelated = (contactSectionElement) => {
     });
   };
 
+  let resolveContactRelated;
+  const loadingContactRelated = () => new Promise((resolve) => {
+    resolveContactRelated = resolve;
+  });
+
   const handleContactClick = () => {
     const copiedPopUp = CopiedPopUp();
     const copiedPopUpContainer = copiedPopUp.create();
@@ -113,9 +118,10 @@ const ContactRelated = (contactSectionElement) => {
     discordLink.addEventListener("click", (e) => {
       onClipboardCopy(e, "vinctcode", "discord", copiedPopUp, copiedPopUpContainer);
     });
+    resolveContactRelated();
   };
 
-  return { handleContactClick };
+  return { handleContactClick, loadingContactRelated };
 };
 
 export default ContactRelated;

@@ -28,7 +28,7 @@ const AboutRelated = (aboutSectionElement) => {
     a.setAttribute("href", "https://www.theodinproject.com/");
     a.textContent = "The Odin Project";
     p.appendChild(a);
-    
+
     const remainingText = document.createTextNode(" course (which made this portfolio possible ❤︎).");
     p.appendChild(remainingText);
 
@@ -52,12 +52,18 @@ const AboutRelated = (aboutSectionElement) => {
     }
   };
 
+  let resolveAboutSection;
+  const loadingAboutSection = () => new Promise((resolve) => {
+    resolveAboutSection = resolve;
+  });
+
   const handleMoreBtnClick = () => {
     const paragraphsContainer = aboutSection.querySelector(".paragraphs-container");
     paragraphsContainer.addEventListener("click", (e) => handleParagraphsContainerClick(e, paragraphsContainer));
+    resolveAboutSection();
   };
 
-  return { handleMoreBtnClick };
+  return { handleMoreBtnClick, loadingAboutSection };
 };
 
 export default AboutRelated;

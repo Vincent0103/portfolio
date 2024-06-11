@@ -1,5 +1,6 @@
 import "./style.css";
 import Navbar from "./components/navbar/navbar.js";
+import LoadingScreen from "./components/loadingScreen/loading-screen.js";
 import AboutRelated from "./components/aboutRelated/about-related.js";
 import ProjectRelated from "./components/projectRelated/project-related.js";
 import ContactRelated from "./components/contactRelated/contact-related.js";
@@ -9,6 +10,7 @@ import Carousel from "./components/carousel/carousel.js";
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  const loadingScreenContainer = document.querySelector(".loading-screen-container");
   const navbarContainer = document.querySelector("nav");
   const aboutSection = document.querySelector(".about-section");
   const projectsSection = document.querySelector(".projects-section");
@@ -20,10 +22,16 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectPreviewBtn = projectsSection.querySelector(".project-btns > .preview-btn");
   const projectCodeBtn = projectsSection.querySelector(".project-btns > .code-btn");
 
+  const loadingScreen = LoadingScreen(loadingScreenContainer);
+
   const aboutRelated = AboutRelated(aboutSection);
+
+  aboutRelated.loadingAboutSection().then(() => loadingScreen.progress());
   aboutRelated.handleMoreBtnClick();
 
   const carousel = Carousel(imgSliderContainer);
+
+  carousel.loadingCarousel().then(() => loadingScreen.progress());
   carousel.initialize();
 
   const projectRelated = ProjectRelated([
@@ -34,7 +42,11 @@ window.addEventListener("DOMContentLoaded", () => {
     projectCodeBtn
   ]);
 
+  projectRelated.loadingProjectRelated().then(() => loadingScreen.progress());
+
   const contactRelated = ContactRelated(contactSection);
+
+  contactRelated.loadingContactRelated().then(() => loadingScreen.progress());
   contactRelated.handleContactClick();
 
   const navbar = Navbar(navbarContainer);
@@ -56,6 +68,7 @@ window.addEventListener("DOMContentLoaded", () => {
   )
     .then(() => {
       carousel.handleCarouselClick();
+
       carousel.handleCarouselHover();
 
       let slidingSide;
@@ -83,4 +96,21 @@ window.addEventListener("DOMContentLoaded", () => {
         intervalId = setInterval(slide, 7000);
       });
     });
+
+  const images = document.querySelectorAll("img");
+  let loadedImagesCount = 0;
+
+  images.forEach((img) => {
+    const onImageLoad = () => {
+      loadedImagesCount += 1;
+
+      if (loadedImagesCount === images.length) loadingScreen.progress();
+    };
+    img.addEventListener("load", onImageLoad);
+    img.addEventListener("error", () => {
+      console.log("Image failed to load: ", img.src);
+    });
+
+    if (img.complete && img.naturalHeight !== 0) onImageLoad();
+  });
 });
