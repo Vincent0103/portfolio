@@ -1,4 +1,5 @@
 import "./style.css";
+import Navbar from "./components/navbar/navbar.js";
 import AboutRelated from "./components/aboutRelated/about-related.js";
 import ProjectRelated from "./components/projectRelated/project-related.js";
 import ContactRelated from "./components/contactRelated/contact-related.js";
@@ -8,6 +9,7 @@ import Carousel from "./components/carousel/carousel.js";
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  const navbarContainer = document.querySelector("nav");
   const aboutSection = document.querySelector(".about-section");
   const projectsSection = document.querySelector(".projects-section");
   const contactSection = document.querySelector(".contact-section");
@@ -18,12 +20,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const projectPreviewBtn = projectsSection.querySelector(".project-btns > .preview-btn");
   const projectCodeBtn = projectsSection.querySelector(".project-btns > .code-btn");
 
-  const carousel = Carousel(imgSliderContainer);
-
-  carousel.initialize();
-
   const aboutRelated = AboutRelated(aboutSection);
   aboutRelated.handleMoreBtnClick();
+
+  const carousel = Carousel(imgSliderContainer);
+  carousel.initialize();
 
   const projectRelated = ProjectRelated([
     projectSummaryContainer,
@@ -35,6 +36,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const contactRelated = ContactRelated(contactSection);
   contactRelated.handleContactClick();
+
+  const navbar = Navbar(navbarContainer, aboutRelated, projectRelated, contactRelated);
+  navbar.handleLinkClick();
 
   const [aboutH2Container, projectsH2Container, contactH2Container] = document.querySelectorAll(".animated-h2-container");
   HeadingAnimation(aboutH2Container, false).add();
