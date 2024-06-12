@@ -38,15 +38,19 @@ const LoadingScreen = (loadingScreenContainer) => {
     });
   };
 
-  const initialize = () => {
-    progressableContainer.style.backgroundSize = `${progressableContainer.offsetWidth}px 100vh`;
-    progressableContainer.style.backgroundPositionX = `-${progressableContainer.offsetWidth}px`;
-    progressableContainer.style.transition = "background-position .2s, transform .2s";
-    setProgressXCheckpoints();
-    onResize();
-  };
+  const hasLoaded = (() => {
+    let temp = false;
+
+    return {
+      get: () => temp,
+      set: (value) => {
+        temp = value;
+      }
+    };
+  })();
 
   const onLoaded = () => {
+    hasLoaded.set(true);
     setTimeout(() => {
       progressableContainer.style.background = "none";
       progressableContainer.style.backgroundColor = "none";
@@ -71,11 +75,26 @@ const LoadingScreen = (loadingScreenContainer) => {
     }, 500);
   };
 
+  const onVeryLongLoading = () => {
+    setTimeout(() => {
+      if (!hasLoaded.get()) onLoaded();
+    }, 15000);
+  };
+
+  const initialize = () => {
+    progressableContainer.style.backgroundSize = `${progressableContainer.offsetWidth}px 100vh`;
+    progressableContainer.style.backgroundPositionX = `-${progressableContainer.offsetWidth}px`;
+    progressableContainer.style.transition = "background-position .2s, transform .2s";
+    setProgressXCheckpoints();
+    onResize();
+    onVeryLongLoading();
+  };
+
   const progress = () => {
     progressableContainer.style.backgroundPositionX = `${progressXCheckpoints.shift()}px`;
     progressState.increment();
 
-    if (!progressXCheckpoints.length) onLoaded();
+    if (!progressXCheckpoints.length && !hasLoaded.get()) onLoaded();
   };
 
   return { initialize, progress };
