@@ -13,7 +13,9 @@ import Carousel from "./components/carousel/carousel.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const loadingScreenContainer = document.querySelector(".loading-screen-container");
+
   const loadingScreen = LoadingScreen(loadingScreenContainer);
+  loadingScreen.initialize();
 
   const navbarContainer = document.querySelector("nav");
   const aboutSection = document.querySelector(".about-section");

@@ -19,9 +19,9 @@ main > .loading-screen-container {
   color: transparent;
   background: no-repeat url("./assets/progressable-white-bgc.jpg");
   background-color: rgba(255, 255, 255, .2);
-  background-position-x: -750px;
   -webkit-background-clip: text;
   background-clip: text;
+  background-position-x: -100vw;
   font-weight: 900;
   font-size: 30vh;
   overflow: hidden;
