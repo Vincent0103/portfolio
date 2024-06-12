@@ -26,7 +26,7 @@ main > .loading-screen-container {
   font-size: 30vh;
   overflow: hidden;
   user-select: none;
-  transition: background-position .2s, transform .2s;
+  transition: transform .2s;
 }
 
 @keyframes slide-out-top {

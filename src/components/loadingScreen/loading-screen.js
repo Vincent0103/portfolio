@@ -3,6 +3,7 @@ const LoadingScreen = (loadingScreenContainer) => {
   const vinctNavbar = document.querySelector("nav > h3");
   const progressXCheckpoints = [-645, -547, -376, -231, 0];
   progressableContainer.style.backgroundSize = `${progressableContainer.offsetWidth}px 100vh`;
+  progressableContainer.style.transition = "background-position .2s, transform .2s";
 
   const onLoaded = () => {
     setTimeout(() => {
@@ -18,7 +19,7 @@ const LoadingScreen = (loadingScreenContainer) => {
 
         // Scroll to the top of the page
         window.scrollTo(0, 0);
-        setTimeout(() => loadingScreenContainer.remove(), 210);
+        setTimeout(() => loadingScreenContainer.remove(), 300);
       }, 2000);
     }, 500);
   };
