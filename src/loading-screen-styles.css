@@ -39,6 +39,12 @@ main > .loading-screen-container {
   }
 
   100% {
-    transform: translateY(-200%) rotate(5deg);
+    transform: translateY(-70vh) rotate(5deg);
+  }
+}
+/* This applies styles when the height is greater than the width */
+@media screen and (max-aspect-ratio: 1/1) {
+  .loading-screen-container > .progressable-container {
+    font-size: 30vw;
   }
 }
