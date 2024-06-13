@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Indivisible';
+  src: url('./assets/fonts/Indivisible-SemiBold.woff2') format('woff2'),
+       url('./assets/fonts/Indivisible-SemiBold.woff') format('woff'),
+       url('./assets/fonts/Indivisible-SemiBold.eot') format('eot'),
+       url('./assets/fonts/Indivisible-SemiBold.ttf') format('ttf');
+}
+
 main > .loading-screen-container {
   position: fixed;
   display: flex;
@@ -22,7 +30,7 @@ main > .loading-screen-container {
   -webkit-background-clip: text;
   background-clip: text;
   background-position-x: -100vw;
-  font-weight: 900;
+  font-weight: bold;
   font-size: 30vh;
   overflow: hidden;
   user-select: none;
@@ -31,11 +39,11 @@ main > .loading-screen-container {
 
 @keyframes slide-out-top {
   10% {
-    transform: translateY(-5%) rotate(2deg);
+    transform: translateY(-10%) rotate(1.5deg);
   }
 
   20% {
-    transform: translateY(-4%) rotate(1.5deg);
+    transform: translateY(-9%) rotate(1deg);
   }
 
   100% {
