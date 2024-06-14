@@ -145,7 +145,6 @@ main > .about-section {
 .about-section > .p-and-wallpaper-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .about-section .paragraphs-container {
@@ -176,10 +175,6 @@ main > .about-section {
 
 .about-section .paragraphs-container p:first-child {
   margin-top: 0;
-}
-
-.about-section .paragraphs-container p:last-child {
-  /* margin-bottom: 0; */
 }
 
 .about-section .paragraphs-container.after::after {
