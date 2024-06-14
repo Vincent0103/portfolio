@@ -88,12 +88,12 @@ const load = (loadingScreenModule) => {
       };
 
 
-      let intervalId = setInterval(slide, 7000);
+      let intervalId = setInterval(slide, 10000);
 
       imgSliderContainer.addEventListener("click", () => {
         clearInterval(intervalId);
         if (carousel.getHasClickedSide()) slide();
-        intervalId = setInterval(slide, 7000);
+        intervalId = setInterval(slide, 10000);
       });
     });
 };

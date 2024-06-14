@@ -527,8 +527,8 @@ main > .about-section {
 
 .arrows-container > svg {
   fill: rgba(0, 0, 0, .7);
-  max-width: 13%;
-  max-height: 13%;
+  max-width: 10%;
+  min-height: 10%;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
   transition: transform .2s;
 }
