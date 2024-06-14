@@ -14,8 +14,6 @@ This project is part of The Odin Project course. It was supposed to be a basic h
 
 - **Contact Form**: An easy-to-use contact form for inquiries, collaborations, or just saying hello. Integrated with backend services for immediate notification.
 
-- **Dark Mode**: A toggleable dark mode for reduced eye strain and improved readability in low-light conditions.
-
 - **Accessibility Features**: Ensuring the website is accessible to as many users as possible, including keyboard navigation and screen reader support.
 
 - **Performance Optimized**: Fast loading times and smooth interactions, thanks to modern web development practices and performance optimization techniques.
