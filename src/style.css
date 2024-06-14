@@ -179,7 +179,7 @@ main > .about-section {
 }
 
 .about-section .paragraphs-container p:last-child {
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
 }
 
 .about-section .paragraphs-container.after::after {
