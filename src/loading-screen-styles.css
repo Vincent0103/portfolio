@@ -30,7 +30,7 @@ main > .loading-screen-container {
   -webkit-background-clip: text;
   background-clip: text;
   background-position-x: -100vw;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 30vh;
   overflow: hidden;
   user-select: none;
