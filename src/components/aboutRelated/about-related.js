@@ -38,7 +38,8 @@ const AboutRelated = (aboutSectionElement) => {
     paragraphsContainer.append(p, p2);
   };
 
-  const handleParagraphsContainerClick = (e, paragraphsContainer) => {
+  let paragraphsContainer;
+  const handleParagraphsContainerClick = (e) => {
     const { bottom } = paragraphsContainer.getBoundingClientRect();
     const clickY = e.clientY;
     const currentClickPosition = bottom - clickY;
@@ -58,8 +59,8 @@ const AboutRelated = (aboutSectionElement) => {
   });
 
   const handleMoreBtnClick = () => {
-    const paragraphsContainer = aboutSection.querySelector(".paragraphs-container");
-    paragraphsContainer.addEventListener("click", (e) => handleParagraphsContainerClick(e, paragraphsContainer));
+    paragraphsContainer = aboutSection.querySelector(".paragraphs-container");
+    paragraphsContainer.addEventListener("click", handleParagraphsContainerClick);
     try {
       resolveAboutSection();
     } catch (error) {
