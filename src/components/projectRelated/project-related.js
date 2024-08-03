@@ -9,12 +9,12 @@ const ProjectRelated = (arrayContainers) => {
       preview: "https://vincent0103.github.io/battleship/",
       code: "https://github.com/Vincent0103/battleship/",
     },
-    calculator: {
-      summary: "A basic calculator that performs basic arithmetic operations.",
-      learnt: "Object-Oriented Programming (OOP), node.js, arrays, loops, DOM manipulation and events.",
-      releaseDate: "2023-07-14",
-      preview: "https://vincent0103.github.io/calculator/",
-      code: "https://github.com/Vincent0103/calculator/",
+    CVApplication: {
+      summary: "This project builds a CV by what the user inputs on the forms (general, education, experiences).",
+      learnt: "This project made me introduce to React, TailwindCSS and the Vite bundler where I learnt to intensively use react hooks, react concepts, ect...",
+      releaseDate: "2024-07-18",
+      preview: "https://vinctcvapplication.netlify.app/",
+      code: "https://github.com/Vincent0103/CV-application/",
     },
     restaurantPage: {
       summary: "A web app providing details about a fictional restaurant, featuring menu, location, and contact sections.",
@@ -22,13 +22,6 @@ const ProjectRelated = (arrayContainers) => {
       releaseDate: "2023-08-04",
       preview: "https://vincent0103.github.io/restaurant-page/",
       code: "https://github.com/Vincent0103/restaurant-page/",
-    },
-    landingPage: {
-      summary: "Showcases the creation of an attractive, user-friendly website entry point.",
-      learnt: "Introduction to CSS foundations, including inspecting HTML & CSS, block and inline styling, and flexbox.",
-      releaseDate: "2023-06-18",
-      preview: "https://vincent0103.github.io/landing-page/",
-      code: "https://github.com/Vincent0103/landing-page/",
     },
     knightTravails: {
       summary: "An app that finds the shortest path for a knight to travel from point A to B on a chessboard.",
@@ -43,6 +36,13 @@ const ProjectRelated = (arrayContainers) => {
       releaseDate: "2023-07-29",
       preview: "https://vincent0103.github.io/tic-tac-toe/",
       code: "https://github.com/Vincent0103/tic-tac-toe/",
+    },
+    memoryChainsaw: {
+      summary: "A classic memory card game themed and inspired by one of my favorite animes: Chainsaw Man.",
+      learnt: "Deepening of my knowledge with built-in React hooks like useRef or useCallback, also with community made packages and TailwindCSS.",
+      releaseDate: "2024-08-13",
+      preview: "https://memorychainsaw.netlify.app/",
+      code: "https://github.com/Vincent0103/memory-card/",
     },
     todoList: {
       summary: "An app for effective task management, allowing task creation, reading, and deletion.",

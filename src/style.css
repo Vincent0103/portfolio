@@ -27,6 +27,7 @@ html {
   color: white;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
+  text-wrap: pretty;
 }
 
 h1 {
@@ -309,7 +310,7 @@ main > .about-section {
 }
 
 .projects-first-title.minimize-up {
-  transform: scale(.3) translate(-115%, -180%);
+  transform: scale(.3) translate(-116%, -180%);
   color: #676767;
   transition: transform .2s cubic-bezier(.86,-0.01,.62,1.09), color .2s cubic-bezier(.86,-0.01,.62,1.09);
 }
