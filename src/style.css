@@ -1,9 +1,14 @@
 @font-face {
-  font-family: 'Indivisible';
-  src: url('./assets/fonts/Indivisible-SemiBold.woff2') format('woff2'),
-       url('./assets/fonts/Indivisible-SemiBold.woff') format('woff'),
-       url('./assets/fonts/Indivisible-SemiBold.eot') format('eot'),
-       url('./assets/fonts/Indivisible-SemiBold.ttf') format('ttf');
+  font-family: "Satoshi";
+  src:
+    url("./assets/fonts/satoshi-variable.woff2") format("woff2"),
+    url("./assets/fonts/satoshi-variable.woff") format("woff"),
+    url("./assets/fonts/satoshi-variable.ttf") format("ttf"),
+    url("./assets/fonts/satoshi-variableitalic.woff2") format("woff2"),
+    url("./assets/fonts/satoshi-variableitalic.woff") format("woff"),
+    url("./assets/fonts/satoshi-variableitalic.ttf") format("ttf");
+  font-weight: 100 900;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -23,7 +28,19 @@
 }
 
 html {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   color: white;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -92,14 +109,28 @@ main > nav {
 
 nav * {
   margin: 0;
-  }
+}
 
 nav > h3 {
   color: rgb(208, 208, 208);
-  font-family: "Indivisible", "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    "Satoshi",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   transform: translateY(-100%);
   margin-left: 10%;
-  transition: transform .5s ease-out;
+  transition: transform 0.5s ease-out;
+  font-weight: 400;
 }
 
 nav > .links-container {
@@ -113,7 +144,7 @@ nav > .links-container h3 {
   font-weight: 600;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 nav > .links-container h3:hover {
@@ -156,7 +187,7 @@ main > .about-section {
   max-width: 1100px;
   max-height: 300px;
   overflow: hidden;
-  transition: max-height .5s;
+  transition: max-height 0.5s;
 }
 
 .about-section .paragraphs-container span {
@@ -189,7 +220,7 @@ main > .about-section {
   position: absolute;
   top: 90%;
   left: 45%;
-  background-image: url('./assets/icons/down.svg');
+  background-image: url("./assets/icons/down.svg");
   background-repeat: no-repeat;
   background-position: 65px 6px;
   padding-right: 35px;
@@ -238,29 +269,34 @@ main > .about-section {
   margin: 0;
 }
 
-.spawn-heading-forward {transform: translateY(0);}
+.spawn-heading-forward {
+  transform: translateY(0);
+}
 
-.spawn-heading-idle {transform: translateY(20%);}
+.spawn-heading-idle {
+  transform: translateY(20%);
+}
 
-.spawn-heading {animation: spawn-heading 1s;}
+.spawn-heading {
+  animation: spawn-heading 1s;
+}
 
 @keyframes spawn-heading {
   0% {
     transform: translateY(20%);
     filter: blur(10px);
     opacity: 0;
-    }
+  }
 
-    80% {
+  80% {
     transform: translateY(-10%);
     filter: blur(0);
     opacity: 1;
-    }
-
-    100% {
-    transform: translateY(0);
   }
 
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .project-title-container {
@@ -282,12 +318,12 @@ main > .about-section {
 
 .project-title.center {
   transform: translateX(0);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .project-title.left {
   transform: translateX(-1500px);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .project-title.moving-left.right {
@@ -297,7 +333,7 @@ main > .about-section {
 
 .project-title.moving-right.right {
   transform: translateX(1500px);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .project-title.moving-right.left {
@@ -306,13 +342,17 @@ main > .about-section {
 }
 
 .projects-first-title {
-  transition: transform 1s, color 1s;
+  transition:
+    transform 1s,
+    color 1s;
 }
 
 .projects-first-title.minimize-up {
-  transform: scale(.3) translate(-116%, -180%);
+  transform: scale(0.3) translate(-116%, -180%);
   color: #676767;
-  transition: transform .2s cubic-bezier(.86,-0.01,.62,1.09), color .2s cubic-bezier(.86,-0.01,.62,1.09);
+  transition:
+    transform 0.2s cubic-bezier(0.86, -0.01, 0.62, 1.09),
+    color 0.2s cubic-bezier(0.86, -0.01, 0.62, 1.09);
 }
 
 .current-project-container {
@@ -322,7 +362,6 @@ main > .about-section {
   justify-items: start;
   column-gap: 70px;
 }
-
 
 .img-slider-container {
   position: relative;
@@ -338,7 +377,7 @@ main > .about-section {
   justify-content: center;
   align-items: center;
   width: 100%;
-  transition: transform .2s;
+  transition: transform 0.2s;
   user-select: none;
 }
 
@@ -352,7 +391,7 @@ main > .about-section {
   width: 100%;
   height: 100%;
   background-color: black;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .sliding-img img {
@@ -364,26 +403,25 @@ main > .about-section {
   opacity: 0;
   filter: blur(45px);
   z-index: -1;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .carousel-left-left {
-  transform: translateX(-13%) scale(.8);
+  transform: translateX(-13%) scale(0.8);
   z-index: -3;
 }
 
 .carousel-left-left::before {
-  opacity: .85;
+  opacity: 0.85;
 }
 
-
 .carousel-left {
-  transform: translateX(-7%) scale(.9);
+  transform: translateX(-7%) scale(0.9);
   z-index: -2;
 }
 
 .carousel-left::before {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .carousel-center {
@@ -396,35 +434,35 @@ main > .about-section {
 }
 
 .carousel-right {
-  transform: translateX(7%) scale(.9);
+  transform: translateX(7%) scale(0.9);
   z-index: -2;
 }
 
 .carousel-right::before {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .carousel-right-right {
-  transform: translateX(13%) scale(.8);
+  transform: translateX(13%) scale(0.8);
   z-index: -3;
 }
 
 .carousel-right-right::before {
-  opacity: .85;
+  opacity: 0.85;
 }
 
 .carousel-hide-left {
-  transform: translateX(-19%) scale(.7);
+  transform: translateX(-19%) scale(0.7);
   opacity: 0;
 }
 
 .carousel-hide-right {
-  transform: translateX(19%) scale(.7);
+  transform: translateX(19%) scale(0.7);
   opacity: 0;
 }
 
 .box-shadow-visible > img:nth-of-type(2) {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .project-date-container {
@@ -436,7 +474,7 @@ main > .about-section {
   font-size: 1.3rem;
   font-weight: bold;
   margin: 10px 0;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .project-date-container > p.hide {
@@ -447,7 +485,7 @@ main > .about-section {
 }
 
 .project-date-container > p.show {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .project-related-container {
@@ -462,7 +500,7 @@ main > .about-section {
 }
 
 .project-related-container p {
-  transition: opacity .2s;
+  transition: opacity 0.2s;
   margin: 5px 0;
 }
 
@@ -475,26 +513,39 @@ main > .about-section {
 .project-btns > * {
   background-color: #050505;
   color: white;
-  font-family: "Indivisible", "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    "Satoshi",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   border: 1px solid rgb(30, 30, 30);
   box-sizing: border-box;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-size: 1.8rem;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   text-align: center;
-  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, .8);
+  box-shadow: 0 1px 2px 0 rgba(255, 255, 255, 0.8);
   -webkit-text-decoration: none;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
-  transition: background-color .1s;
+  transition: background-color 0.1s;
 }
 
 .project-btns > .preview-btn {
   background-color: #dab359;
   color: black;
   border: 1px solid rgb(149, 123, 61);
-  box-shadow: 0 1px 2px 0 rgba(218, 179, 89, .8);
+  box-shadow: 0 1px 2px 0 rgba(218, 179, 89, 0.8);
 }
 
 .project-btns > *:hover {
@@ -529,10 +580,10 @@ main > .about-section {
 }
 
 .arrows-container > svg {
-  fill: rgba(0, 0, 0, .7);
+  fill: rgba(0, 0, 0, 0.7);
   height: 20%;
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1));
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .grow {
@@ -555,7 +606,7 @@ main > .contact-section {
   display: flex;
   justify-content: center;
   width: 100%;
-  opacity: .7;
+  opacity: 0.7;
   z-index: -1;
 }
 
@@ -572,8 +623,21 @@ main > .contact-section {
 .contact-related-container > h1 {
   text-align: center;
   margin: 50px 0;
-  font-family: "Indivisible", "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 700;
+  font-family:
+    "Satoshi",
+    "Inter",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+  font-weight: normal;
   background: linear-gradient(to bottom, #fdf8c6, #c78d3e);
   -webkit-background-clip: text;
   color: transparent;
@@ -654,25 +718,25 @@ footer > p {
     transform: scale(1) rotate(0);
   }
   12.5% {
-    transform: scale(.95) rotate(1deg);
+    transform: scale(0.95) rotate(1deg);
   }
   25% {
     transform: scale(1) rotate(2deg);
   }
   37.5% {
-    transform: scale(.95) rotate(1deg);
+    transform: scale(0.95) rotate(1deg);
   }
   50% {
     transform: scale(1) rotate(0);
   }
   62.5% {
-    transform: scale(.95) rotate(-1deg);
+    transform: scale(0.95) rotate(-1deg);
   }
   75% {
     transform: scale(1) rotate(-2deg);
   }
   87.5% {
-    transform: scale(.95) rotate(-1deg);
+    transform: scale(0.95) rotate(-1deg);
   }
   100% {
     transform: scale(1) rotate(0);
@@ -743,11 +807,11 @@ footer > p {
   }
 
   .copied-pop-up-container > p {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   footer > p {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -807,7 +871,7 @@ footer > p {
 
   .project-btns > * {
     font-size: 1.3rem;
-    padding: .5rem .75rem;
+    padding: 0.5rem 0.75rem;
   }
 
   p {
@@ -833,7 +897,7 @@ footer > p {
   }
 
   .project-date-container > p {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .contact-related-container > .links-container > .link-container {
@@ -843,7 +907,7 @@ footer > p {
   }
 
   .contact-related-container > .links-container p {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
   .contact-related-container > .links-container svg {
     max-width: 24px;
@@ -856,7 +920,7 @@ footer > p {
   }
 
   .copied-pop-up-container > p {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 
   footer {
@@ -865,7 +929,7 @@ footer > p {
   }
 
   footer > p {
-    font-size: .5rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -897,4 +961,3 @@ footer > p {
     max-width: 330vw;
   }
 }
-
