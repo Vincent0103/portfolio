@@ -952,7 +952,7 @@ footer > p {
 }
 @media screen and (max-aspect-ratio: 31/25) {
   .banner-heading img {
-    margin-left: 55%;
+    margin-left: 45%;
   }
 }
 
