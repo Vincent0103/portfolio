@@ -37,6 +37,13 @@ const ProjectRelated = (arrayContainers) => {
       preview: "https://vincent0103.github.io/tic-tac-toe/",
       code: "https://github.com/Vincent0103/tic-tac-toe/",
     },
+    shoppingCart: {
+      summary: "A typical e-commerce application where you can simulate buying an amount of categorized products",
+      learnt: "Introduction to React testing (mocking callbacks and components), React Router, type checking, data fetching in React.",
+      releaseDate: "2025-01-03",
+      preview: "https://vinct-shopping-cart.netlify.app/home",
+      code: "https://github.com/Vincent0103/shopping-cart",
+    },
     memoryChainsaw: {
       summary: "A classic memory card game themed and inspired by one of my favorite animes: Chainsaw Man.",
       learnt: "Deepening of my knowledge with built-in React hooks like useRef or useCallback, also with community made packages and TailwindCSS.",
