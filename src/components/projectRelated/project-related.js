@@ -13,7 +13,7 @@ const ProjectRelated = (arrayContainers) => {
       summary: "This project builds a CV by what the user inputs on the forms (general, education, experiences).",
       learnt: "This project made me introduce to React, TailwindCSS and the Vite bundler where I learnt to intensively use react hooks, react concepts, ect...",
       releaseDate: "2024-07-18",
-      preview: "https://vinctcvapplication.netlify.app/",
+      preview: "https://vinct-cv-application.netlify.app/",
       code: "https://github.com/Vincent0103/CV-application/",
     },
     restaurantPage: {
