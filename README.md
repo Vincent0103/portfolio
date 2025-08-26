@@ -34,7 +34,7 @@ All the tests are located in [tests](./src/tests/).
 
 ## License
 
-This project is licensed under the vinct License.
+This project is licensed under the MIT license.
 
 ## Acknowledgements
 
