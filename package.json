@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "build": "webpack --progress --mode=production",
+    "build": "webpack --progress --mode=development",
     "watch": "webpack --progress --watch",
     "push-repo": "git subtree push --prefix dist origin gh-pages"
   },
