@@ -14,14 +14,19 @@ const AboutRelated = (aboutSectionElement) => {
 
     container.style.maxHeight = `${newHeight}px`;
 
-    container.addEventListener("transitionend", () => {
-      container.style.maxHeight = "none";
-    }, { once: true });
+    container.addEventListener(
+      "transitionend",
+      () => {
+        container.style.maxHeight = "none";
+      },
+      { once: true },
+    );
   };
 
   const appendRemainingText = (paragraphsContainer) => {
     const p = document.createElement("p");
-    p.textContent = "Two years ago, I committed myself to study computer science as deep as possible by following ";
+    p.textContent =
+      "Since high school, Since high school, I've committed myself to study computer science as deep as possible and build ambitious applications. A huge thanks to";
 
     const a = document.createElement("a");
     a.setAttribute("target", "_blank");
@@ -29,13 +34,25 @@ const AboutRelated = (aboutSectionElement) => {
     a.textContent = "The Odin Project";
     p.appendChild(a);
 
-    const remainingText = document.createTextNode(" course (which made this portfolio possible ❤︎).");
+    const remainingText = document.createTextNode(
+      " for letting this happen. (which made this portfolio possible ❤︎).",
+    );
     p.appendChild(remainingText);
 
     const p2 = document.createElement("p");
-    p2.textContent = "During my free time, i most likely program applications, hit the gym, play solo video games and read self-improvement books.";
+    p2.textContent =
+      "Since then, I have built dozens of programs, most of which are fully functional applications. You can find them all open-source on my ";
 
-    paragraphsContainer.append(p, p2);
+    const a2 = document.createElement("a");
+    a2.setAttribute("target", "_blank");
+    a2.setAttribute("href", "https://www.github.com/Vincent0103/");
+    a2.textContent = "GitHub repository";
+    p2.appendChild(a2);
+
+    const p3 = document.createAttribute("p");
+    p3.textContent =
+      "In my free time, I most likely challenge myself by building complex programs and going to the gym. I'm a very big fan of rogue-like and 2D games, and recently, I've also started learning the guitar. Outside of coding, I'm usually found reading non-fiction books.";
+    paragraphsContainer.append(p, p2, p3);
   };
 
   let paragraphsContainer;
@@ -49,18 +66,25 @@ const AboutRelated = (aboutSectionElement) => {
       paragraphsContainer.classList.remove("before", "after");
       appendRemainingText(paragraphsContainer);
       transitionHeightOnAppend(paragraphsContainer);
-      paragraphsContainer.removeEventListener("click", handleParagraphsContainerClick);
+      paragraphsContainer.removeEventListener(
+        "click",
+        handleParagraphsContainerClick,
+      );
     }
   };
 
   let resolveAboutSection;
-  const loadingAboutSection = () => new Promise((resolve) => {
-    resolveAboutSection = resolve;
-  });
+  const loadingAboutSection = () =>
+    new Promise((resolve) => {
+      resolveAboutSection = resolve;
+    });
 
   const handleMoreBtnClick = () => {
     paragraphsContainer = aboutSection.querySelector(".paragraphs-container");
-    paragraphsContainer.addEventListener("click", handleParagraphsContainerClick);
+    paragraphsContainer.addEventListener(
+      "click",
+      handleParagraphsContainerClick,
+    );
     try {
       resolveAboutSection();
     } catch (error) {
