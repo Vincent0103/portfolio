@@ -44,7 +44,7 @@ html {
   color: white;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
-  text-wrap: pretty;
+  text-wrap: wrap;
 }
 
 h1 {
