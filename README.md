@@ -1,5 +1,7 @@
 # portfolio / homepage
 
+<img width="2559" height="1202" alt="image" src="https://github.com/user-attachments/assets/66ab07bc-9896-4870-bc57-f87d87ee2079" />
+
 ## Description
 
 This project is part of The Odin Project course. It was supposed to be a basic homepage but I decided to finally make it my portfolio. In that portfolio you can check about who I am, everything I built on the web so far, my contact informations, and much more...
